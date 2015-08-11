@@ -1,0 +1,47 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services": [
+        {
+            "name": "qianghongbao_route",
+            "path": "/hongbao/route",
+            "method": "get",
+            "auth": false,
+            "impl": "qianghongbao.route",
+            "comment": "抢红包活动"
+        },
+        {
+            "name": "getMoney",
+            "path": "/hongbao/getMoney",
+            "method": "get",
+            "auth": false,
+            "impl": "qianghongbao.getMoney",
+            "comment": "获取抢红包金额"
+        }
+    ],
+    "statics": [
+        {
+            "name": "fahongbao",
+            "path": "/fahongbao",
+            "comment": "抢红包活动"
+        }
+    ],
+    "dataModelSchema": [
+    ],
+    "configuration": {
+
+    },
+    "errorHandler": []
+}

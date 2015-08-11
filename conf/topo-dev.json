@@ -1,0 +1,26 @@
+{
+  "env": "dev",
+  "service_doc":"svc",
+  "cluster": [
+    {
+      "name": "baseService",
+      "ip": "127.0.0.1",
+      "port": 5010,
+      "protocol": "http",
+      "baseurl": "",
+      "workerno": 1,
+      "applications": [
+        "fahongbao"
+      ]
+    }
+  ],
+  "dataServer": {
+    "mysql": {
+      "ip": "yilosdev.mysql.rds.aliyuncs.com",
+      "port": 3306,
+      "user": "yilos_dev",
+      "password": "yilos_dev",
+      "dbName": "nailstar"
+    }
+  }
+}

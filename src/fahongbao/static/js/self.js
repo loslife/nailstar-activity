@@ -13,14 +13,15 @@ Zepto(function($){
             console.log(err);
             return;
         }
-        if(data && data.money){
-            var money = data.money / 100;
+        var money;
+        if(data && data.result.money){
+            money = data.result.money / 100;
             $("#money").text(money);
-            if(money){
-                $('.change-to-receiveMoney').show();
-            }else{
-                $('.change-to-hasReceived').show();
-            }
+        }
+        if(money){
+            $('.change-to-receiveMoney').show();
+        }else{
+            $('.change-to-hasReceived').show();
         }
     });
 
@@ -31,16 +32,16 @@ Zepto(function($){
             console.log(err);
             return;
         }
-        if(data && data.nickname){
-            $("#nickname").text(data.nickname);
+        if(data && data.result && data.result.nickname){
+            $("#nickname").text(data.result.nickname);
         }
-        if(data && data.headImg){
-            $("#headImg").attr('src',data.headImg);
+        if(data && data.result && data.result.headImg){
+            $("#headImg").attr('src',data.result.headImg);
         }
         wx.ready(function(){
             //配置好友分享
             wx.onMenuShareAppMessage({
-                title: data.nickname + '发给你一个红包', // 分享标题
+                title: data.result.nickname + '发给你一个红包', // 分享标题
                 desc: '赶快点击领取吧,100%现金', // 分享描述
                 link: shareUrl, // 分享链接
                 imgUrl: '../images/logo.png', // 分享图标
@@ -53,7 +54,7 @@ Zepto(function($){
             });
             //配置朋友圈分享
             wx.onMenuShareTimeline({
-                title: data.nickname + '正在发现金红包,快来领取吧!',
+                title: data.result.nickname + '正在发现金红包,快来领取吧!',
                 link: shareUrl,
                 imgUrl: '../images/logo.png',
                 success: function () {

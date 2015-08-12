@@ -7,7 +7,7 @@ Zepto(function($){
         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
     //获取红包金额
-    var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?openId=" + open_id;
+    var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?openId=" + open_id + "&type=1";
     getRequest(url, function(err, data){
         if(err){
             console.log(err);

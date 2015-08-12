@@ -194,7 +194,8 @@ function getMoney(req, res, next){
 
         api.cash_redpack(params, app_secret, p12_path, function (err, code, result) {
 
-            if (err) {
+            if(err){
+                console.log("调用失败");
                 console.log(err);
                 return;
             }
@@ -202,6 +203,7 @@ function getMoney(req, res, next){
             if(code !== 0){
                 console.log("调用失败");
                 console.log(result);
+                return;
             }
 
             var id = uuid.v1();

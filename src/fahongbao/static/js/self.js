@@ -7,7 +7,7 @@ Zepto(function($){
         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
     //获取红包金额
-    var url = "http://wx.naildaka.com/hongbao/getMoney?openId=" + open_id;
+    var url = "http://huodong.naildaka.com/hongbao/getMoney?openId=" + open_id;
     getRequest(url, function(err, data){
         if(err){
             console.log(err);
@@ -25,7 +25,7 @@ Zepto(function($){
     });
 
     //获取用户名称和头像
-    var urlUser = "http://wx.naildata.com/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildata.com/hongbao/getInfo/" + open_id;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);

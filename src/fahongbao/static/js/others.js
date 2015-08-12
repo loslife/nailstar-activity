@@ -4,7 +4,7 @@ Zepto(function($){
     var open_id = getQueryString("openId");
 
     //获取用户名称和头像
-    var urlUser = "http://wx.naildata.com/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildata.com/hongbao/getInfo/" + open_id;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);

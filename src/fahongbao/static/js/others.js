@@ -4,7 +4,7 @@ Zepto(function($){
     var open_id = getQueryString("openId");
 
     //获取用户名称和头像
-    var urlUser = "http://wx.naildata.com/hongbao/getInfo/" + open_id;
+    var urlUser = "http://wx.naildaka.com/hongbao/getInfo/" + open_id;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);
@@ -18,7 +18,24 @@ Zepto(function($){
         }
     });
 
-
+    $("#want").click
+    //获取红包金额
+    var url = "http://wx.naildaka.com/hongbao/getMoney?openId=" + open_id;
+    getRequest(url, function(err, data){
+        if(err){
+            console.log(err);
+            return;
+        }
+        if(data && data.money){
+            var money = data.money / 100;
+            $("#money").text(money);
+            if(money){
+                $('.change-to-receiveMoney').show();
+            }else{
+                $('.change-to-hasReceived').show();
+            }
+        }
+    });
 });
 
 //匹配URL里的值

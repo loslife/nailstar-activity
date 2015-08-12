@@ -25,7 +25,7 @@ Zepto(function($){
     });
 
     //获取用户名称和头像
-    var urlUser = "http://huodong.naildata.com/svc/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildaka.com/svc/hongbao/getInfo/" + open_id;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);

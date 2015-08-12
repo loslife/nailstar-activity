@@ -14,7 +14,7 @@ Zepto(function($){
             return;
         }
         if(data && data.money){
-            var money = data.money;
+            var money = data.money / 100;
             $("#money").text(money);
             if(money){
                 $('.change-to-receiveMoney').show();

@@ -3,11 +3,11 @@ Zepto(function($){
     //设置用户信息
     var open_id = getQueryString("openId");
     var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
-        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fhongbao%2froute%2f" + open_id
+        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fhongbao%2froute%2f" + open_id
         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
     //获取红包金额
-    var url = "http://huodong.naildaka.com/hongbao/getMoney?openId=" + open_id;
+    var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?openId=" + open_id;
     getRequest(url, function(err, data){
         if(err){
             console.log(err);
@@ -25,7 +25,7 @@ Zepto(function($){
     });
 
     //获取用户名称和头像
-    var urlUser = "http://huodong.naildata.com/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildata.com/svc/hongbao/getInfo/" + open_id;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);
@@ -115,7 +115,7 @@ function getRequest(url,callback){
 function initWx() {
     var app_id = "wxa84c9db4a6fcc7d8";
     var nowUrl = window.location.href;
-    var signUrl = "http://wx.naildaka.com/wx/getSignature";
+    var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
     $.ajax({
         type: 'POST',
         url: signUrl,

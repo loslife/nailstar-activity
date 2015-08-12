@@ -5,11 +5,13 @@ var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 
 var app_id = "wxb931d3d24994df52";
 var app_secret = "Yang198609Los1933ezsd230926huang";
+var redPackLimit = 2;//领取红包上限个数
 
 exports.route = route;
 exports.getMoney = getMoney;
 exports.getInfo = getInfo;
 
+//认证路由
 function route(req, res, next){
 
     var state = req.query["state"];
@@ -183,21 +185,7 @@ function getInfo(req, res, next){
     });
 }
 
-function sendRedPackToOrigin(openId, money){
-    //根据openId查询originId
-    var sql = "select originId from users where openId = :openId";
-    dbHelper.execSql(sql, {openId: openId}, function(err, result){
-        if(err){
-            next(err);
-            return;
-        }
-        //存在分享来源用户
-        if(result[0].originId){
-            sendRedPack(result[0].originId, money);
-        }
-    });
-}
-
+//发红包
 function sendRedPack(openId, money) {
     var params = {
         mch_id: "1255492301",
@@ -220,10 +208,38 @@ function sendRedPack(openId, money) {
 
         if (code === 0) {
             console.log("调用成功");
+            //红包发放记录
+            var ins_sql = "insert into hb_records(id, openId, money, date) values(:id, :openId, :money)";
+            var id = uuid.v1();
+            dbHelper.execSql(ins_sql, {id: id,openId: openId,money: money,date: new Date().getTime()}, function (err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
         } else {
             console.log("调用失败");
         }
 
         console.log(result);
+    });
+}
+
+//对originId发红包
+function sendRedPackToOrigin(openId, money){
+    //查询originId领红包次数
+    var sql = "select b.originId 'originId' from users a inner join users b on a.originId = b.openId where a.openId = :openId";
+    dbHelper.execSql(sql, {openId: openId}, function(err, result){
+        if(err){
+            console.log(err);
+            return;
+        }
+        //领取次数达到上限
+        if(result.length >= redPackLimit){
+            return;
+        }
+        //存在分享来源用户且未达上限
+        if(result[0].originId){
+            sendRedPack(result[0].originId, money);
+        }
     });
 }

@@ -2,8 +2,9 @@ Zepto(function($){
 
     //设置用户信息
     var open_id = getQueryString("openId");
-    var oBtn = $("#share");
-    var transparency = $('#transparency');
+    var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
+        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fhongbao%2froute%2f" + open_id
+        + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
     //获取红包金额
     var url = "http://wx.naildaka.com/hongbao/getMoney?openId=" + open_id;
@@ -34,15 +35,15 @@ Zepto(function($){
             $("#nickname").text(data.nickname);
         }
         if(data && data.headImg){
-            $("headImg").attr('src',data.headImg);
+            $("#headImg").attr('src',data.headImg);
         }
         wx.ready(function(){
             //配置好友分享
             wx.onMenuShareAppMessage({
                 title: data.nickname + '发给你一个红包', // 分享标题
                 desc: '赶快点击领取吧,100%现金', // 分享描述
-                link: '', // 分享链接
-                imgUrl: 'images/', // 分享图标
+                link: shareUrl, // 分享链接
+                imgUrl: '../images/logo.png', // 分享图标
                 success: function () {
                     transparency.hide();
                 },
@@ -52,9 +53,9 @@ Zepto(function($){
             });
             //配置朋友圈分享
             wx.onMenuShareTimeline({
-                title: data.nickname + '正在发现金红包,快来领取吧!', // 分享标题
-                link: '', // 分享链接
-                imgUrl: 'images/', // 分享图标
+                title: data.nickname + '正在发现金红包,快来领取吧!',
+                link: shareUrl,
+                imgUrl: '../images/logo.png',
                 success: function () {
                     transparency.hide();
                 },
@@ -66,11 +67,13 @@ Zepto(function($){
     });
 
     initWx();
+
+    var oBtn = $("#share");
+    var transparency = $('#transparency');
     //点击分享时弹出蒙层
     oBtn.click(function(){
         transparency.show();
     });
-
     //点击页面使蒙层消失
     transparency.click(function(){
         transparency.hide();
@@ -88,6 +91,7 @@ function getQueryString(name) {
     return null;
 }
 
+//Ajax请求
 function getRequest(url,callback){
     $.ajax({
         type: 'GET',
@@ -145,3 +149,4 @@ function initWx() {
         dataType:"json"
     });
 }
+

@@ -4,15 +4,18 @@ var uuid = require('node-uuid');
 var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 
 var app_id = "wxb931d3d24994df52";
-var app_secret = "06981df67deff478460cbf396b21f016";
+var app_secret = "Yang198609Los1933ezsd230926huang";
+var p12_path = "/Users/apple/git_local/wechat-toolkit/cer/apiclient_cert.p12";
 
 exports.route = route;
 exports.getMoney = getMoney;
+exports.getInfo = getInfo;
 
 function route(req, res, next){
 
     var state = req.query["state"];
     var code = req.query["code"];
+    var originId = req.params["originId"];
 
     // 非微信OAuth跳转
     if(!code){
@@ -33,9 +36,74 @@ function route(req, res, next){
             return;
         }
 
-        var red_url = "http://wx.naildaka.com/fahongbao/share.html?open_id=" + open_id
-            + "&nickname=" + nickname + "&headImg=" + headimgurl;
-        res.redirect(red_url);
+        var count;
+
+        async.series([_queryIsExist, _recordUser], function(err){
+
+            if(err){
+                return next(err);
+            }
+
+            var redirectUrl;
+
+            if(originId === open_id){
+                redirectUrl = "http://huodong.naildaka.com/fahongbao/self.html?openId=" + open_id;// 自己访问自己的页面
+            }else{
+                redirectUrl = "http://huodong.naildaka.com/fahongbao/others.html?openId=" + originId;// 访问他人分享出来的页面
+            }
+
+            res.redirect(redirectUrl);
+        });
+
+        //查询是否存在此用户
+        function _queryIsExist(nextStep){
+
+            var sel_sql = "select count(1) 'count' from weixin_users where openId = :openId";
+
+            dbHelper.execSql(sel_sql, {openId: open_id}, function(err, result){
+
+                if(err){
+                    nextStep(err);
+                    return;
+                }
+
+                count = result[0].count;
+                nextStep();
+            });
+        }
+
+        //记录用户信息
+        function _recordUser(nextStep){
+
+            var sql;
+            var params;
+
+            if(count > 0){
+                //存在，更新用户信息
+                sql = "update weixin_users set nickname = :nickname,headImg = :headImg where openId = :openId";
+                params = {nickname: nickname,headImg: headimgurl, openId: open_id};
+                dbHelper.execSql(sql, params, function(err){
+                    if(err){
+                        nextStep(err);
+                        return;
+                    }
+                    nextStep();
+                });
+
+            }else{
+
+                //不存在，存储用户信息
+                sql = "insert into weixin_users(openId, nickname, headImg, createDate) values(:openId, :nickname, :headImg, :createDate)";
+                params = {openId: open_id, nickname: nickname, headImg: headimgurl, createDate: new Date().getTime()};
+                dbHelper.execSql(sql, params, function(err){
+                    if(err){
+                        nextStep(err);
+                        return;
+                    }
+                    nextStep();
+                });
+            }
+        }
     });
 
     function _exchangeOauth2AccessToken(callback){
@@ -74,66 +142,100 @@ function route(req, res, next){
 //获取抢红包金额
 function getMoney(req, res, next){
 
-    var open_id = req.query["open_id"];
-    if(!open_id){
-        next({errMessage: "缺少open_id"});
+    var openId = req.query["openId"];
+    var type = req.query["type"];
+
+    if(!openId || !type){
+        next({errMessage: "参数错误"});
         return;
     }
 
-    //查询是否抢过红包
-    var sel_sql = "select count(1) 'count' from hb_records where openId = :openId";
-    dbHelper.execSql(sql, {openId: open_id}, function(err, result) {
+    var money = parseInt(Math.random() * 100) + 100;// 1-2元
+
+    // 查询是否抢过红包
+    var sel_sql = "select count(1) 'count' from hongbao_records where openId = :openId and type = :type";
+    dbHelper.execSql(sel_sql, {openId: openId, type: type}, function(err, result) {
+
         if (err) {
             next(err);
             return;
         }
+
         var count = result[0].count;
+
         //已抢过红包
         if (count > 0) {
             doResponse(req, res, {});
             return;
         }
+
         //未抢过红包
-        //生成1至100的随机数
-        var money = parseInt(Math.random() * 100);
-        var id = uuid.v1();
-        //记录此次抢红包
-        var ins_sql = "insert into hb_records(id, openId, money, date) values(:id, :openId, :money)";
-        dbHelper.execSql(sql, {id: id,openId: open_id,money: money,date: new Date().getTime()}, function (err) {
-            if (err) {
-                next(err);
+        doResponse(req, res, {money: money});
+
+        //异步调用发红包接口
+        sendRedPack();
+    });
+
+    //发红包
+    function sendRedPack() {
+
+        var params = {
+            mch_id: "1255492301",
+            wxappid: app_id,
+            nick_name: "美甲大咖",
+            send_name: "美甲大咖",
+            re_openid: openId,
+            total_amount: money,
+            wishing: "恭喜发财，大吉大利!",
+            act_name: "美甲大咖送红包活动",
+            remark: "快来领啊",
+            logo_imgurl: "http://ypicture.oss-cn-hangzhou.aliyuncs.com/120.png"
+        };
+
+        api.cash_redpack(params, app_secret, p12_path, function (err, code, result) {
+
+            if(err){
+                console.log("调用失败");
+                console.log(err);
                 return;
             }
-            doResponse(req, res, {money: money});
-            //异步调用发红包接口
-            var params = {
-                mch_id: "1255492301",
-                wxappid: "wxb931d3d24994df52",
-                nick_name: "美甲大咖",
-                send_name: "美甲大咖",
-                re_openid: "oZWB6wVxwZBN17OpjsxoV_UX-b8Y",
-                total_amount: 100,
-                wishing: "测试发送红包",
-                act_name: "美甲大咖送红包活动",
-                remark: "快来领啊",
-                logo_imgurl: "http://ypicture.oss-cn-hangzhou.aliyuncs.com/120.png"
-            };
 
-            api.cash_redpack(params, "Yang198609Los1933ezsd230926huang", "/Users/apple/git_local/wechat-toolkit/cer/apiclient_cert.p12", function(err, code, result){
+            if(code !== 0){
+                console.log("调用失败");
+                console.log(result);
+                return;
+            }
+
+            var id = uuid.v1();
+
+            //红包发放记录
+            var ins_sql = "insert into hongbao_records(id, openId, money, type, createDate) values(:id, :openId, :money, :type, :createDate)";
+            dbHelper.execSql(ins_sql, {id: id, openId: openId, money: money, type: type, createDate: new Date().getTime()}, function (err){
 
                 if(err){
+                    console.log("写入红包记录失败");
                     console.log(err);
-                    return;
                 }
-
-                if(code === 0){
-                    console.log("调用成功");
-                }else{
-                    console.log("调用失败");
-                }
-
-                console.log(result);
             });
         });
+    }
+}
+
+//查询用户信息
+function getInfo(req, res, next){
+    var openId = req.params["openId"];
+    if(!openId){
+        res.send("缺少openId");
+        return;
+    }
+    var sql = "select nickname,headImg from weixin_users where openId = :openId";
+
+    dbHelper.execSql(sql, {openId: openId}, function(err, result){
+        if(err){
+            next(err);
+            return;
+        }
+        doResponse(req, res, result[0]);
     });
 }
+

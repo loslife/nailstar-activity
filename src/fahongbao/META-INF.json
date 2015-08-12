@@ -16,7 +16,7 @@
     "services": [
         {
             "name": "qianghongbao_route",
-            "path": "/hongbao/route",
+            "path": "/hongbao/route/:originId",
             "method": "get",
             "auth": false,
             "impl": "qianghongbao.route",
@@ -29,6 +29,14 @@
             "auth": false,
             "impl": "qianghongbao.getMoney",
             "comment": "获取抢红包金额"
+        },
+        {
+            "name": "getInfo",
+            "path": "/hongbao/getInfo/:openId",
+            "method": "get",
+            "auth": false,
+            "impl": "qianghongbao.getInfo",
+            "comment": "查询用户信息"
         }
     ],
     "statics": [

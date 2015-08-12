@@ -16,7 +16,7 @@
     "services": [
         {
             "name": "qianghongbao_route",
-            "path": "/hongbao/route",
+            "path": "/hongbao/route/:originId",
             "method": "get",
             "auth": false,
             "impl": "qianghongbao.route",

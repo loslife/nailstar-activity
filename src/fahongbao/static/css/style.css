@@ -39,8 +39,8 @@ html,body{
 .wrapper-img-user{
 	width: 64px;
 	height: 64px;
-	/*border-radius: 39px;*/
-	/*border: 2px solid #fff;*/
+	border-radius: 39px;
+	border: 2px solid #fff;
 }
 
 /*iphone6*/

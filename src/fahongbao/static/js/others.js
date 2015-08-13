@@ -4,37 +4,30 @@ Zepto(function($){
     var open_id = getQueryString("openId");
 
     //获取用户名称和头像
-    var urlUser = "http://wx.naildaka.com/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildaka.com/svc/hongbao/getInfo/" + open_id;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);
             return;
         }
-        if(data && data.nickname){
-            $("#nickname").text(data.nickname);
+        if(data && data.result && data.result.nickname){
+            $("#nickname").text(data.result.nickname);
         }
-        if(data && data.headImg){
-            $("#headImg").attr('src',data.headImg);
+        if(data && data.result && data.result.headImg){
+            $("#headImg").attr('src',data.result.headImg);
         }
     });
 
-    $("#want").click
-    //获取红包金额
-    var url = "http://wx.naildaka.com/hongbao/getMoney?openId=" + open_id;
-    getRequest(url, function(err, data){
-        if(err){
-            console.log(err);
-            return;
-        }
-        if(data && data.money){
-            var money = data.money / 100;
-            $("#money").text(money);
-            if(money){
-                $('.change-to-receiveMoney').show();
-            }else{
-                $('.change-to-hasReceived').show();
+    $("#want").click(function(){
+        //获取红包金额
+        var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?openId=" + open_id + "&type=2";
+        getRequest(url, function(err, data){
+            if(err){
+                console.log(err);
+                return;
             }
-        }
+        });
+        //window.location.href = "code.html";
     });
 });
 

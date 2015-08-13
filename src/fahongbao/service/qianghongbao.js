@@ -4,8 +4,9 @@ var uuid = require('node-uuid');
 var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 
 var app_id = "wxb931d3d24994df52";
-var app_secret = "Yang198609Los1933ezsd230926huang";
-var p12_path = "/Users/apple/git_local/wechat-toolkit/cer/apiclient_cert.p12";
+var app_secret = "06981df67deff478460cbf396b21f016";
+var redpack_secret = "Yang198609Los1933ezsd230926huang";
+var p12_path = "/usr/local/YAE-nailstar-activity/cer/apiclient_cert.p12";
 
 exports.route = route;
 exports.getMoney = getMoney;
@@ -150,7 +151,7 @@ function getMoney(req, res, next){
         return;
     }
 
-    var money = parseInt(Math.random() * 100) + 100;// 1-2元
+    var money = parseInt(Math.random() * 50) + 100;// 1-1.5元
 
     // 查询是否抢过红包
     var sel_sql = "select count(1) 'count' from hongbao_records where openId = :openId and type = :type";
@@ -192,7 +193,7 @@ function getMoney(req, res, next){
             logo_imgurl: "http://ypicture.oss-cn-hangzhou.aliyuncs.com/120.png"
         };
 
-        api.cash_redpack(params, app_secret, p12_path, function (err, code, result) {
+        api.cash_redpack(params, redpack_secret, p12_path, function (err, code, result) {
 
             if(err){
                 console.log("调用失败");

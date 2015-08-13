@@ -4,69 +4,107 @@ html,body{
 
 .up{
 	background-color: RGB(253,222,168);
+	height: 60%;
+}
+
+.all{
+	background-color: RGB(253,222,168);
+}
+
+.up-up{
+	height: 50%;
+}
+
+.up-top{
+	height: 20%;
 }
 
 .up-top-text{
-	padding-top: 25.5px;
+	padding-top: 16.5px;
 	text-align: center;
 	font-size: 19px;
 	color: #82331b;
 }
 
 .up-main{
+	height: 80%;
 	text-align: center;
 }
 
 .up-main-img{
-	margin-top: 14px;
+	margin-top: 5px;
 	width: 83%;
+	height: 83%;
 }
 
 .wrapper{
+	margin-top: -4px;
 	text-align: center;
+	height: 50%;
+}
+
+#want{
+	margin-top: 17px;
+	background: url("../images/a03.png") no-repeat center;
+	background-size: 50%;
+	height: 50px;
+	display: block;
 }
 
 .change-to-receiveMoney{
+	margin-top: 14px;
 	text-align: center;
-	display: none;
+	height: 11%;
+	/*display: none;*/
 }
 
 .change-to-hasReceived{
 	text-align: center;
-	margin-top: -35px;
+	margin-top: 22px;
 	display: none;
 }
-
+.wrapper-img-div{
+	width: 17%;
+	padding-top: 17%;
+	position: relative;
+	margin: 0 auto;
+}
 .wrapper-img-user{
-	width: 64px;
-	height: 64px;
-	border-radius: 39px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
 	border: 2px solid #fff;
 }
 
+.wrapper-text-comment{
+	font-size: 21px;
+	color: #ec1c3a;
+	height: 40%;
+	line-height: 50px;
+}
+
+.share-redgift-button{
+	height: 50px;
+	line-height: 50px;
+	font-size: 21px;
+	color: #ec1c3a;
+}
+.wrapper-img-leftright{
+	position: relative;
+	top: -86px;
+	left: 10px;
+	width: 50%;
+}
 /*iphone6*/
 @media all and (max-width:410px){
 	.wrapper-img-redgift{
 		position: relative;
-		top: -77px;
+		top: -105px;
 		left: 10px;
 		width: 50%;
-	}
-	.wrapper-text-comment{
-		font-size: 21px;
-		color: #ec1c3a;
-		position: absolute;
-		top: 52.5%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-	}
-	.share-redgift-button{
-		position: absolute;
-		top: 80%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-		font-size: 21px;
-		color: #ec1c3a;
 	}
 	.redgift-received-button{
 		position: absolute;
@@ -82,25 +120,9 @@ html,body{
 @media (min-width:410px){
 	.wrapper-img-redgift{
 		position: relative;
-		top: -85px;
+		top: -104px;
 		left: 10px;
 		width: 50%;
-	}
-	.wrapper-text-comment{
-		font-size: 21px;
-		color: #ec1c3a;
-		position: absolute;
-		top: 50.5%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-	}
-	.share-redgift-button{
-		position: absolute;
-		top: 82%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-		font-size: 21px;
-		color: #ec1c3a;
 	}
 	.redgift-received-button{
 		position: absolute;
@@ -116,25 +138,9 @@ html,body{
 @media (max-width:320px){
 	.wrapper-img-redgift{
 		position: relative;
-		top: -69px;
+		top: -91px;
 		left: 10px;
 		width: 50%;
-	}
-	.wrapper-text-comment{
-		font-size: 21px;
-		color: #ec1c3a;
-		position: absolute;
-		top: 57.5%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-	}
-	.share-redgift-button{
-		position: absolute;
-		top: 82%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-		font-size: 21px;
-		color: #ec1c3a;
 	}
 	.redgift-received-button{
 		position: absolute;
@@ -157,27 +163,35 @@ html,body{
 	text-align: center;
 	font-size: 17px;
 	color: #82331b;
+	height: 10%;
+}
+
+.down{
+	height: 40%;
 }
 
 .down-more{
+	height: 15%;
 	background-color: #ededed;
+	width: 100%;
+	display: table;
 }
 
 .down-more-text{
 	color: #9a9a9a;
-	line-height: 32.5px;
-	height: 32.5px;
+	display: table-cell;
+	vertical-align: middle;
 	padding-left: 20px;
 }
 
 .down-user{
-	height: 61.75px;
+	height: 28%;
 	border-bottom: 1px solid #ededed;
 }
 
 .down-user:before{
 	content: "";
-	height: 62.75px;
+	height: 101%;
 	display: block;
 	width: 10px;
 	background-color: #fff;
@@ -186,7 +200,7 @@ html,body{
 
 .down-user:after{
 	content: "";
-	height: 62.75px;
+	height: 102%;
 	display: block;
 	width: 10px;
 	background-color: #fff;
@@ -272,9 +286,9 @@ html,body{
 }
 
 .footer{
+	position: absolute;
 	text-align: center;
-	position: fixed;
-	bottom: 0;
+	bottom: 2px;
 }
 
 .footer-img{
@@ -295,7 +309,6 @@ html,body{
 .redgift-text{
 	margin-top: 25px;
 	text-align: center;
-	position: fixed;
 }
 
 .redgift-received{
@@ -314,7 +327,10 @@ html,body{
 }
 
 #share{
-	margin-top: 27px;
+	margin-top: 17px;
+	background: url("../images/a03.png") no-repeat center;
+	background-size: 50%;
+	height: 50px;
 }
 
 .redgift-share{
@@ -324,13 +340,37 @@ html,body{
 	color: red;
 }
 
+.self-upSecond{
+	background: url("../images/a02.png") center no-repeat;
+	background-size: 50%;
+	left: 10px;
+}
+
+.self-up{
+	height: 30%;
+}
+
+.self-up-main{
+	height: 80%;
+	text-align: center;
+}
+
+.self-wrapper{
+	margin-top: -4px;
+	text-align: center;
+	height: 13%;
+}
+
+.self-wrapper-number{
+	color: #ec1c3a;
+	font-size: 36px;
+}
+
 .redgift-img{
-	margin-top: px;
 	width: 50%;
 }
 
 .redgift-img-share{
-	margin-top: px;
 }
 
 .wrapper-number{
@@ -354,6 +394,7 @@ html,body{
 }
 
 .transparency-img{
+	margin-right: 30px;
 	width: 50%;
 	float: right;
 }

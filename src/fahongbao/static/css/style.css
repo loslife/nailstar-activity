@@ -55,7 +55,7 @@ html,body{
 	margin-top: 14px;
 	text-align: center;
 	height: 11%;
-	/*display: none;*/
+	display: none;
 }
 
 .change-to-hasReceived{
@@ -351,12 +351,11 @@ html,body{
 }
 
 .self-up-main{
-	height: 80%;
+	height: 100%;
 	text-align: center;
 }
 
 .self-wrapper{
-	margin-top: -4px;
 	text-align: center;
 	height: 13%;
 }

@@ -151,7 +151,7 @@ function getMoney(req, res, next){
         return;
     }
 
-    var money = parseInt(Math.random() * 100) + 100;// 1-2元
+    var money = parseInt(Math.random() * 50) + 100;// 1-1.5元
 
     // 查询是否抢过红包
     var sel_sql = "select count(1) 'count' from hongbao_records where openId = :openId and type = :type";

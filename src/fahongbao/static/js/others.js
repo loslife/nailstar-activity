@@ -27,7 +27,7 @@ Zepto(function($){
                 return;
             }
         });
-        //window.location.href = "code.html";
+        window.location.href = "code.html";
     });
 });
 

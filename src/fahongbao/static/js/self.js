@@ -13,15 +13,21 @@ Zepto(function($){
             console.log(err);
             return;
         }
-        var money;
-        if(data && data.result.money){
-            money = data.result.money / 100;
-            $("#money").text(money);
+        if(!data || !data.result){
+            return;
         }
-        if(money){
-            $('.change-to-receiveMoney').show();
-        }else{
+        if(data.result.status == 1){
             $('.change-to-hasReceived').show();
+            return;
+        }
+        if(data.result.status == 2){
+            alert("亲，今天的红包已经发完，请明天再来吧！");
+            return;
+        }
+        if(data.result.status == 0 && data.result.money){
+            var money = data.result.money / 100;
+            $("#money").text(money);
+            $('.change-to-receiveMoney').show();
         }
     });
 

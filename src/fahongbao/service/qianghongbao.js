@@ -1,12 +1,14 @@
 var api = require("wechat-toolkit");
 var async = require("async");
 var uuid = require('node-uuid');
+var moment = require('moment');
 var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 
 var app_id = "wxb931d3d24994df52";
 var app_secret = "06981df67deff478460cbf396b21f016";
 var redpack_secret = "Yang198609Los1933ezsd230926huang";
 var p12_path = "/usr/local/YAE-nailstar-activity/cer/apiclient_cert.p12";
+var total = 100000;//每日总额1000元
 
 exports.route = route;
 exports.getMoney = getMoney;
@@ -143,6 +145,12 @@ function route(req, res, next){
 //获取抢红包金额
 function getMoney(req, res, next){
 
+    /* status
+     *  0 正常
+     *  1 已抢过红包
+     *  2 到达限额
+     * */
+
     var openId = req.query["openId"];
     var type = req.query["type"];
 
@@ -151,7 +159,7 @@ function getMoney(req, res, next){
         return;
     }
 
-    var money = parseInt(Math.random() * 50) + 100;// 1-1.5元
+    var money = 100;// 1元
 
     // 查询是否抢过红包
     var sel_sql = "select count(1) 'count' from hongbao_records where openId = :openId and type = :type";
@@ -166,15 +174,29 @@ function getMoney(req, res, next){
 
         //已抢过红包
         if (count > 0) {
-            doResponse(req, res, {});
+            doResponse(req, res, {status: 1});
             return;
         }
 
         //未抢过红包
-        doResponse(req, res, {money: money});
+        //判断是否超过限额
+        isOverTotal(function(err, flag){
+            if(err){
+                next(err);
+                return;
+            }
+            if(flag){
 
-        //异步调用发红包接口
-        sendRedPack();
+                doResponse(req, res, {status: 2});
+
+            }else{
+
+                doResponse(req, res, {status: 0,money: money});
+                //异步调用发红包接口
+                sendRedPack();
+
+            }
+        });
     });
 
     //发红包
@@ -237,6 +259,27 @@ function getInfo(req, res, next){
             return;
         }
         doResponse(req, res, result[0]);
+    });
+}
+
+//判断是否超过当天总额
+function isOverTotal(callback){
+    var begin = moment().startOf('day').valueOf();
+    var end = moment().endOf('day').valueOf();
+    var sql = "select sum(money) 'sum' from hongbao_records where createDate > :begin and createDate < :end";
+    dbHelper.execSql(sql, {begin: begin, end: end}, function (err, result){
+
+        if(err){
+            callback(err);
+            return;
+        }
+
+        var sum = result[0].sum;
+        if(sum >= total){
+            callback(null, true);
+        }else{
+            callback(null, false);
+        }
     });
 }
 

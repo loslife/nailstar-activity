@@ -50,7 +50,7 @@ Zepto(function($){
                 title: data.result.nickname + '发给你一个红包', // 分享标题
                 desc: '赶快点击领取吧,100%现金', // 分享描述
                 link: shareUrl, // 分享链接
-                imgUrl: '../images/logo.png', // 分享图标
+                imgUrl: 'http://huodong.naildaka.com/fahongbao/images/logo.png', // 分享图标
                 success: function () {
                     transparency.hide();
                 },
@@ -62,7 +62,7 @@ Zepto(function($){
             wx.onMenuShareTimeline({
                 title: data.result.nickname + '正在发现金红包,快来领取吧!',
                 link: shareUrl,
-                imgUrl: '../images/logo.png',
+                imgUrl: 'http://huodong.naildaka.com/fahongbao/images/logo.png',
                 success: function () {
                     transparency.hide();
                 },

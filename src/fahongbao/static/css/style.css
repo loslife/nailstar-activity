@@ -33,6 +33,7 @@ html,body{
 
 .change-to-hasReceived{
 	text-align: center;
+	margin-top: -35px;
 	display: none;
 }
 
@@ -61,7 +62,7 @@ html,body{
 	}
 	.share-redgift-button{
 		position: absolute;
-		top: 84%;
+		top: 80%;
 		left: 50%;
 		transform: translate(-50%,-50%);
 		font-size: 21px;
@@ -129,7 +130,7 @@ html,body{
 	}
 	.share-redgift-button{
 		position: absolute;
-		top: 85%;
+		top: 82%;
 		left: 50%;
 		transform: translate(-50%,-50%);
 		font-size: 21px;
@@ -287,28 +288,33 @@ html,body{
 }
 
 .redgift{
-	text-align: center;
 	margin-top: -27px;
+	text-align: center;
 }
 
 .redgift-text{
+	margin-top: 25px;
 	text-align: center;
 	position: fixed;
 }
 
 .redgift-received{
+	margin-top: 2px;
 	color: #82331b;
 	font-size: 17px;
 }
 
 .redgift-more{
-	margin-top: 25px;
 	color: #82331b;
 	font-size: 17px;
 }
 
 .more{
-	margin-top: 42px;
+	margin-top: px;
+}
+
+#share{
+	margin-top: 27px;
 }
 
 .redgift-share{
@@ -319,16 +325,16 @@ html,body{
 }
 
 .redgift-img{
-	margin-top: 27px;
+	margin-top: px;
 	width: 50%;
 }
 
 .redgift-img-share{
-	margin-top: 20px;
+	margin-top: px;
 }
 
 .wrapper-number{
-	margin-top: -47px;
+	margin-top: -48px;
 	color: #ec1c3a;
 	font-size: 36px;
 }

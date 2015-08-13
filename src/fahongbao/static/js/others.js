@@ -4,21 +4,31 @@ Zepto(function($){
     var open_id = getQueryString("openId");
 
     //获取用户名称和头像
-    var urlUser = "http://huodong.naildata.com/svc/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildaka.com/svc/hongbao/getInfo/" + open_id;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);
             return;
         }
-        if(data && data.nickname){
-            $("#nickname").text(data.nickname);
+        if(data && data.result && data.result.nickname){
+            $("#nickname").text(data.result.nickname);
         }
-        if(data && data.headImg){
-            $("#headImg").attr('src',data.headImg);
+        if(data && data.result && data.result.headImg){
+            $("#headImg").attr('src',data.result.headImg);
         }
     });
 
-
+    $("#want").click(function(){
+        //获取红包金额
+        var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?openId=" + open_id + "&type=2";
+        getRequest(url, function(err, data){
+            if(err){
+                console.log(err);
+                return;
+            }
+        });
+        window.location.href = "code.html";
+    });
 });
 
 //匹配URL里的值

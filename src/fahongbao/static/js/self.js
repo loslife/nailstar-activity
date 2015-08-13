@@ -13,14 +13,21 @@ Zepto(function($){
             console.log(err);
             return;
         }
-        if(data && data.money){
-            var money = data.money / 100;
+        if(!data || !data.result){
+            return;
+        }
+        if(data.result.status == 1){
+            $('.change-to-hasReceived').show();
+            return;
+        }
+        if(data.result.status == 2){
+            alert("亲，今天的红包已经发完，请明天再来吧！");
+            return;
+        }
+        if(data.result.status == 0 && data.result.money){
+            var money = data.result.money / 100;
             $("#money").text(money);
-            if(money){
-                $('.change-to-receiveMoney').show();
-            }else{
-                $('.change-to-hasReceived').show();
-            }
+            $('.change-to-receiveMoney').show();
         }
     });
 
@@ -31,16 +38,16 @@ Zepto(function($){
             console.log(err);
             return;
         }
-        if(data && data.nickname){
-            $("#nickname").text(data.nickname);
+        if(data && data.result && data.result.nickname){
+            $("#nickname").text(data.result.nickname);
         }
-        if(data && data.headImg){
-            $("#headImg").attr('src',data.headImg);
+        if(data && data.result && data.result.headImg){
+            $("#headImg").attr('src',data.result.headImg);
         }
         wx.ready(function(){
             //配置好友分享
             wx.onMenuShareAppMessage({
-                title: data.nickname + '发给你一个红包', // 分享标题
+                title: data.result.nickname + '发给你一个红包', // 分享标题
                 desc: '赶快点击领取吧,100%现金', // 分享描述
                 link: shareUrl, // 分享链接
                 imgUrl: '../images/logo.png', // 分享图标
@@ -53,7 +60,7 @@ Zepto(function($){
             });
             //配置朋友圈分享
             wx.onMenuShareTimeline({
-                title: data.nickname + '正在发现金红包,快来领取吧!',
+                title: data.result.nickname + '正在发现金红包,快来领取吧!',
                 link: shareUrl,
                 imgUrl: '../images/logo.png',
                 success: function () {

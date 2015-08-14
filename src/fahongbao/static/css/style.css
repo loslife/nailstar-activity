@@ -12,15 +12,15 @@ html,body{
 }
 
 .up-up{
-	height: 50%;
+	height: 52%;
 }
 
 .up-top{
-	height: 20%;
+	height: 23%;
 }
 
 .up-top-text{
-	padding-top: 16.5px;
+	padding-top: 6%;
 	text-align: center;
 	font-size: 19px;
 	color: #82331b;
@@ -29,18 +29,17 @@ html,body{
 .up-main{
 	height: 80%;
 	text-align: center;
+	margin-top: 2%;
 }
 
 .up-main-img{
-	margin-top: 5px;
 	width: 83%;
-	height: 83%;
+	height: 90%;
 }
 
 .wrapper{
-	margin-top: -4px;
 	text-align: center;
-	height: 50%;
+	height: 48%;
 }
 
 #want{
@@ -79,15 +78,22 @@ html,body{
 	border: 2px solid #fff;
 }
 
+.others-wrapper{
+	background: url("../images/a02.png") no-repeat center;
+	background-size: 50%;
+	left: 10px;
+}
+
 .wrapper-text-comment{
 	font-size: 21px;
 	color: #ec1c3a;
-	height: 40%;
 	line-height: 50px;
 }
 
 .share-redgift-button{
 	height: 50px;
+	width: 200px;
+	margin: 0 auto;
 	line-height: 50px;
 	font-size: 21px;
 	color: #ec1c3a;
@@ -102,7 +108,7 @@ html,body{
 @media all and (max-width:410px){
 	.wrapper-img-redgift{
 		position: relative;
-		top: -105px;
+		top: -97px;
 		left: 10px;
 		width: 50%;
 	}
@@ -159,7 +165,7 @@ html,body{
 }
 
 .wrapper-text-user{
-	padding-top: 6px;
+	padding-top: 3%;
 	text-align: center;
 	font-size: 17px;
 	color: #82331b;
@@ -185,7 +191,7 @@ html,body{
 }
 
 .down-user{
-	height: 28%;
+	height: 26%;
 	border-bottom: 1px solid #ededed;
 }
 
@@ -193,33 +199,40 @@ html,body{
 	content: "";
 	height: 101%;
 	display: block;
-	width: 10px;
+	width: 2%;
 	background-color: #fff;
-	float: left;
 }
 
 .down-user:after{
 	content: "";
-	height: 102%;
+	height: 101%;
 	display: block;
-	width: 10px;
+	width: 2%;
 	background-color: #fff;
-	float: right;
 }
 
 .down-user-face{
-	margin-left: 10px;
-	margin-top: 12.5px;
-	width: 36.5px;
-	height: 36.5px;
-	border-radius: 18.25px;
-	float: left;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+}
+
+.down-left{
+	width: 14%;
+}
+
+.down-left-div{
+	width: 71%;
+	padding-top: 71%;
+	position: relative;
+	margin: 0 auto;
 }
 
 .down-right{
-	margin-left: 10px;
-	float: left;
-
+	width: 80%;
 }
 
 .down-right-name{
@@ -296,7 +309,7 @@ html,body{
 }
 
 .wrapper-text-redgift{
-	padding-top: 6px;
+	padding-top: 11px;
 	text-align: center;
 	font-size: 17px;
 }
@@ -326,7 +339,7 @@ html,body{
 	margin-top: px;
 }
 
-#share{
+.share-div{
 	margin-top: 17px;
 	background: url("../images/a03.png") no-repeat center;
 	background-size: 50%;
@@ -341,6 +354,7 @@ html,body{
 }
 
 .self-upSecond{
+	margin-top: 5%;
 	background: url("../images/a02.png") center no-repeat;
 	background-size: 50%;
 	left: 10px;
@@ -353,6 +367,7 @@ html,body{
 .self-up-main{
 	height: 100%;
 	text-align: center;
+	margin-top: 3%;
 }
 
 .self-wrapper{

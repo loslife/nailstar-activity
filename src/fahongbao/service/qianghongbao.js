@@ -53,7 +53,7 @@ function route(req, res, next){
             if(originUnionId === union_id){
                 redirectUrl = "http://huodong.naildaka.com/fahongbao/self.html?unionId=" + union_id;// 自己访问自己的页面
             }else{
-                redirectUrl = "http://huodong.naildaka.com/fahongbao/others.html?unionId=" + originId;// 访问他人分享出来的页面
+                redirectUrl = "http://huodong.naildaka.com/fahongbao/others.html?unionId=" + originUnionId;// 访问他人分享出来的页面
             }
 
             res.redirect(redirectUrl);

@@ -8,7 +8,7 @@ var app_id = "wxb931d3d24994df52";
 var app_secret = "06981df67deff478460cbf396b21f016";
 var redpack_secret = "Yang198609Los1933ezsd230926huang";
 var p12_path = "/usr/local/YAE-nailstar-activity/cer/apiclient_cert.p12";
-var total = 100000;//每日总额1000元
+var total = 5000;// 每日限额
 
 exports.route = route;
 exports.getMoney = getMoney;
@@ -18,7 +18,7 @@ function route(req, res, next){
 
     var state = req.query["state"];
     var code = req.query["code"];
-    var originId = req.params["originId"];
+    var originUnionId = req.params["originId"];
 
     // 非微信OAuth跳转
     if(!code){
@@ -27,6 +27,7 @@ function route(req, res, next){
     }
 
     var open_id;
+    var union_id;
     var oauth2_access_token;
     var nickname;
     var headimgurl;
@@ -49,21 +50,21 @@ function route(req, res, next){
 
             var redirectUrl;
 
-            if(originId === open_id){
-                redirectUrl = "http://huodong.naildaka.com/fahongbao/self.html?openId=" + open_id;// 自己访问自己的页面
+            if(originUnionId === union_id){
+                redirectUrl = "http://huodong.naildaka.com/fahongbao/self.html?unionId=" + union_id;// 自己访问自己的页面
             }else{
-                redirectUrl = "http://huodong.naildaka.com/fahongbao/others.html?openId=" + originId;// 访问他人分享出来的页面
+                redirectUrl = "http://huodong.naildaka.com/fahongbao/others.html?unionId=" + originId;// 访问他人分享出来的页面
             }
 
             res.redirect(redirectUrl);
         });
 
-        //查询是否存在此用户
+        // 查询是否存在此用户
         function _queryIsExist(nextStep){
 
-            var sel_sql = "select count(1) 'count' from weixin_users where openId = :openId";
+            var sel_sql = "select count(1) 'count' from weixin_users where unionId = :unionId";
 
-            dbHelper.execSql(sel_sql, {openId: open_id}, function(err, result){
+            dbHelper.execSql(sel_sql, {unionId: union_id}, function(err, result){
 
                 if(err){
                     nextStep(err);
@@ -75,16 +76,17 @@ function route(req, res, next){
             });
         }
 
-        //记录用户信息
+        // 记录用户信息
         function _recordUser(nextStep){
 
             var sql;
             var params;
 
             if(count > 0){
-                //存在，更新用户信息
-                sql = "update weixin_users set nickname = :nickname,headImg = :headImg where openId = :openId";
-                params = {nickname: nickname,headImg: headimgurl, openId: open_id};
+
+                // 存在，更新用户信息
+                sql = "update weixin_users set nickname = :nickname,headImg = :headImg where unionId = :unionId";
+                params = {nickname: nickname,headImg: headimgurl, unionId: union_id};
                 dbHelper.execSql(sql, params, function(err){
                     if(err){
                         nextStep(err);
@@ -95,9 +97,12 @@ function route(req, res, next){
 
             }else{
 
-                //不存在，存储用户信息
-                sql = "insert into weixin_users(openId, nickname, headImg, createDate) values(:openId, :nickname, :headImg, :createDate)";
-                params = {openId: open_id, nickname: nickname, headImg: headimgurl, createDate: new Date().getTime()};
+                var id = uuid.v1();
+                var now = new Date().getTime();
+
+                // 不存在，存储用户信息
+                sql = "insert into weixin_users(id, service_open_id, unionId, nickname, headImg, createDate) values(:id, :serviceOpenId, :unionId, :nickname, :headImg, :createDate)";
+                params = {id: id, serviceOpenId: open_id, unionId: union_id, nickname: nickname, headImg: headimgurl, createDate: now};
                 dbHelper.execSql(sql, params, function(err){
                     if(err){
                         nextStep(err);
@@ -119,6 +124,7 @@ function route(req, res, next){
             }
 
             open_id = result.openid;
+            union_id = result.unionid;
             oauth2_access_token = result.access_token;
 
             callback(null);
@@ -151,10 +157,10 @@ function getMoney(req, res, next){
      *  2 到达限额
      * */
 
-    var openId = req.query["openId"];
+    var unionId = req.query["unionId"];
     var type = req.query["type"];
 
-    if(!openId || !type){
+    if(!unionId || !type){
         next({errMessage: "参数错误"});
         return;
     }
@@ -162,8 +168,8 @@ function getMoney(req, res, next){
     var money = 100;// 1元
 
     // 查询是否抢过红包
-    var sel_sql = "select count(1) 'count' from hongbao_records where openId = :openId and type = :type";
-    dbHelper.execSql(sel_sql, {openId: openId, type: type}, function(err, result) {
+    var sel_sql = "select count(1) 'count' from hongbao_records where unionId = :unionId and type = :type";
+    dbHelper.execSql(sel_sql, {unionId: unionId, type: type}, function(err, result) {
 
         if (err) {
             next(err);
@@ -202,43 +208,58 @@ function getMoney(req, res, next){
     //发红包
     function sendRedPack() {
 
-        var params = {
-            mch_id: "1255492301",
-            wxappid: app_id,
-            nick_name: "美甲大咖",
-            send_name: "美甲大咖",
-            re_openid: openId,
-            total_amount: money,
-            wishing: "恭喜发财，大吉大利!",
-            act_name: "美甲大咖送红包活动",
-            remark: "快来领啊",
-            logo_imgurl: "http://ypicture.oss-cn-hangzhou.aliyuncs.com/120.png"
-        };
-
-        api.cash_redpack(params, redpack_secret, p12_path, function (err, code, result) {
+        var sql = "select service_open_id from weixin_users where unionId = :unionId";
+        dbHelper.execSql(sql, {unionId: unionId}, function(err, result){
 
             if(err){
-                console.log("调用失败");
                 console.log(err);
                 return;
             }
 
-            if(code !== 0){
-                console.log("调用失败");
-                console.log(result);
+            if(result.length === 0){
+                console.log("找不到service_open_id");
                 return;
             }
 
-            var id = uuid.v1();
+            var serviceOpenId = result[0].service_open_id;
 
-            //红包发放记录
-            var ins_sql = "insert into hongbao_records(id, openId, money, type, createDate) values(:id, :openId, :money, :type, :createDate)";
-            dbHelper.execSql(ins_sql, {id: id, openId: openId, money: money, type: type, createDate: new Date().getTime()}, function (err){
+            var params = {
+                mch_id: "1255492301",
+                wxappid: app_id,
+                nick_name: "美甲大咖",
+                send_name: "美甲大咖",
+                re_openid: serviceOpenId,
+                total_amount: money,
+                wishing: "恭喜发财，大吉大利!",
+                act_name: "美甲大咖送红包活动",
+                remark: "快来领啊",
+                logo_imgurl: "http://ypicture.oss-cn-hangzhou.aliyuncs.com/120.png"
+            };
+
+            api.cash_redpack(params, redpack_secret, p12_path, function (err, code, result) {
 
                 if(err){
-                    console.log("写入红包记录失败");
                     console.log(err);
+                    return;
                 }
+
+                if(code !== 0){
+                    console.log(result);
+                    return;
+                }
+
+                var id = uuid.v1();
+                var now = new Date().getTime();
+
+                // 记录红包发放
+                var ins_sql = "insert into hongbao_records(id, unionId, money, type, createDate) values(:id, :unionId, :money, :type, :createDate)";
+                dbHelper.execSql(ins_sql, {id: id, unionId: unionId, money: money, type: type, createDate: now}, function (err){
+
+                    if(err){
+                        console.log("写入红包记录失败");
+                        console.log(err);
+                    }
+                });
             });
         });
     }
@@ -246,26 +267,33 @@ function getMoney(req, res, next){
 
 //查询用户信息
 function getInfo(req, res, next){
-    var openId = req.params["openId"];
-    if(!openId){
-        res.send("缺少openId");
+
+    var unionId = req.params["unionId"];
+
+    if(!unionId){
+        res.send("缺少unionId");
         return;
     }
-    var sql = "select nickname,headImg from weixin_users where openId = :openId";
 
-    dbHelper.execSql(sql, {openId: openId}, function(err, result){
+    var sql = "select nickname, headImg from weixin_users where unionId = :unionId";
+
+    dbHelper.execSql(sql, {unionId: unionId}, function(err, result){
+
         if(err){
             next(err);
             return;
         }
+
         doResponse(req, res, result[0]);
     });
 }
 
 //判断是否超过当天总额
 function isOverTotal(callback){
+
     var begin = moment().startOf('day').valueOf();
     var end = moment().endOf('day').valueOf();
+
     var sql = "select sum(money) 'sum' from hongbao_records where createDate > :begin and createDate < :end";
     dbHelper.execSql(sql, {begin: begin, end: end}, function (err, result){
 
@@ -275,11 +303,7 @@ function isOverTotal(callback){
         }
 
         var sum = result[0].sum;
-        if(sum >= total){
-            callback(null, true);
-        }else{
-            callback(null, false);
-        }
+        callback(null, (sum >= total));
     });
 }
 

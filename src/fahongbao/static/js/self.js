@@ -1,13 +1,13 @@
 Zepto(function($){
 
     //设置用户信息
-    var open_id = getQueryString("openId");
+    var unionId = getQueryString("unionId");
     var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
-        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fhongbao%2froute%2f" + open_id
+        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fhongbao%2froute%2f" + unionId
         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
     //获取红包金额
-    var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?openId=" + open_id + "&type=1";
+    var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?unionId=" + unionId + "&type=1";
     getRequest(url, function(err, data){
         if(err){
             console.log(err);
@@ -32,7 +32,7 @@ Zepto(function($){
     });
 
     //获取用户名称和头像
-    var urlUser = "http://huodong.naildaka.com/svc/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildaka.com/svc/hongbao/getInfo/" + unionId;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);
@@ -50,7 +50,7 @@ Zepto(function($){
                 title: data.result.nickname + '发给你一个红包', // 分享标题
                 desc: '赶快点击领取吧,100%现金', // 分享描述
                 link: shareUrl, // 分享链接
-                imgUrl: '../images/logo.png', // 分享图标
+                imgUrl: 'http://huodong.naildaka.com/fahongbao/images/logo.png', // 分享图标
                 success: function () {
                     transparency.hide();
                 },
@@ -62,7 +62,7 @@ Zepto(function($){
             wx.onMenuShareTimeline({
                 title: data.result.nickname + '正在发现金红包,快来领取吧!',
                 link: shareUrl,
-                imgUrl: '../images/logo.png',
+                imgUrl: 'http://huodong.naildaka.com/fahongbao/images/logo.png',
                 success: function () {
                     transparency.hide();
                 },

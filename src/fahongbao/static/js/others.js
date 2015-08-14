@@ -1,10 +1,10 @@
 Zepto(function($){
 
     //设置用户信息
-    var open_id = getQueryString("openId");
+    var unionId = getQueryString("unionId");
 
     //获取用户名称和头像
-    var urlUser = "http://huodong.naildaka.com/svc/hongbao/getInfo/" + open_id;
+    var urlUser = "http://huodong.naildaka.com/svc/hongbao/getInfo/" + unionId;
     getRequest(urlUser,function(err,data){
         if(err){
             console.log(err);
@@ -20,7 +20,7 @@ Zepto(function($){
 
     $("#want").click(function(){
         //获取红包金额
-        var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?openId=" + open_id + "&type=2";
+        var url = "http://huodong.naildaka.com/svc/hongbao/getMoney?unionId=" + unionId + "&type=2";
         getRequest(url, function(err, data){
             if(err){
                 console.log(err);

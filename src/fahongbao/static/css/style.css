@@ -197,7 +197,7 @@ html,body{
 
 .down-user:before{
 	content: "";
-	height: 101%;
+	height: 102%;
 	display: block;
 	width: 2%;
 	background-color: #fff;
@@ -205,7 +205,7 @@ html,body{
 
 .down-user:after{
 	content: "";
-	height: 101%;
+	height: 102%;
 	display: block;
 	width: 2%;
 	background-color: #fff;

@@ -50,6 +50,7 @@ Zepto(function($){
     createComment();
     createTime();
 
+    //生成3个随机数
     function createRandom(){
         if(randomArray.length >= 3){
             return;
@@ -62,7 +63,6 @@ Zepto(function($){
         randomArray.push(num);
         createRandom();
     }
-
 
     //25张照片中随机生成3张评论区用户头像
     function createImg(){
@@ -97,8 +97,6 @@ Zepto(function($){
     }
 });
 
-
-
 //匹配URL里的值
 function getQueryString(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -129,6 +127,7 @@ function getRequest(url,callback){
     });
 }
 
+//添加contains方法
 Array.prototype.contains= function(num){
     for(var i=0; i<this.length; i++){
         if(this[i] == num){

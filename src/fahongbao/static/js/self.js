@@ -21,11 +21,15 @@ Zepto(function($){
             return;
         }
         if(data.result.status == 2){
-            alert("亲，今天的红包已经发完，请明天再来吧！");
+            $('.change-to-notGet').show();
+            return;
+        }
+        if(data.result.status == 3){
+            $('.change-to-nochance').show();
             return;
         }
         if(data.result.status == 0 && data.result.money){
-            var money = data.result.money / 100;
+            var money = 1.00;
             $("#money").text(money);
             $('.change-to-receiveMoney').show();
         }

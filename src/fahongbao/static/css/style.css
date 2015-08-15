@@ -243,7 +243,6 @@ html,body{
 }
 
 .down-right-name{
-	margin-top: 12.5px;
 	color: #000;
 	font-size: 11px;
 }
@@ -343,7 +342,7 @@ html,body{
 }
 
 .self-upSecond{
-	margin-top: 5%;
+	margin-top: 7%;
 	background: url("../images/a02.png") center no-repeat;
 	background-size: 50%;
 	left: 10px;

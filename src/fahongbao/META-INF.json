@@ -32,7 +32,7 @@
         },
         {
             "name": "getInfo",
-            "path": "/hongbao/getInfo/:openId",
+            "path": "/hongbao/getInfo/:unionId",
             "method": "get",
             "auth": false,
             "impl": "qianghongbao.getInfo",

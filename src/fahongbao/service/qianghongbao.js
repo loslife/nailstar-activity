@@ -9,6 +9,7 @@ var app_secret = "06981df67deff478460cbf396b21f016";
 var redpack_secret = "Yang198609Los1933ezsd230926huang";
 var p12_path = "/usr/local/YAE-nailstar-activity/cer/apiclient_cert.p12";
 var total = 5000;// 每日限额
+var range = 0.2;//获奖概率
 
 exports.route = route;
 exports.getMoney = getMoney;
@@ -155,6 +156,7 @@ function getMoney(req, res, next){
      *  0 正常
      *  1 已抢过红包
      *  2 到达限额
+     *  3 运气不佳
      * */
 
     var unionId = req.query["unionId"];
@@ -196,6 +198,12 @@ function getMoney(req, res, next){
                 doResponse(req, res, {status: 2});
 
             }else{
+
+                //运气不佳
+                if(probability(range)){
+                    doResponse(req, res, {status: 3});
+                    return;
+                }
 
                 doResponse(req, res, {status: 0,money: money});
                 //异步调用发红包接口
@@ -305,5 +313,16 @@ function isOverTotal(callback){
         var sum = result[0].sum;
         callback(null, (sum >= total));
     });
+}
+
+//概率生成器
+function probability(range){
+    if(!range){
+        return false;
+    }
+    if(Math.random() <= range){
+        return true;
+    }
+    return false;
 }
 

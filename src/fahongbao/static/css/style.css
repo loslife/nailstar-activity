@@ -406,3 +406,13 @@ html,body{
 	width: 50%;
 	float: right;
 }
+
+.header-title {
+	margin-top: 3%;
+	text-align: center;
+}
+
+.header-title > img{
+	width: 80%;
+}
+

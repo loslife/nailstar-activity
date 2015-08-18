@@ -1,0 +1,82 @@
+.poster img{
+	width: 100%;
+	display: block;
+}
+.content{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 13px;
+}
+.box-left{
+	width: 35%;
+	text-align: center;
+}
+.box-left img{
+	width: 75%;
+}
+.box-right{
+	line-height: 20px;
+	width: 65%;
+}
+.title{
+	color:#f15b82;
+	font-size: 14px;
+}
+.title span{
+	font-weight: bold;
+}
+.desc{
+	padding-right: 20px;
+}
+.btn{
+	padding-right: 20px;
+	padding-top: 6px;
+}
+.btn a{
+	font-size: 14px;
+	text-align: center;
+	display: block;
+	background-color: #f15b82;
+	width: 60px;
+	height: 22px;
+	color: #fff;
+	line-height: 22px;
+	border-radius: 5px;
+	float: right;
+}
+.color1{
+	background-color: #dfecf7;
+}
+.color2{
+	background-color: #ddfaf9;
+}
+.color3{
+	background-color: #fef5e7;
+}
+.color4{
+	background-color: #fce5f5;
+}
+.color5{
+	background-color: #dffdde;
+}
+.color6{
+	background-color: #f3e6d9;
+}
+.color7{
+	background-color: #e2e7fd;
+}
+.color8{
+	background-color: #feffe3;
+}
+.color9{
+	background-color: #ffffff;
+}
+.color10{
+	background-color: #ffeceb;
+}
+.color11{
+	background-color: #eaf0ff;
+}
+.color12{
+	background-color: #f0dfff;
+}

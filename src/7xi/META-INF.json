@@ -1,0 +1,39 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services": [
+        {
+            "name": "7xi_count",
+            "path": "/7xi/count",
+            "method": "get",
+            "auth": false,
+            "impl": "7xi.count",
+            "comment": "统计页面访问次数"
+        }
+    ],
+    "statics": [
+        {
+            "name": "7xi",
+            "path": "/7xi",
+            "comment": "七夕专题活动"
+        }
+    ],
+    "dataModelSchema": [
+    ],
+    "configuration": {
+
+    },
+    "errorHandler": []
+}

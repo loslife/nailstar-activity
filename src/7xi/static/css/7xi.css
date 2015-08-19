@@ -82,7 +82,7 @@
 	background-image: url(../images/mo.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 50%;
+	width: 80%;
 	margin:0 auto;
 	background-size: auto 100%;
 	padding-top: 50%;
@@ -93,8 +93,8 @@
 	display: block;
 	position: absolute;
 	width: 80%;
-	top: 30%;
-	left: 8%;
+	top: 15%;
+	left: 10%;
 }
 .boxTitle{
 	margin:0 auto;

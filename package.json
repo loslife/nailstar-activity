@@ -6,5 +6,8 @@
     "moment": "^2.10.6",
     "node-uuid": "1.4.0",
     "wechat-toolkit": "^0.2.12"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
   }
 }

@@ -15,35 +15,19 @@
     },
     "services": [
         {
-            "name": "qianghongbao_route",
-            "path": "/hongbao/route/:originId",
+            "name": "7xi_count",
+            "path": "/7xi/count",
             "method": "get",
             "auth": false,
-            "impl": "qianghongbao.route",
-            "comment": "抢红包活动"
-        },
-        {
-            "name": "getMoney",
-            "path": "/hongbao/getMoney",
-            "method": "get",
-            "auth": false,
-            "impl": "qianghongbao.getMoney",
-            "comment": "获取抢红包金额"
-        },
-        {
-            "name": "getInfo",
-            "path": "/hongbao/getInfo/:unionId",
-            "method": "get",
-            "auth": false,
-            "impl": "qianghongbao.getInfo",
-            "comment": "查询用户信息"
+            "impl": "7xi.count",
+            "comment": "统计页面访问次数"
         }
     ],
     "statics": [
         {
-            "name": "fahongbao",
-            "path": "/fahongbao",
-            "comment": "抢红包活动"
+            "name": "7xi",
+            "path": "/7xi",
+            "comment": "七夕专题活动"
         }
     ],
     "dataModelSchema": [

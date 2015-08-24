@@ -20,14 +20,12 @@ Zepto(function($){
 	//封装post请求
 	function postRequest (url ,data,callback) {
 		$.ajax({
-			type: 'POST',
+			type: 'GET',
 			url: url,
 			data: data[0],
 			beforeSend: function(request) {
 	                    request.setRequestHeader("xhr", "true");
 	        },
-			xhrFields:{withCredentials:true},
-			crossDomain:true,
 			success:function(data){
 				callback(null,data);
 			},

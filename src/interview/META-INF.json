@@ -14,36 +14,13 @@
         }
     },
     "services": [
-        {
-            "name": "qianghongbao_route",
-            "path": "/hongbao/route/:originId",
-            "method": "get",
-            "auth": false,
-            "impl": "qianghongbao.route",
-            "comment": "抢红包活动"
-        },
-        {
-            "name": "getMoney",
-            "path": "/hongbao/getMoney",
-            "method": "get",
-            "auth": false,
-            "impl": "qianghongbao.getMoney",
-            "comment": "获取抢红包金额"
-        },
-        {
-            "name": "getInfo",
-            "path": "/hongbao/getInfo/:unionId",
-            "method": "get",
-            "auth": false,
-            "impl": "qianghongbao.getInfo",
-            "comment": "查询用户信息"
-        }
+        
     ],
     "statics": [
         {
-            "name": "fahongbao",
-            "path": "/fahongbao",
-            "comment": "抢红包活动"
+            "name": "interview",
+            "path": "/interview",
+            "comment": "大咖驾到"
         }
     ],
     "dataModelSchema": [

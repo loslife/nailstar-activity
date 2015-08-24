@@ -1,0 +1,34 @@
+.background{
+    background: url("../images/background.png");
+}
+
+.title{
+    margin-top: 35%;
+    text-align: center;
+}
+
+.title-img{
+    width: 70%;
+}
+
+.main{
+    margin-top: 6%;
+    text-align: center;
+}
+
+.main-text{
+    color: #000000;
+    opacity: 0.5;
+    font-size: 12px;
+    margin-bottom: 3%;
+}
+
+.test{
+    background: #000000;
+    opacity: 0.5;
+}
+
+.test-text{
+    color: #ffffff;
+    font-size: 19px;
+}

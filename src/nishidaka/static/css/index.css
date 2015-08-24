@@ -24,8 +24,15 @@
 }
 
 .test{
+    text-align: center;
+}
+
+.test-contain{
     background: #000000;
     opacity: 0.5;
+    width: 46%;
+    margin: 0 auto;
+    padding: 2% 0;
 }
 
 .test-text{

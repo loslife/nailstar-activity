@@ -29,6 +29,14 @@
             "auth": false,
             "impl": "interview.getLikeCount",
             "comment": "获取点赞数量"
+        },
+        {
+            "name": "getAllLikeCount",
+            "path": "/interview/getAllLikeCount",
+            "method": "get",
+            "auth": false,
+            "impl": "interview.getAllLikeCount",
+            "comment": "获取所有老师点赞数"
         }
     ],
     "statics": [

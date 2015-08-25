@@ -2,6 +2,7 @@ var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 
 exports.postlike = postlike;
 exports.getLikeCount = getLikeCount;
+exports.getAllLikeCount = getAllLikeCount;
 
 //点赞
 function postlike(req, res, next){
@@ -32,5 +33,17 @@ function getLikeCount(req, res, next){
             return;
         }
         doResponse(req, res, {count: result[0].num});
+    });
+}
+
+//获取所有老师点赞数
+function getAllLikeCount(req, res, next){
+    var sql = "select teacherId 't',num 'count' from like_records order by t";
+    dbHelper.execSql(sql, {}, function(err, result){
+        if(err){
+            next(err);
+            return;
+        }
+        doResponse(req, res, {counts: result});
     });
 }

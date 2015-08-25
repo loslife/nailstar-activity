@@ -1,3 +1,6 @@
+html,body{
+	height: 100%;
+}
 header{
 	background-color: #00A0E9;
 	height: 105px;
@@ -88,6 +91,7 @@ header img{
 	width: 55%;
 	margin-left: 45%;
 	margin-top: 12px;
+	color: #3e3A39;
 }
 .box2LeftFoot img{
 	width: 13px;
@@ -101,4 +105,31 @@ header img{
 }
 .box2Right img{
 	height:100%;
+}
+.modal{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.75);
+	position: fixed;
+	text-align: center;
+	color: #fff;
+	top: 0px;
+}
+.title{
+	margin-top: 36%;
+	font-size: 30px;
+} 
+.content{
+	margin-top: 7.2%;
+	line-height: 24px;
+}  
+.btn{
+	margin:auto auto;
+	margin-top: 9.6%;
+	font-size: 17px;
+	width: 110px;
+	height: 35px;
+	line-height: 35px;
+	border:solid 2px #fff;
+	border-radius: 30px;
 }

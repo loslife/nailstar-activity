@@ -9,42 +9,69 @@
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<link rel="stylesheet" type="text/css" href="css/interview.css">
 	<script src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 	<header><img src="images/header.png" alt=""></header>
-	<div class="box1 db bo-h ba-c bp-j">
-		<div class="box1Left"><img src="images/1.png" alt=""></div>
-		<div class="box1Right">
-			<div class="box1RightTop db bo-h ba-c">
-				<div>胡波</div>
-				<div><img src="images/v.png" alt=""></div>
-			</div>
-			<div class="box1RightMid db bo-h ba-c bp-j">
-				<div class="box1RightMidLeft"><img class="naildaka" src="images/naildaka.png" alt=""></div>
-				<div class="playRight"><img class="play1" src="images/play.png" alt=""></div>
-			</div>
-			<div class="box1RightFoot db bo-h ba-c">
-				<div><img src="images/liked.png" alt=""></div>
-				<div>20250</div>
-			</div>
+	<div id="boxList">
+		<div class="modal" v-if="modal" v-on="click: modalShow">
+			<p class="title">美甲大咖来了</p>
+			<p class="content">
+				我们和美甲会有多少种关系<br>
+				是热爱<br>
+				是职业<br>
+				是生存<br>
+				或只是一次偶遇<br>
+				美甲师大部分人追求理想生活的捷径<br>
+				美甲为指尖镀上天真的光泽<br>
+				我们是美甲大咖的美甲师<br>
+				在这个浮躁的社会，我们选择逆流而上<br>
+				我们坚信技术可以改变命运
+			</p>
+			<div class="btn">去见大咖</div>
 		</div>
+		<a href="###" v-component="boxs-template" v-repeat="teacher"></a>
 	</div>
-	<div class="box2 db bo-h ba-c bp-j">
-		<div class="box2Left">
-			<div class="box2LeftTop db bo-h ba-c">
-				<div>胡波</div>
-				<div><img src="images/v.png" alt=""></div>
+	<script type="text/x-template" id="boxs-template">
+		<template v-if="$index%2 == 0">
+			<div class="box1 db bo-h ba-c bp-j">
+				<div class="box1Left"><img v-attr="src: img" alt=""></div>
+				<div class="box1Right">
+					<div class="box1RightTop db bo-h ba-c">
+						<div v-text="name"></div>
+						<div><img src="images/v.png" alt=""></div>
+					</div>
+					<div class="box1RightMid db bo-h ba-c bp-j">
+						<div class="box1RightMidLeft"><img class="naildaka" src="images/naildaka.png" alt=""></div>
+						<div class="playRight"><img class="play1" src="images/play.png" alt=""></div>
+					</div>
+					<div class="box1RightFoot db bo-h ba-c">
+						<div><img src="images/liked.png" alt=""></div>
+						<div>20250</div>
+					</div>
+				</div>
 			</div>
-			<div class="box2LeftMid db bo-h ba-c bp-j">
-				<div class="playLeft"><img class="play2" src="images/play.png" alt=""></div>
-				<div class="box2LeftMidLeft"><img class="naildaka" src="images/naildaka.png" alt=""></div>
+		</template>
+		<template v-if="$index%2 != 0">
+			<div class="box2 db bo-h ba-c bp-j">
+				<div class="box2Left">
+					<div class="box2LeftTop db bo-h ba-c">
+						<div v-text="name"></div>
+						<div><img src="images/v.png" alt=""></div>
+					</div>
+					<div class="box2LeftMid db bo-h ba-c bp-j">
+						<div class="playLeft"><img class="play2" src="images/play.png" alt=""></div>
+						<div class="box2LeftMidLeft"><img class="naildaka" src="images/naildaka.png" alt=""></div>
+					</div>
+					<div class="box2LeftFoot db bo-h ba-c">
+						<div><img src="images/liked.png" alt=""></div>
+						<div>20250</div>
+					</div>
+				</div>	
+				<div class="box2Right"><img v-attr="src: img" alt=""></div>
 			</div>
-			<div class="box2LeftFoot db bo-h ba-c">
-				<div><img src="images/liked.png" alt=""></div>
-				<div>20250</div>
-			</div>
-		</div>	
-		<div class="box2Right"><img src="images/2.png" alt=""></div>
-	</div>
+		</template>
+	</script>
 </body>
 </html>

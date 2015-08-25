@@ -1,6 +1,18 @@
 //var host = "http://api2.naildaka.com/vapi";
 var host = "http://192.168.1.110:5013/vapi2";
 
+//获取点赞情况
+function getLikeCount(t, callback){
+	var url = host + "/interview/getLikeCount?t=" + t;
+	getRequest(url, callback);
+}
+
+//点赞
+function postLike(t, callback){
+	var url = host + "/interview/postlike";
+	postRequest(url, {t: t}, callback);
+}
+
 //封装post请求
 function postRequest(url ,data,callback){
 	$.ajax({

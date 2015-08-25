@@ -14,7 +14,22 @@
         }
     },
     "services": [
-        
+        {
+            "name": "postlike",
+            "path": "/interview/postlike",
+            "method": "post",
+            "auth": false,
+            "impl": "interview.postlike",
+            "comment": "点赞"
+        },
+        {
+            "name": "getLikeCount",
+            "path": "/interview/getLikeCount",
+            "method": "get",
+            "auth": false,
+            "impl": "interview.getLikeCount",
+            "comment": "获取点赞数量"
+        }
     ],
     "statics": [
         {

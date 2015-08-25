@@ -80,7 +80,7 @@ Zepto(function($){
         $("#likeFlag").attr("src", "./images/like.png");
     }
     //设置点赞数量
-    getLike(t, function(err, data){
+    getLikeCount(t, function(err, data){
         if(err){
             return console.log(err);
         }
@@ -118,7 +118,10 @@ Zepto(function($){
         if(flag){
             return;
         }
-        postLike(function(err, data){
+        postLike(t, function(err, data){
+            if(err){
+                return console.log(err);
+            }
         });
         //本地处理
         window.localStorage.setItem("like_" + t, 1);

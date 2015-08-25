@@ -7,19 +7,24 @@ body{
 
 /* header */
 header{
-    background: url('../images/t00.png') no-repeat;
-    background-size: 57% 100%;
+    /*background: url('../images/t01.png') no-repeat;*/
+    background-size: 100% 100%;
     width: 100%;
     height: 28.11%;
     position: relative;
 }
-.desc{
+.desc-right{
     position: absolute;
     left: 50%;
     top: 20%;
 }
+.desc-left{
+    position: absolute;
+    left: 7.33%;
+    top: 20%;
+}
 .name{
-    margin-bottom: 1.125em;
+    margin-bottom: 0.5em;
 }
 .name > span{
     color: #3e3a39;
@@ -28,7 +33,7 @@ header{
     margin-right: 0.375rem;
 }
 .name > div{
-    width: 12%;
+    width: 1rem;
     height: 100%;
 }
 .name > div > img{
@@ -40,9 +45,14 @@ header{
     font-size: 1em;
     line-height: 1.54em;
 }
-.like{
+.like-right{
     position: absolute;
-    right: 7.3%;
+    right: 7.33%;
+    bottom: 8.5%;
+}
+.like-left{
+    position: absolute;
+    left: 7.33%;
     bottom: 8.5%;
 }
 .like > span{
@@ -51,7 +61,7 @@ header{
     margin-left: 0.4em;
 }
 .like > div{
-    width: 25%;
+    width: 1rem;
     height: 100%;
 }
 .like > div > img{
@@ -67,6 +77,8 @@ section{
 section video{
     height: 100%;
     width: 100%;
+    background-size: 100% 100%;
+    object-fit: fill;
 }
 /* footer */
 footer{
@@ -95,4 +107,21 @@ footer > img{
     display: block;
     width: 60%;
     margin: 0 auto;
+}
+
+/* mask share */
+.maskShare{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+.maskShare img{
+    width: 70%;
+    position: fixed;
+    top: 10px;
+    right: 10px;
 }

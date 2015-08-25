@@ -14,34 +14,39 @@
     <header>
         <div class="desc">
             <div class="name db ba-c bp-s">
-                <span>胡波</span>
+                <span></span>
                 <div><img src="./images/v.png"></div>
             </div>
             <div class="title">
-                <p>2010台湾美甲封面大赛  一等奖</p>
-                <p>芷妍美甲高级培训讲师</p>
-                <p>2013年美甲大赛评委</p>
+                <p></p>
+                <p></p>
+                <p></p>
             </div>
         </div>
-        <div class="like db ba-c bp-e">
-            <div><img src="./images/like.png"></div>
-            <span>20256</span>
+        <div class="like db ba-c">
+            <div><img id="likeFlag" src="./images/nolike.jpg"></div>
+            <span id="count">20256</span>
         </div>
     </header>
 
     <!-- section -->
     <section>
-        <video src="http://v.yilos.com/efd475e419f5ef301dc79ecd764db718.mp4" poster="" controls="controls">您的浏览器不支持此视频格式</video>
+        <video src="http://v.yilos.com/efd475e419f5ef301dc79ecd764db718.mp4" poster="./images/video_poster.jpg" controls="controls">您的浏览器不支持此视频格式</video>
     </section>
 
     <!-- footer -->
     <footer class="db bo-v ba-c bp-s">
         <div class="like-btn">赞他</div>
-        <div>欣赏他的作品</div>
-        <div>看其他大咖</div>
+        <div id="more">欣赏他的作品</div>
+        <div id="index">看其他大咖</div>
         <div class="share">分享</div>
         <img src="./images/exp.png">
     </footer>
+
+    <!-- mask share -->
+    <div id="mask">
+        <div class="maskShare"><img src="./images/collect_guide.png"></div>
+    </div>
 </body>
 <script src="js/zepto.min.js"></script>
 <script src="js/jweixin.js"></script>

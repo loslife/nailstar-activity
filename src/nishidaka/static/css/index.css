@@ -5,6 +5,10 @@ body{
 
 .background{
     background: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 111%;
 }
 
 .title{

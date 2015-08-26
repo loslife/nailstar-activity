@@ -1,5 +1,5 @@
-//var host = "http://api2.naildaka.com/vapi";
-var host = "http://192.168.1.111:5010/svc";
+var host = "http://huodong.naildaka.com/svc";
+//var host = "http://192.168.1.111:5010/svc";
 
 //获取点赞情况
 function getLikeCount(t, callback){

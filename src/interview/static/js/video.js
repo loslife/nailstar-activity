@@ -73,11 +73,13 @@ Zepto(function($){
         return console.log("缺失参数t");
     }
     var teacher = teachers[t];
+    var flag = false;
 
     //设置点赞图标
     var local = window.localStorage.getItem("like_" + t);
     if(local){
         $("#likeFlag").attr("src", "./images/like.png");
+        flag = true;
     }
     //设置点赞数量
     getLikeCount(t, function(err, data){
@@ -113,7 +115,6 @@ Zepto(function($){
     //初始化微信
     initWx();
     //点赞按钮
-    var flag = false;
     $(".like-btn").click(function(){
         if(flag){
             return;
@@ -136,7 +137,7 @@ Zepto(function($){
     });
     //看其他大咖
     $("#index").click(function(){
-        window.location.href = "http://huodong.naildaka.com/interview/index.html";
+        window.location.href = "./index.html";
     });
     //分享按钮
     $(".share").click(function(){

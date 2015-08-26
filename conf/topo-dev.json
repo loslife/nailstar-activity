@@ -21,7 +21,7 @@
       "port": 3306,
       "user": "yilos_dev",
       "password": "yilos_dev",
-      "dbName": "nailstar"
+      "dbName": "tuiguang"
     }
   }
 }

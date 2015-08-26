@@ -6,12 +6,13 @@ exports.getAllLikeCount = getAllLikeCount;
 
 //点赞
 function postlike(req, res, next){
-    var t = req.params["t"];
+    var t = req.body["t"];
     if(!t){
-        doResponse(req, res, {message: '缺失参数t'});
+        next({errMsg: '缺失参数t'});
+        return;
     }
-    var sql = "update like_records set num = num + 1 where teacherId = :t";
-    dbHelper.execSql(sql, {}, function(err){
+    var sql = "update like_records set num = num + 1 where id = :t";
+    dbHelper.execSql(sql, {t: t}, function(err){
         if(err){
             next(err);
             return;
@@ -26,7 +27,7 @@ function getLikeCount(req, res, next){
     if(!t){
         doResponse(req, res, {message: '缺失参数t'});
     }
-    var sql = "select num from like_records where teacherId = :t";
+    var sql = "select num from like_records where id = :t";
     dbHelper.execSql(sql, {t: t}, function(err, result){
         if(err){
             next(err);
@@ -38,7 +39,7 @@ function getLikeCount(req, res, next){
 
 //获取所有老师点赞数
 function getAllLikeCount(req, res, next){
-    var sql = "select teacherId 't',num 'count' from like_records order by t";
+    var sql = "select id 't',num 'count' from like_records order by t";
     dbHelper.execSql(sql, {}, function(err, result){
         if(err){
             next(err);

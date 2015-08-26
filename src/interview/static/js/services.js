@@ -1,5 +1,5 @@
 //var host = "http://api2.naildaka.com/vapi";
-var host = "http://192.168.1.110:5013/vapi2";
+var host = "http://192.168.1.111:5010/svc";
 
 //获取点赞情况
 function getLikeCount(t, callback){
@@ -18,7 +18,7 @@ function postRequest(url ,data,callback){
 	$.ajax({
 		type: 'POST',
 		url: url,
-		data: data[0],
+		data: data,
 		beforeSend: function(request) {
                     request.setRequestHeader("xhr", "true");
         },

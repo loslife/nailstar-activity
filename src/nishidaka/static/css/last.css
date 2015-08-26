@@ -1,6 +1,7 @@
 body{
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 
 .background{
@@ -9,4 +10,83 @@ body{
     background-position: center;
     background-attachment: fixed;
     background-size: 111%;
+}
+
+.top{
+    padding-top: 30%;
+}
+
+.top-text{
+    font-size: 21.5px;
+    color: #ffffff;
+}
+
+.top-mark{
+    font-size: 69px;
+    color: #ffffff;
+}
+
+.top-count{
+    background: url("../images/button.png") no-repeat center;
+    background-size: 46%;
+    font-size: 16px;
+    color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+}
+
+.middle{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 9%;
+}
+
+.middle-text{
+    width: 44%;
+    font-size: 19px;
+    color: #ffffff;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.middle-text-right{
+    margin-left: 10%;
+}
+
+.bottom{
+    margin-top: 11%;
+}
+
+.bottom-text{
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.bottom-strong{
+    font-weight: bold;
+}
+
+.bottom-img{
+    margin-top: 5%;
+}
+
+.code{
+    width: 80%;
+}
+
+.transparency{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.transparency-img{
+    margin-right: 30px;
+    width: 50%;
+    float: right;
 }

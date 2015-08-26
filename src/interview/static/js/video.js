@@ -133,7 +133,7 @@ Zepto(function($){
     });
     //欣赏他的作品
     $("#more").click(function(){
-
+        window.location.href = "http://s.naildaka.com/site/more.html?type=teacher&name=" + teacher.name;
     });
     //看其他大咖
     $("#index").click(function(){

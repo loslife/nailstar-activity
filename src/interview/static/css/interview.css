@@ -114,6 +114,7 @@ header img{
 	text-align: center;
 	color: #fff;
 	top: 0px;
+	display: none;
 }
 .title{
 	margin-top: 36%;

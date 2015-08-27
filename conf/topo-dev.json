@@ -10,7 +10,8 @@
       "baseurl": "",
       "workerno": 1,
       "applications": [
-        "fahongbao"
+        "fahongbao",
+        "nishidaka"
       ]
     }
   ],

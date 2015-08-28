@@ -1,20 +1,23 @@
-body{
+html, body {
+    margin: 0;
     width: 100%;
     height: 100%;
+    font-family: arial;
+    text-align: center;
+}
+
+.item-div{
+    width: 100%;
+    height: 69%;
+}
+
+.item{
     background: #191c2a;
 }
 
-.page1{
-    background: url("../images/1.png") no-repeat;
-    background-size: 110%;
-}
-
-.page2{
-    display: none;
-}
-
-.page3{
-    display: none;
+.item-img{
+    width: 100%;
+    height: 100%;
 }
 
 .img-div{
@@ -26,34 +29,42 @@ body{
     background-size: 124%;
 }
 
-.main{
+h2{
+    color: #ffffff;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
 }
 
-.main-ul{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.main-ul li{
+.item6 .part2 {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    overflow: hidden;
+    top: 100px;
+    left: 19%;
+    text-align: center;
+    width: 150px;
+    height: 100px;
+    background-color: rgb(116, 178, 9);
 }
+.item6 .part1 {
+    position: absolute;
+    bottom: 100px;
+    left: 19%;
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(116, 178, 9);
+}
+/*.item6 {
+    background-image: url(7634.jpg);
+    background-position: center;
+}*/
 
 .comment{
+    background: #191c2a;
+}
+
+.comment-div{
+    margin: 0 auto;
+    width: 80%;
+    height: 31%;
 }
 
 .comment-title{
@@ -62,11 +73,12 @@ body{
 }
 
 .comment-option{
-    margin-top: 11.5px;
+    margin-top: 3%;
+    width: 90%;
 }
 
 .option-A{
-    margin-bottom: 9px;
+    margin-bottom: 2%;
     font-size: 19px;
     height: 37px;
     color: #ffffff;
@@ -76,7 +88,7 @@ body{
 }
 
 .option-B{
-    margin-bottom: 9px;
+    margin-bottom: 2%;
     font-size: 19px;
     height: 37px;
     color: #ffffff;
@@ -101,6 +113,12 @@ body{
     display: none;
 }
 
+.collected{
+    background: #00d4cc;
+    z-index: 999;
+    color: #00d4cc;
+}
+
 .origin{
     width: 9px;
     height: 9px;
@@ -113,4 +131,54 @@ body{
 
 .origin-light{
     background: #ffffff;
+}
+
+.H5FullscreenPage .H5FullscreenPage-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.H5FullscreenPage .item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 700ms cubic-bezier(0.550, 0.085, 0.000, 0.990);
+    -webkit-transition: all 700ms cubic-bezier(0.550, 0.085, 0.000, 0.990);
+    /*transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;*/
+    background-position: center;
+}
+
+.start_hide{
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+}
+
+.hide{
+    -webkit-transform: translate3d(0,100%,0);
+    -webkit-animation: hide 0.5s ease-in;
+    transform: translate3d(0,100%,0);
+    animation: hide 0.5s ease-in;
+}
+.show{
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-animation: show 0.5s ease-in;
+    transform: translate3d(0,0,0);
+    animation: show 0.5s ease-in;
+}
+.show_big{
+    -webkit-transform: scale(1);
+    -webkit-animation: show_big 0.5s ease-in;
+    transform: scale(1);
+    animation: show_big 0.5s ease-in;
+}
+.hide_small{
+    -webkit-transform: scale(0.8);
+    -webkit-animation: hide_small 0.5s ease-in;
+    transform: scale(0.8);
+    animation: hide_small 0.5s ease-in;
 }

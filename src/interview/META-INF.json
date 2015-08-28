@@ -15,6 +15,14 @@
     },
     "services": [
         {
+            "name": "interview_count",
+            "path": "/interview/count",
+            "method": "post",
+            "auth": false,
+            "impl": "interview.count",
+            "comment": "统计页面访问次数"
+        },
+        {
             "name": "postlike",
             "path": "/interview/postlike",
             "method": "post",

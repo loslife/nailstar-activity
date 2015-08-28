@@ -114,6 +114,8 @@ Zepto(function($){
     $("section video").attr("src", teacher.video);
     //初始化微信
     initWx();
+    //统计接口
+    count();
     //点赞按钮
     $(".like-btn").click(function(){
         if(flag){
@@ -210,6 +212,22 @@ Zepto(function($){
                 console.log(err);
             },
             dataType:"json"
+        });
+    }
+
+    function count(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        var useragent;
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            useragent = 1;
+        }else{
+            useragent = 2;
+        }
+        postCount({useragent: useragent,t: t}, function (error,data) {
+            if (err) {
+                console.log(error);
+                return;
+            }
         });
     }
 });

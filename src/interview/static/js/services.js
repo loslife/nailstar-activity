@@ -1,6 +1,12 @@
 var host = "http://huodong.naildaka.com/svc";
 //var host = "http://192.168.1.111:5010/svc";
 
+//统计
+function postCount(data, callback){
+	var url = 'http://huodong.naildaka.com/svc/interview/count';
+	postRequest(url, data, callback);
+}
+
 //获取点赞情况
 function getLikeCount(t, callback){
 	var url = host + "/interview/getLikeCount?t=" + t;

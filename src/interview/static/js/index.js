@@ -12,7 +12,7 @@ Zepto(function($){
 
 	function getLikedNum () {
 		 getRequest('http://huodong.naildaka.com/svc/interview/getAllLikeCount', function(error,data) {
-			if (data.code !=0) {
+			if (data.code !==0) {
 				callback(null,data);
 				return;
 			}
@@ -24,22 +24,21 @@ Zepto(function($){
 		});
 	}
 	getLikedNum ();
-	function count (useragent) {
+	function count () {
 		var ua = window.navigator.userAgent.toLowerCase();
+		var useragent;
+		var url = 'http://huodong.naildaka.com/svc/interview/count';
 		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-			var useragent = 1;
-			var url = 'http://huodong.naildaka.com/svc/interview/count?useragent=1';
+			useragent = 1;
 		}else{
-			var useragent = 2;
-			var url = 'http://huodong.naildaka.com/svc/interview/count?useragent=2';
+			useragent = 2;
 		}
-		getRequest(url,useragent,function (error,data) {
-			if (data.code !=0) {
-				callback(null,data);
+		postRequest(url, {useragent: useragent}, function (error,data) {
+			if (err) {
+				console.log(error);
 				return;
 			}
-			callback(null,data);
-		})
+		});
 	}
 	count();
 	//封装get请求

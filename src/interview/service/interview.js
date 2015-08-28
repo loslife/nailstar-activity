@@ -1,3 +1,4 @@
+var uuid = require('node-uuid');
 var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 
 exports.count = count;
@@ -11,8 +12,8 @@ function count(req, res, next){
     res.send("ok");
 
     var id = uuid.v1();
-    var source = req.query["useragent"] || 2;// 未知来源设置为2
-    var sub_source = req.query["t"];// 老师id
+    var source = req.body["useragent"] || 2;// 未知来源设置为2
+    var sub_source = req.body["t"];// 老师id
     var now = new Date().getTime();
     var activity = "interview";
 

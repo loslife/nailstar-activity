@@ -58,4 +58,24 @@ Zepto(function($){
 			dataType:"json"
 		});
 	}
+	//封装post请求
+	function postRequest(url ,data,callback){
+		$.ajax({
+			type: 'POST',
+			url: url,
+			data: data,
+			beforeSend: function(request) {
+				request.setRequestHeader("xhr", "true");
+			},
+			xhrFields:{withCredentials:true},
+			crossDomain:true,
+			success:function(data){
+				callback(null,data);
+			},
+			error: function(error){
+				console.log(error);
+			},
+			dataType:"json"
+		});
+	}
 });

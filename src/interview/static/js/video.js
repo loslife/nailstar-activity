@@ -154,7 +154,7 @@ Zepto(function($){
     function initWx() {
         var app_id = "wxa84c9db4a6fcc7d8";
         var nowUrl = window.location.href;
-        var signUrl = "http://wx.naildaka.com/wx/getSignature";
+        var signUrl = "http://huodong.naildaka.com/wx/getSignature";
         $.ajax({
             type: 'POST',
             url: signUrl,

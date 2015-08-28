@@ -108,9 +108,9 @@ h2{
 
 .origin-div{
     width: 9px;
-    padding-top: 24%;
-    margin-left: 98%;
-    display: none;
+    bottom: 8%;
+    margin-left: 91%;
+    position: absolute;
 }
 
 .collected{

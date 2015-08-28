@@ -3,17 +3,84 @@ Zepto(function($){
         ev.preventDefault();
     });
 
-    var result = [0, 0, 1];
+    //多设置两个属性，给出正确答案，然后再去寻找是否对应
+
+    var result = [0, 0, 0, 0, 2, 2];
     var boxs = $('.comment .item');
     var swich = 0;
-    var result = 0;
-    var answer = 10;
-    var num = parseInt(10*Math.random());
+    var sub = 0;
     var option = $('.option');
     option.on('tap',function(){
         $(this).addClass('collected');
         var val = $(this).attr("val");
+        var itemIndex = $(this).parent('div').parent().parent().attr('index');
 
+        if(itemIndex == 1){
+            var num = parseInt(10*Math.random());
+            if($(this).attr('val')== result[0]){
+                sub += 10;
+            }else{
+                sub += num;
+            }
+            console.log(sub);
+        }
+
+        if(itemIndex == 2){
+            var num = parseInt(10*Math.random());
+            if($(this).attr('val')== result[1]){
+                sub += 10;
+            }else{
+                sub += num;
+            }
+            console.log(sub);
+        }
+
+        if(itemIndex == 3){
+            var num = parseInt(10*Math.random());
+            if($(this).attr('val')== result[2]){
+                sub += 10;
+            }else{
+                sub += num;
+            }
+            console.log(sub);
+        }
+
+        if(itemIndex == 4){
+            var num = parseInt(10*Math.random());
+            if($(this).attr('val')== result[3]){
+                sub += 10;
+            }else{
+                sub += num;
+            }
+            console.log(sub);
+        }
+
+        if(itemIndex == 5){
+            var num = parseInt(10*Math.random());
+            if($(this).attr('val')== result[4]){
+                sub += 10;
+            }else{
+                sub += num;
+            }
+            console.log(sub);
+        }
+
+        if(itemIndex == 6){
+            var num = parseInt(10*Math.random());
+            if($(this).attr('val')== result[5]){
+                sub += 10;
+            }else{
+                sub += num;
+            }
+            console.log(sub);
+        }
+
+        if($('.origin').attr('point') == itemIndex){
+            //$('li:nth-child(2)').index();
+            console.log(itemIndex);
+            $("span:nth-child(itemIndex)").addClass('origin-light');
+            $("span:nth-child(itemIndex)").siblings().removeClass('origin-light');
+        }
 
         if (swich<6) {
             $(boxs[swich]).addClass('hide_small');
@@ -22,47 +89,10 @@ Zepto(function($){
             $(boxs[swich+1]).addClass('show');
             swich++;
         }
-        console.log($('.item1 .comment-option:nth-child(1)').hasClass('collected'));
-        if(swich==6){
-            if($('.item1 .comment-option').firstChild.hasClass('collected')){
-                result += answer;
-            }else{
-                result += num;
-            }
 
-            if($('.item2 .comment-option').firstChild.hasClass('collected')){
-                result += answer;
-            }else{
-                result += num;
-            }
+        console.log(sub);
 
-            if($('.item3 .comment-option').firstChild.hasClass('collected')){
-                result += answer;
-            }else{
-                result += num;
-            }
-
-            if($('.item4 .comment-option').firstChild.hasClass('collected')){
-                result += answer;
-            }else{
-                result += num;
-            }
-
-            if($('.item5 .comment-option').lastChild.hasClass('collected')){
-                result += answer;
-            }else{
-                result += num;
-            }
-
-            if($('.item6 .comment-option').lastChild.hasClass('collected')){
-                result += answer;
-            }else{
-                result += num;
-            }
-            console.log(result);
-        }
     })
-
 
     //添加contains方法
     Array.prototype.contains= function(num){

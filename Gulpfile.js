@@ -43,4 +43,5 @@ gulp.task('js_index', function () {
         .pipe(gulp.dest('./src/interview/static/js'))
 });
 
-gulp.task('default', ['jshint', 'js_minify', 'css_minify', 'css_index', 'js_index']);
+gulp.task('default', ['jshint', 'js_minify', 'css_minify']);
+gulp.task('index', ['jshint', 'css_index', 'js_index']);

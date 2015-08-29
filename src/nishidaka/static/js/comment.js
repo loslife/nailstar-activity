@@ -3,18 +3,28 @@ Zepto(function($){
         ev.preventDefault();
     });
 
-    //多设置两个属性，给出正确答案，然后再去寻找是否对应
-
     var result = [0, 0, 0, 0, 2, 2];
     var boxs = $('.comment .item');
     var swich = 0;
     var sub = 0;
+    var testNow = $('.testNow');
     var option = $('.option');
+
+    testNow.on('tap',function(){
+        $('.index').addClass('hide_small');
+        $(boxs[swich+1]).removeClass('hide');
+        $(boxs[swich+1]).removeClass('show_big');
+        $(boxs[swich+1]).addClass('show');
+        $('.origin-div').show(1500);
+        $('.comment-div-first').addClass('slideDown')
+    })
+
     option.on('tap',function(){
         $(this).addClass('collected');
         var val = $(this).attr("val");
         var itemIndex = $(this).parent('div').parent().parent().attr('index');
 
+        //统计每道题选择之后的分数
         if(itemIndex == 1){
             var num = parseInt(10*Math.random());
             if($(this).attr('val')== result[0]){
@@ -75,32 +85,108 @@ Zepto(function($){
             console.log(sub);
         }
 
-        if($('.origin').attr('point') == itemIndex){
-            //$('li:nth-child(2)').index();
-            console.log(itemIndex);
-            $("span:nth-child(itemIndex)").addClass('origin-light');
-            $("span:nth-child(itemIndex)").siblings().removeClass('origin-light');
-        }
+        //点亮指示灯
+        $('.origin-div').children().eq(itemIndex).addClass('origin-light').siblings().removeClass('origin-light');
 
-        if (swich<6) {
-            $(boxs[swich]).addClass('hide_small');
-            $(boxs[swich+1]).removeClass('hide');
-            $(boxs[swich+1]).removeClass('show_big');
-            $(boxs[swich+1]).addClass('show');
+        //跳转到下一页
+        if (swich<8) {
+            $(boxs[swich+1]).addClass('hide_small');
+            $(boxs[swich+2]).removeClass('hide');
+            $(boxs[swich+2]).removeClass('show_big');
+            $(boxs[swich+2]).addClass('show');
+            $('.comment-div').eq(itemIndex).addClass('slideDown');
             swich++;
+            if(swich==6 ){
+                $('.origin-div').hide();
+            }
         }
 
         console.log(sub);
 
+        //显示统计的分数
+        var mark = $('.top-mark');
+        mark.text(sub);
     })
 
-    //添加contains方法
-    Array.prototype.contains= function(num){
-        for(var i=0; i<this.length; i++){
-            if(this[i] == num){
-                return true;
+    //分享时显示的遮罩层
+    var share = $('#share');
+    var transparency = $('#transparency');
+    share.click(function(){
+        transparency.show();
+    })
+
+    transparency.click(function(){
+        transparency.hide();
+    })
+
+    //微信分享
+    wx.ready(function(){
+        //配置好友分享
+        wx.onMenuShareAppMessage({
+            title:'我居然是骨灰级美甲咖,超过全国90%美甲师,不服来测!', // 分享标题
+            desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
+            link: shareUrl, // 分享链接
+            imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
+            success: function () {
+                transparency.hide();
+            },
+            cancel: function () {
+                transparency.hide();
             }
-        }
-        return false;
-    };
+        });
+        //配置朋友圈分享
+        wx.onMenuShareTimeline({
+            title:'我居然是骨灰级美甲咖,超过全国90%美甲师,不服来测!',
+            link: shareUrl,
+            imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
+            success: function () {
+                transparency.hide();
+            },
+            cancel: function () {
+                transparency.hide();
+            }
+        });
+    });
+
+    initWx();
+
 })
+
+//处理微信接口
+function initWx() {
+    var app_id = "wxa84c9db4a6fcc7d8";
+    var nowUrl = window.location.href;
+    var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
+    $.ajax({
+        type: 'POST',
+        url: signUrl,
+        data: {
+            url: nowUrl,
+            appId: app_id
+        },
+        beforeSend: function(request) {
+        },
+        xhrFields:{
+            withCredentials: true
+        },
+        crossDomain: true,
+        success: function(data){
+            var signature = data.result.sign;
+            wx.config({
+                debug: false,
+                appId: app_id,
+                timestamp: 1421670369,
+                nonceStr: 'q2XFkAiqofKmi1Y2',
+                signature: signature,
+                jsApiList: [
+                    "onMenuShareTimeline",
+                    "onMenuShareAppMessage"
+                ]
+            });
+        },
+        error: function(err){
+            console.log(err);
+        },
+        dataType:"json"
+    });
+}

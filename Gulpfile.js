@@ -28,4 +28,12 @@ gulp.task('css_minify', function () {
         .pipe(gulp.dest('./src/interview/static/css'))
 });
 
+gulp.task('css_index', function () {
+    return gulp.src(['./src/interview/static/css/base.css', './src/interview/static/css/index.css'])
+        .pipe(concat('all.css'))
+        .pipe(csso())
+        .pipe(rename('index.min.css'))
+        .pipe(gulp.dest('./src/interview/static/css'))
+});
+
 gulp.task('default', ['jshint', 'js_minify', 'css_minify']);

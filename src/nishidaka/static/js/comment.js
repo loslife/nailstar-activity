@@ -32,7 +32,6 @@ Zepto(function($){
             }else{
                 sub += num;
             }
-            console.log(sub);
         }
 
         if(itemIndex == 2){
@@ -42,7 +41,6 @@ Zepto(function($){
             }else{
                 sub += num;
             }
-            console.log(sub);
         }
 
         if(itemIndex == 3){
@@ -52,7 +50,6 @@ Zepto(function($){
             }else{
                 sub += num;
             }
-            console.log(sub);
         }
 
         if(itemIndex == 4){
@@ -62,7 +59,6 @@ Zepto(function($){
             }else{
                 sub += num;
             }
-            console.log(sub);
         }
 
         if(itemIndex == 5){
@@ -72,7 +68,6 @@ Zepto(function($){
             }else{
                 sub += num;
             }
-            console.log(sub);
         }
 
         if(itemIndex == 6){
@@ -82,7 +77,6 @@ Zepto(function($){
             }else{
                 sub += num;
             }
-            console.log(sub);
         }
 
         //点亮指示灯
@@ -100,8 +94,6 @@ Zepto(function($){
                 $('.origin-div').hide();
             }
         }
-
-        console.log(sub);
 
         //显示统计的分数
         var mark = $('.top-mark');

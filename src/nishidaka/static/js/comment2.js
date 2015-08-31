@@ -3,102 +3,101 @@ Zepto(function($){
         ev.preventDefault();
     });
 
-    var commentHtml = {
-        commentVue:'',
-        commentView:{},
-        items:{
-            item1:{
-                commentTitle:"1.适合此款美甲的场所:",
-                optionA:"婚礼",
-                optionB:"闺蜜趴",
-                optionC:"烛光晚餐"
-            },
-            item2:{
-                commentTitle:"2.适合此款美甲的场所:",
-                optionA:"婚礼",
-                optionB:"闺蜜趴",
-                optionC:"烛光晚餐"
-            },
-            item3:{
-                commentTitle:"3.适合此款美甲的场所:",
-                optionA:"婚礼",
-                optionB:"闺蜜趴",
-                optionC:"烛光晚餐"
-            },
-            item4:{
-                commentTitle:"4.适合此款美甲的场所:",
-                optionA:"婚礼",
-                optionB:"闺蜜趴",
-                optionC:"烛光晚餐"
-            },
-            item5:{
-                commentTitle:"5.适合此款美甲的场所:",
-                optionA:"婚礼",
-                optionB:"闺蜜趴",
-                optionC:"烛光晚餐"
-            },
-            item6:{
-                commentTitle:"6.适合此款美甲的场所:",
-                optionA:"婚礼",
-                optionB:"闺蜜趴",
-                optionC:"烛光晚餐"
-            },
-        }
-    }
-
-    //绑定模型
-    function creatVue(){
-        commentHtml.commentVue = new Vue({
-            el:'#comentHtml',
-            data:{
-
-            },
-            methods:{
-                choose:function(){
-                    $(this).addClass('collected');
-                    var val = $(this).attr("val");
-                    var itemIndex = $(this).parent('div').parent().parent().attr('index');
-
-                    //点亮指示灯
-                    $('.origin-div').children().eq(itemIndex).addClass('origin-light').siblings().removeClass('origin-light');
-
-                    //跳转到下一页
-                    if (swich<8) {
-                        $(boxs[swich+1]).addClass('hide_small');
-                        $(boxs[swich+2]).removeClass('hide');
-                        $(boxs[swich+2]).removeClass('show_big');
-                        $(boxs[swich+2]).addClass('show');
-                        $('.comment-div').eq(itemIndex).addClass('slideDown');
-                        swich++;
-                        if(swich==6 ){
-                            $('.origin-div').hide();
-                        }
-                    }
-
-                    //显示统计的分数
-                    var mark = $('.top-mark');
-                    mark.text(sub+40);
-                }
-            }
-        })
-    }
-
     var result = [0, 0, 0, 0, 2, 2];
-    var boxs = $('.comment .item');
     var swich = 0;
     var sub = 0;
     var testNow = $('.testNow');
     var option = $('.option');
 
-    testNow.on('tap',function(){
-        $('.index').addClass('hide_small');
-        $(boxs[1]).removeClass('hide');
-        $(boxs[1]).removeClass('show_big');
-        $(boxs[1]).addClass('show');
-        $('.origin-div').show(1500);
-        $('.comment-div-first').addClass('slideDown')
-    })
+    var commentHtml = {
+        commentVue:'',
+        commentView:{
+            items:[
+                {
+                    commentTitle:"1.适合此款美甲的场所:",
+                    optionA:"婚礼",
+                    optionB:"闺蜜趴",
+                    optionC:"烛光晚餐"
+                },
+                {
+                    commentTitle:"2.适合此款美甲的场所:",
+                    optionA:"婚礼",
+                    optionB:"闺蜜趴",
+                    optionC:"烛光晚餐"
+                },
+                {
+                    commentTitle:"3.适合此款美甲的场所:",
+                    optionA:"婚礼",
+                    optionB:"闺蜜趴",
+                    optionC:"烛光晚餐"
+                },
+                {
+                    commentTitle:"4.适合此款美甲的场所:",
+                    optionA:"婚礼",
+                    optionB:"闺蜜趴",
+                    optionC:"烛光晚餐"
+                },
+                {
+                    commentTitle:"5.适合此款美甲的场所:",
+                    optionA:"婚礼",
+                    optionB:"闺蜜趴",
+                    optionC:"烛光晚餐"
+                },
+                {
+                    commentTitle:"6.适合此款美甲的场所:",
+                    optionA:"婚礼",
+                    optionB:"闺蜜趴",
+                    optionC:"烛光晚餐"
+                },
+            ],
+            page:-3,
+            slideDown:false,
+            collected:'',
+            hide_small:false,
+            hide:true,
+            show_big:true,
+            show:false,
+        },
+    }
 
+    //声明组件
+    function creatComponent(){
+        Vue.component('comment-template',{
+            template:'#comment-template',
+            methods:{
+                test:function() {
+                    commentHtml.commentVue.$data.view.page = -1;
+                    $('.origin-div').show(1500);
+                },
+                choose:function(type){
+                    switch(type){
+                        case 1:
+                            commentHtml.commentVue.$data.view.collected = 1;
+                            break;
+                        case 2:
+                            commentHtml.commentVue.$data.view.collected = 2;
+                            break;
+                        case 3:
+                            commentHtml.commentVue.$data.view.collected = 3;
+                            break;
+                    }
+                },
+            }
+        })
+    }
+    creatComponent();
+    //绑定模型
+    function creatVue(){
+        commentHtml.commentVue = new Vue({
+            el:'#commentHtml',
+            data:{
+                view:commentHtml.commentView
+            },
+        })
+    }
+    creatVue();
+    console.log(commentHtml.commentVue);
+    var boxs = $('.comment .item');
     //分享时显示的遮罩层
     var share = $('#share');
     var transparency = $('#transparency');

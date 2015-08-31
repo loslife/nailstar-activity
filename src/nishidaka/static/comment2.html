@@ -15,34 +15,38 @@
     </head>
     <body class="fullPage">
         <div class="fullPage-wrap comment" id="commentHtml">
-            <div class="item background index">
-                <div class="title">
-                    <img class="title-img" src="images/title.png">
-                </div>
-                <div class="main">
-                    <p class="main-text">白领最钟爱什么色系</p>
-                    <p class="main-text">90后喜欢什么款</p>
-                    <p class="main-text">你知道什么场合</p>
-                    <p class="main-text">搭配什么美甲吗?</p>
-                </div>
-                <div class="test">
-                    <div class="test-contain">
-                        <div class="test-text testNow">马上测试</div>
-                    </div>
-                </div>
-            </div>
-            <div v-component="comment-template"></div>
+            <comment-template v-with="view"></comment-template>
             <script type="text/x-template" id="comment-template">
-                <div class="item start_hide" v-repeat="items" index={{index}}>
-                    <div class="item-div">
-                        <img class="item-img" src="images/{{index}}.png">
+                <div class="item background index" v-class="hide_small:page==-1">
+                    <div>{{page}}</div>
+                    <div class="title">
+                        <img class="title-img" src="images/title.png">
                     </div>
-                    <div class="comment-div comment-div-first">
+                    <div class="main">
+                        <p class="main-text">白领最钟爱什么色系</p>
+                        <p class="main-text">90后喜欢什么款</p>
+                        <p class="main-text">你知道什么场合</p>
+                        <p class="main-text">搭配什么美甲吗?</p>
+                    </div>
+                    <div class="test">
+                        <div class="test-contain">
+                            <div class="test-text" v-on="click: test">马上测试</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" v-repeat="items" index={{$index}} v-class="start_hide:page < $index,hide:page > $index,hide_small:page > $index,
+                show_big:page+1 == $index,show:page >= $index">
+                    <div>{{page}}</div>
+                    <div>{{$index}}</div>
+                    <div class="item-div">
+                        <img class="item-img" src="images/{{$index+1}}.png">
+                    </div>
+                    <div class="comment-div comment-div-first" v-class="slideDown:view.slideDown">
                         <p class="comment-title db ba-s">{{commentTitle}}</p>
                         <div class="comment-option">
-                            <div class="option option-A db ba-c" val="0" v-on="click:choose">{{optionA}}</div>
-                            <div class="option option-B db ba-c" val="1" v-on="click:choose">{{optionB}}</div>
-                            <div class="option option-C db ba-c" val="2" v-on="click:choose">{{optionC}}</div>
+                            <div class="option option-A db ba-c" val="0" v-on="click: choose(0)" v-class="collected: collected == 0">{{optionA}}</div>
+                            <div class="option option-B db ba-c" val="1" v-on="click: choose(1)" v-class="collected: collected == 1">{{optionB}}</div>
+                            <div class="option option-C db ba-c" val="2" v-on="click: choose(2)" v-class="collected: collected == 2">{{optionC}}</div>
                         </div>
                     </div>
                 </div>

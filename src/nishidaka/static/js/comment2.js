@@ -81,8 +81,8 @@ Zepto(function($){
                             commentHtml.commentVue.$data.view.collected = 2;
                             break;
                     };
-
-                    commentHtml.commentVue.$data.view.page = -2;
+                    $('.origin-div').children().eq(commentHtml.commentVue.$data.view.page+2).addClass('origin-light').siblings().removeClass('origin-light');
+                    commentHtml.commentVue.$data.view.page++;
                 },
             }
         })

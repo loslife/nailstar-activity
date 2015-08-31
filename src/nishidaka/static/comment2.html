@@ -17,8 +17,7 @@
         <div class="fullPage-wrap comment" id="commentHtml">
             <comment-template v-with="view"></comment-template>
             <script type="text/x-template" id="comment-template">
-                <div class="item background index" v-class="hide_small:page==-1">
-                    <div>{{page}}</div>
+                <div class="item background index" v-class="hide_small:page == -1">
                     <div class="title">
                         <img class="title-img" src="images/title.png">
                     </div>
@@ -34,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item" v-repeat="items" index={{$index}} v-class="start_hide:page < $index,hide:page > $index,hide_small:page > $index,
+                <div class="item" v-repeat="items" index={{$index}} page={{page}} v-class="start_hide:page < $index,hide:page > $index,hide_small:page >= $index,
                 show_big:page+1 == $index,show:page >= $index">
                     <div class="item-div">
                         <img class="item-img" src="images/{{$index+1}}.png">
@@ -49,7 +48,7 @@
                     </div>
                 </div>
             </script>
-            <div class="item background start_hide">
+            <div class="item background start_hide" v-class="show_big:view.page == 5,show:view.page == 5">
                 <div class="top">
                     <div class="top-text">得分:<span class="top-mark">89</span></div>
                     <div class="top-count">超过全国95%美甲师</div>

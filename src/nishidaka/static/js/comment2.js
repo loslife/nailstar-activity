@@ -50,7 +50,7 @@ Zepto(function($){
                     optionC:"烛光晚餐"
                 },
             ],
-            page:-3,
+            page:-2,
             slideDown:false,
             collected:'-1',
             hide_small:false,
@@ -80,7 +80,9 @@ Zepto(function($){
                         case 2:
                             commentHtml.commentVue.$data.view.collected = 2;
                             break;
-                    }
+                    };
+
+                    commentHtml.commentVue.$data.view.page = -2;
                 },
             }
         })

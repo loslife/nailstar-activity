@@ -36,12 +36,10 @@
                 </div>
                 <div class="item" v-repeat="items" index={{$index}} v-class="start_hide:page < $index,hide:page > $index,hide_small:page > $index,
                 show_big:page+1 == $index,show:page >= $index">
-                    <div>{{page}}</div>
-                    <div>{{$index}}</div>
                     <div class="item-div">
                         <img class="item-img" src="images/{{$index+1}}.png">
                     </div>
-                    <div class="comment-div comment-div-first" v-class="slideDown:view.slideDown">
+                    <div class="comment-div comment-div-first" v-class="slideDown:page<=$index">
                         <p class="comment-title db ba-s">{{commentTitle}}</p>
                         <div class="comment-option">
                             <div class="option option-A db ba-c" val="0" v-on="click: choose(0)" v-class="collected: collected == 0">{{optionA}}</div>

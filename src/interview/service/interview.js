@@ -1,8 +1,28 @@
+var uuid = require('node-uuid');
 var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 
+exports.count = count;
 exports.postlike = postlike;
 exports.getLikeCount = getLikeCount;
 exports.getAllLikeCount = getAllLikeCount;
+
+//count
+function count(req, res, next){
+
+    res.send("ok");
+
+    var id = uuid.v1();
+    var source = req.body["useragent"] || 2;// 未知来源设置为2
+    var sub_source = req.body["t"];// 老师id
+    var now = new Date().getTime();
+    var activity = "interview";
+
+    var sql = "insert into page_view_history (id, activity, source, create_date, sub_source) " +
+        "values (:id, :activity, :source, :create_date, :sub_source)";
+    dbHelper.execSql(sql, {id: id, activity: activity, source: source, create_date: now, sub_source: sub_source}, function(err){
+        console.log(err);
+    });
+}
 
 //点赞
 function postlike(req, res, next){

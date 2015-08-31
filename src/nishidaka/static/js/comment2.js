@@ -52,7 +52,7 @@ Zepto(function($){
             ],
             page:-3,
             slideDown:false,
-            collected:'',
+            collected:'-1',
             hide_small:false,
             hide:true,
             show_big:true,
@@ -71,14 +71,14 @@ Zepto(function($){
                 },
                 choose:function(type){
                     switch(type){
+                        case 0:
+                            commentHtml.commentVue.$data.view.collected = 0;
+                            break;
                         case 1:
                             commentHtml.commentVue.$data.view.collected = 1;
                             break;
                         case 2:
                             commentHtml.commentVue.$data.view.collected = 2;
-                            break;
-                        case 3:
-                            commentHtml.commentVue.$data.view.collected = 3;
                             break;
                     }
                 },

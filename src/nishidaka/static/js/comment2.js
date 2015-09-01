@@ -4,62 +4,61 @@ Zepto(function($){
     });
 
     var result = [0, 0, 0, 0, 2, 2];
-    var testNow = $('.testNow');
-    var option = $('.option');
 
     var commentHtml = {
-        commentVue:'',
-        commentView:{
-            items:[
+        commentVue: '',
+        commentView: {
+            items: [
                 {
-                    commentTitle:"1.适合此款美甲的场所:",
-                    optionA:"婚礼",
-                    optionB:"闺蜜趴",
-                    optionC:"烛光晚餐"
+                    commentTitle: "1.适合此款美甲的场所:",
+                    optionA: "婚礼",
+                    optionB: "闺蜜趴",
+                    optionC: "烛光晚餐"
                 },
                 {
-                    commentTitle:"2.适合此款美甲的场所:",
-                    optionA:"婚礼",
-                    optionB:"闺蜜趴",
-                    optionC:"烛光晚餐"
+                    commentTitle: "2.适合此款美甲的场所:",
+                    optionA: "婚礼",
+                    optionB: "闺蜜趴",
+                    optionC: "烛光晚餐"
                 },
                 {
-                    commentTitle:"3.适合此款美甲的场所:",
-                    optionA:"婚礼",
-                    optionB:"闺蜜趴",
-                    optionC:"烛光晚餐"
+                    commentTitle: "3.适合此款美甲的场所:",
+                    optionA: "婚礼",
+                    optionB: "闺蜜趴",
+                    optionC: "烛光晚餐"
                 },
                 {
-                    commentTitle:"4.适合此款美甲的场所:",
-                    optionA:"婚礼",
-                    optionB:"闺蜜趴",
-                    optionC:"烛光晚餐"
+                    commentTitle: "4.适合此款美甲的场所:",
+                    optionA: "婚礼",
+                    optionB: "闺蜜趴",
+                    optionC: "烛光晚餐"
                 },
                 {
-                    commentTitle:"5.适合此款美甲的场所:",
-                    optionA:"婚礼",
-                    optionB:"闺蜜趴",
-                    optionC:"烛光晚餐"
+                    commentTitle: "5.适合此款美甲的场所:",
+                    optionA: "婚礼",
+                    optionB: "闺蜜趴",
+                    optionC: "烛光晚餐"
                 },
                 {
-                    commentTitle:"6.适合此款美甲的场所:",
-                    optionA:"婚礼",
-                    optionB:"闺蜜趴",
-                    optionC:"烛光晚餐"
+                    commentTitle: "6.适合此款美甲的场所:",
+                    optionA: "婚礼",
+                    optionB: "闺蜜趴",
+                    optionC: "烛光晚餐"
                 },
             ],
-            page:-2,
-            slideDown:false,
-            collected:'-1',
-            start_hide:true,
-            hide_small:false,
-            hide:true,
-            show_big:true,
-            show:false,
-            sub:40
+            page: -2,
+            slideDown: false,
+            collected: '-1',
+            start_hide: true,
+            hide_small: false,
+            hide: true,
+            show_big: true,
+            show: false,
+            sub: 40
         },
-        origin_light:true,
-    }
+        origin_light: true,
+    };
+
     var s =[
         [10,'',''],
         [10,'',''],
@@ -82,7 +81,6 @@ Zepto(function($){
             methods:{
                 test:function() {
                     commentHtml.commentVue.$data.view.page = -1;
-                    //$('.origin-div').show(1500);
                 },
                 choose:function(type){
                     var sub=commentHtml.commentVue.$data.view.sub;

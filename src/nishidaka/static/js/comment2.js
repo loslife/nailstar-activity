@@ -4,8 +4,6 @@ Zepto(function($){
     });
 
     var result = [0, 0, 0, 0, 2, 2];
-    var swich = 0;
-    var sub = 0;
     var testNow = $('.testNow');
     var option = $('.option');
 
@@ -53,13 +51,30 @@ Zepto(function($){
             page:-2,
             slideDown:false,
             collected:'-1',
+            start_hide:true,
             hide_small:false,
             hide:true,
             show_big:true,
             show:false,
+            sub:40
         },
+        origin_light:true,
     }
-
+    var s =[
+        [10,'',''],
+        [10,'',''],
+        [10,'',''],
+        [10,'',''],
+        ['','',10],
+        ['','',10]
+    ];
+    for(i=0;i<6;i++){
+        for(j=0;j<3;j++){
+            if(!s[i][j]) {
+                s[i][j]=parseInt(Math.random()*10);
+            }
+        }
+    }
     //声明组件
     function creatComponent(){
         Vue.component('comment-template',{
@@ -67,22 +82,30 @@ Zepto(function($){
             methods:{
                 test:function() {
                     commentHtml.commentVue.$data.view.page = -1;
-                    $('.origin-div').show(1500);
+                    //$('.origin-div').show(1500);
                 },
                 choose:function(type){
+                    var sub=commentHtml.commentVue.$data.view.sub;
+                    var page = commentHtml.commentVue.$data.view.page;
                     switch(type){
                         case 0:
                             commentHtml.commentVue.$data.view.collected = 0;
+                            commentHtml.commentVue.$data.view.sub = sub+s[page+1][0];
                             break;
                         case 1:
                             commentHtml.commentVue.$data.view.collected = 1;
+                            commentHtml.commentVue.$data.view.sub = sub+s[page+1][1];
                             break;
                         case 2:
                             commentHtml.commentVue.$data.view.collected = 2;
+                            commentHtml.commentVue.$data.view.sub = sub+s[page+1][2];
                             break;
                     };
-                    $('.origin-div').children().eq(commentHtml.commentVue.$data.view.page+2).addClass('origin-light').siblings().removeClass('origin-light');
-                    commentHtml.commentVue.$data.view.page++;
+
+                    setTimeout(function(){
+                        commentHtml.commentVue.$data.view.page++;
+                        commentHtml.commentVue.$data.view.collected = -1;
+                    },100)
                 },
             }
         })
@@ -93,12 +116,11 @@ Zepto(function($){
         commentHtml.commentVue = new Vue({
             el:'#commentHtml',
             data:{
-                view:commentHtml.commentView
+                view:commentHtml.commentView,
             },
         })
     }
     creatVue();
-    console.log(commentHtml.commentVue);
     var boxs = $('.comment .item');
     //分享时显示的遮罩层
     var share = $('#share');

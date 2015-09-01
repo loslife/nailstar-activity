@@ -15,7 +15,7 @@ Zepto(function($){
         $(boxs[1]).removeClass('hide');
         $(boxs[1]).removeClass('show_big');
         $(boxs[1]).addClass('show');
-        $('.origin-div').show(1500);
+        $('.origin_div').show(1500);
         $('.comment-div-first').addClass('slideDown')
     })
 
@@ -80,7 +80,7 @@ Zepto(function($){
         }
 
         //点亮指示灯
-        $('.origin-div').children().eq(itemIndex).addClass('origin-light').siblings().removeClass('origin-light');
+        $('.origin_div').children().eq(itemIndex).addClass('origin_light').siblings().removeClass('origin_light');
 
         //跳转到下一页
         if (swich<8) {
@@ -91,7 +91,7 @@ Zepto(function($){
             $('.comment-div').eq(itemIndex).addClass('slideDown');
             swich++;
             if(swich==6 ){
-                $('.origin-div').hide();
+                $('.origin_div').hide();
             }
         }
 

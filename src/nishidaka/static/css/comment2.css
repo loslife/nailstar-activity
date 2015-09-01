@@ -82,11 +82,18 @@ h2{
     padding-left: 10%;
 }
 
-.origin-div{
+.origin_div{
     width: 9px;
     bottom: 6%;
     margin-left: 91%;
     position: absolute;
+}
+
+.origin_show{
+    display: block;
+}
+
+.origin_hide{
     display: none;
 }
 
@@ -105,7 +112,7 @@ h2{
     display: inline-block;
 }
 
-.origin-light{
+.origin_light{
     background: #ffffff;
 }
 

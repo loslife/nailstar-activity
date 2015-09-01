@@ -38,7 +38,7 @@
                     <div class="item-div">
                         <img class="item-img" src="images/{{$index+1}}.png">
                     </div>
-                    <div class="comment-div comment-div-first" v-class="slideDown:page<=$index">
+                    <div class="comment-div" v-class="slideDown:page+1 == $index">
                         <p class="comment-title db ba-s">{{commentTitle}}</p>
                         <div class="comment-option">
                             <div class="option option-A db ba-c" val="0" v-on="click: choose(0)" v-class="collected: collected == 0">{{optionA}}</div>
@@ -50,7 +50,7 @@
             </script>
             <div class="item background start_hide" v-class="show_big:view.page == 5,show:view.page == 5">
                 <div class="top">
-                    <div class="top-text">得分:<span class="top-mark">89</span></div>
+                    <div class="top-text">得分:<span class="top-mark">{{view.sub}}</span></div>
                     <div class="top-count">超过全国95%美甲师</div>
                 </div>
                 <div class="middle">
@@ -67,13 +67,9 @@
                     <img class="transparency-img" src="images/c01.png">
                 </div>
             </div>
-        <div class="origin-div">
-            <span class="origin origin-light"></span>
-            <span class="origin"></span>
-            <span class="origin"></span>
-            <span class="origin"></span>
-            <span class="origin"></span>
-            <span class="origin"></span>
+            <div v-class="origin_div: view.page >=-1,origin_hide: view.page == 5">
+                <span class="origin" v-repeat="view.items" index={{$index}} page={{view.page}} v-class="origin_light: view.page+1==$index"></span>
+            </div>
         </div>
     </body>
 </html>

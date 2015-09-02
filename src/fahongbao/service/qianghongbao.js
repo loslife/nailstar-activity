@@ -200,7 +200,7 @@ function getMoney(req, res, next){
             }else{
 
                 //运气不佳
-                if(probability(range)){
+                if(probability()){
                     doResponse(req, res, {status: 3});
                     return;
                 }
@@ -316,13 +316,12 @@ function isOverTotal(callback){
 }
 
 //概率生成器
-function probability(range){
+function probability(){
+
     if(!range){
         return false;
     }
-    if(Math.random() <= range){
-        return true;
-    }
-    return false;
+    
+    return (Math.random() <= range);
 }
 

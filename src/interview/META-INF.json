@@ -1,0 +1,63 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services": [
+        {
+            "name": "interview_count",
+            "path": "/interview/count",
+            "method": "post",
+            "auth": false,
+            "impl": "interview.count",
+            "comment": "统计页面访问次数"
+        },
+        {
+            "name": "postlike",
+            "path": "/interview/postlike",
+            "method": "post",
+            "auth": false,
+            "impl": "interview.postlike",
+            "comment": "点赞"
+        },
+        {
+            "name": "getLikeCount",
+            "path": "/interview/getLikeCount",
+            "method": "get",
+            "auth": false,
+            "impl": "interview.getLikeCount",
+            "comment": "获取点赞数量"
+        },
+        {
+            "name": "getAllLikeCount",
+            "path": "/interview/getAllLikeCount",
+            "method": "get",
+            "auth": false,
+            "impl": "interview.getAllLikeCount",
+            "comment": "获取所有老师点赞数"
+        }
+    ],
+    "statics": [
+        {
+            "name": "interview",
+            "path": "/interview",
+            "comment": "大咖驾到"
+        }
+    ],
+    "dataModelSchema": [
+    ],
+    "configuration": {
+
+    },
+    "errorHandler": []
+}

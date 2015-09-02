@@ -36,6 +36,11 @@
 .headRight{
 	text-align: right;
 }
+
+.headRight img{
+	width: 60%;
+}
+
 .content{
 	position: relative;
 	z-index: 1;
@@ -82,7 +87,7 @@
 	background-image: url(../images/mo.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 50%;
+	width: 80%;
 	margin:0 auto;
 	background-size: auto 100%;
 	padding-top: 50%;
@@ -93,12 +98,12 @@
 	display: block;
 	position: absolute;
 	width: 80%;
-	top: 30%;
-	left: 8%;
+	top: 15%;
+	left: 10%;
 }
 .boxTitle{
-	margin:0 auto;
-	font-size: 16px;
+	margin:-10px auto 0 auto;
+	font-size: 18px;
 	text-align: center;
 	font-family: "宋体";
 }

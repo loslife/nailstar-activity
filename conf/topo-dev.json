@@ -5,11 +5,13 @@
     {
       "name": "baseService",
       "ip": "127.0.0.1",
-      "port": 5010,
+      "port": 5020,
       "protocol": "http",
-      "baseurl": "",
+      "baseurl": "http://mw.yilos.com/svc",
       "workerno": 1,
       "applications": [
+        "interview",
+        "7xi",
         "fahongbao",
         "nishidaka"
       ]
@@ -21,7 +23,18 @@
       "port": 3306,
       "user": "yilos_dev",
       "password": "yilos_dev",
-      "dbName": "nailstar"
+      "dbName": "tuiguang"
     }
-  }
+  },
+  "clientAccess": {
+    "staticurl": "http://127.0.0.1:5010",
+    "authurl": "http://127.0.0.1:5010/svc",
+    "serviceurl": "http://127.0.0.1:5010/svc",
+    "uploadurl": "http://127.0.0.1:5010/svc/file-upload",
+    "wxserviceurl": "http://127.0.0.1:5010/svc"
+  },
+  "connector":{
+    "nail_pc_url":""
+  },
+  "ip-whitelist": []
 }

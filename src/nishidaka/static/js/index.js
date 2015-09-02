@@ -16,8 +16,8 @@ Zepto(function($){
         $(boxs[1]).removeClass('show_big');
         $(boxs[1]).addClass('show');
         $('.origin_div').show(1500);
-        $('.comment-div-first').addClass('slideDown')
-    })
+        $('.comment-div-first').addClass('slideDown');
+    });
 
     option.on('tap',function(){
         $(this).addClass('collected');
@@ -25,8 +25,9 @@ Zepto(function($){
         var itemIndex = $(this).parent('div').parent().parent().attr('index');
 
         //统计每道题选择之后的分数
+        var num;
         if(itemIndex == 1){
-            var num = parseInt(10*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[0]){
                 sub += 10;
             }else{
@@ -35,7 +36,7 @@ Zepto(function($){
         }
 
         if(itemIndex == 2){
-            var num = parseInt(10*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[1]){
                 sub += 10;
             }else{
@@ -44,7 +45,7 @@ Zepto(function($){
         }
 
         if(itemIndex == 3){
-            var num = parseInt(10*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[2]){
                 sub += 10;
             }else{
@@ -53,7 +54,7 @@ Zepto(function($){
         }
 
         if(itemIndex == 4){
-            var num = parseInt(10*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[3]){
                 sub += 10;
             }else{
@@ -62,7 +63,7 @@ Zepto(function($){
         }
 
         if(itemIndex == 5){
-            var num = parseInt(10*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[4]){
                 sub += 10;
             }else{
@@ -71,7 +72,7 @@ Zepto(function($){
         }
 
         if(itemIndex == 6){
-            var num = parseInt(10*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[5]){
                 sub += 10;
             }else{
@@ -98,22 +99,22 @@ Zepto(function($){
         //显示统计的分数
         var mark = $('.top-mark');
         mark.text(sub+40);
-    })
+    });
 
     //分享时显示的遮罩层
     var share = $('#share');
     var transparency = $('#transparency');
     share.click(function(){
         transparency.show();
-    })
+    });
 
     transparency.click(function(){
         transparency.hide();
-    })
+    });
 
     initWx();
 
-})
+});
 
 //处理微信接口
 function initWx() {

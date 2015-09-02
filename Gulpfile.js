@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var csso = require('gulp-csso');
+var minifyCss = require('gulp-minify-css');
 
 gulp.task('jshint', function () {
     return gulp.src('./src/interview/static/js/*.js')
@@ -59,7 +60,7 @@ gulp.task('js_nishidaka', function () {
 gulp.task('css_nishidaka', function () {
     return gulp.src(['./src/nishidaka/static/css/base.css', './src/nishidaka/static/css/index.css'])
         .pipe(concat('all.css'))
-        .pipe(csso())
+        .pipe(minifyCss())
         .pipe(rename('index.min.css'))
         .pipe(gulp.dest('./src/nishidaka/static/css'))
 });

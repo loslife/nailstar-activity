@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .outerspace{
+                position: relative;
+                height: 400px;
+                background: url("images/outerspace.jpg");
+                transition: all 3s ease-in;
+            }
+            .rocket{
+                position: absolute;
+                bottom: 20px;
+                left: 10px;
+                color: #FFFFFF;
+                transition: transform 3s ease-in;
+            }
+            .rocket-img{
+                display: block;
+                transition: all 2s ease-in-out;
+            }
+            .outerspace:hover {
+                transform: translate(0px,-200px);
+            }
+            .outerspace:hover div.rocket {
+                transform: translate(0px,-200px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="outerspace">
+            <div class="rocket">
+                <img class="rocket-img" src="images/rocket.gif">
+                火箭
+            </div>
+        </div>
+    </body>
+</html>

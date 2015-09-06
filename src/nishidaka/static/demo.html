@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .div1,.div2,.div3{
+                margin:0 auto;
+                width: 120px;
+                height: 80px;
+                border: 1px solid black;
+                background: green;
+            }
+            .div1:hover{
+                transform:rotate(360deg) scale(2);
+                background: red;
+                border-radius: 1em;
+            }
+            .div2:hover{
+                width: 200px;
+                height: 200px;
+            }
+            .div3:hover{
+                transform: rotate(30deg);
+                transition: all 1s ease-in-out;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div1 showbox">div1</div>
+        <div class="div2 showbox">div2</div>
+        <div class="div3 showbox">div3</div>
+    </body>
+</html>

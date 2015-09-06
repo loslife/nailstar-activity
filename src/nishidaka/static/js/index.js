@@ -12,8 +12,6 @@ Zepto(function($){
 
     testNow.on('tap',function(){
         $('.index').addClass('hide_small');
-        $(boxs[1]).removeClass('hide');
-        $(boxs[1]).removeClass('show_big');
         $(boxs[1]).addClass('show');
         $('.origin_div').show(1500);
         $('.comment-div-first').addClass('slideDown');
@@ -86,8 +84,6 @@ Zepto(function($){
         //跳转到下一页
         if (swich<8) {
             $(boxs[swich+1]).addClass('hide_small');
-            $(boxs[swich+2]).removeClass('hide');
-            $(boxs[swich+2]).removeClass('show_big');
             $(boxs[swich+2]).addClass('show');
             $('.comment-div').eq(itemIndex).addClass('slideDown');
             swich++;
@@ -98,7 +94,19 @@ Zepto(function($){
 
         //显示统计的分数
         var mark = $('.top-mark');
+        var percent = $('.top-percent');
         mark.text(sub+40);
+
+        //显示超过人数的百分比
+        if(mark.text()>=90){
+            percent.text(90);
+        }else if(mark.text()>=80){
+            percent.text(80);
+        }else if(mark.text()>=70){
+            percent.text(70);
+        }else if(mark.text()>=60){
+            percent.text(60);
+        }
     });
 
     //分享时显示的遮罩层

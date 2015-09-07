@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <style>
-            .div1,.div2,.div3{
+            .div1,.div2,.div3,.div5{
                 margin:0 auto;
                 width: 120px;
                 height: 80px;
@@ -23,11 +23,26 @@
                 transform: rotate(30deg);
                 transition: all 1s ease-in-out;
             }
+            .div4{
+                width: 100px;
+                padding: 5px;
+                background: red;
+                display: block;
+            }
+            .div4:hover{
+                transform: rotate(45deg) scale(0.8,1.2) skew(60deg,-30deg);
+            }
+            .div5:hover{
+                transform: translate3d(0,100%,0);
+                transition: transform 1s;
+            }
         </style>
     </head>
     <body>
-        <div class="div1 showbox">div1</div>
-        <div class="div2 showbox">div2</div>
-        <div class="div3 showbox">div3</div>
+        <div class="div1">div1</div>
+        <div class="div2">div2</div>
+        <div class="div3">div3</div>
+        <div class="div4">div4</div>
+        <div class="div5">div5</div>
     </body>
 </html>

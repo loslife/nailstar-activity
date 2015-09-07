@@ -131,9 +131,7 @@ h2{
 }
 .hide_small{
     -webkit-transform: scale(0.8);
-    -webkit-animation: hide_small 0.5s ease-in;
     transform: scale(0.8);
-    animation: hide_small 0.5s ease-in;
 }
 
 .slideDown {

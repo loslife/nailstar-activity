@@ -98,14 +98,23 @@ Zepto(function($){
         mark.text(sub+40);
 
         //显示超过人数的百分比
-        if(mark.text()>=90){
-            percent.text(90);
+        if(mark.text()==100){
+            percent.text(99);
+        }else if(mark.text()>=90){
+            num = parseInt(10*Math.random());
+            percent.text(90+num);
         }else if(mark.text()>=80){
-            percent.text(80);
+            num = parseInt(10*Math.random());
+            percent.text(80+num);
         }else if(mark.text()>=70){
-            percent.text(70);
+            num = parseInt(10*Math.random());
+            percent.text(70+num);
         }else if(mark.text()>=60){
-            percent.text(60);
+            num = parseInt(10*Math.random());
+            percent.text(60+num);
+        }else if(mark.text()>=50){
+            num = parseInt(10*Math.random());
+            percent.text(50+num);
         }
     });
 

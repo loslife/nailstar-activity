@@ -7,6 +7,7 @@
                 position: relative;
                 height: 400px;
                 background: url("images/outerspace.jpg");
+                background-position: left bottom;
                 transition: all 3s ease-in;
             }
             .rocket{
@@ -14,17 +15,20 @@
                 bottom: 20px;
                 left: 10px;
                 color: #FFFFFF;
-                transition: transform 3s ease-in;
+                transition: all 3s ease-in;
             }
             .rocket-img{
                 display: block;
                 transition: all 2s ease-in-out;
             }
-            .outerspace:hover {
-                transform: translate(0px,-200px);
+            .outerspace:hover{
+                background-position: -50% 180%;
             }
             .outerspace:hover div.rocket {
-                transform: translate(0px,-200px);
+                transform: translate(540px,-200px);
+            }
+            .outerspace:hover div.rocket img {
+                transform: rotate(70deg);
             }
         </style>
     </head>

@@ -20,7 +20,7 @@ Zepto(function($){
 
     })();
 
-    $('body').on('touch', function(ev){
+    $('body').on('touchstart', function(ev){
         ev.preventDefault();
     });
 

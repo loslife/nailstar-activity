@@ -144,30 +144,7 @@ Zepto(function($){
 
         score = percent.text();
         //配置好友分享
-        wx.onMenuShareAppMessage({
-            title:'我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!', // 分享标题
-            desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
-            link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
-            imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
-            success: function () {
-                transparency.hide();
-            },
-            cancel: function () {
-                transparency.hide();
-            }
-        });
-        //配置朋友圈分享
-        wx.onMenuShareTimeline({
-            title:'我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!',
-            link: 'http://huodong.naildaka.com/nishidaka/index.html',
-            imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
-            success: function () {
-                transparency.hide();
-            },
-            cancel: function () {
-                transparency.hide();
-            }
-        });
+        share(score);
     });
 
     //分享时显示的遮罩层
@@ -217,37 +194,38 @@ function initWx() {
                 ],
             });
             //微信分享
-            wx.ready(function(){
-                //配置好友分享
-                wx.onMenuShareAppMessage({
-                    title:'我居然是骨灰级美甲咖,超过全国0%美甲师,不服来测!', // 分享标题
-                    desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
-                    link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
-                    imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
-                    success: function () {
-                        transparency.hide();
-                    },
-                    cancel: function () {
-                        transparency.hide();
-                    }
-                });
-                //配置朋友圈分享
-                wx.onMenuShareTimeline({
-                    title:'我居然是骨灰级美甲咖,超过全国0%美甲师,不服来测!',
-                    link: 'http://huodong.naildaka.com/nishidaka/index.html',
-                    imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
-                    success: function () {
-                        transparency.hide();
-                    },
-                    cancel: function () {
-                        transparency.hide();
-                    }
-                });
-            });
+           wx.ready(share(0));
         },
         error: function(err){
             console.log(err);
         },
         dataType:"json"
+    });
+}
+
+function share(score){
+    wx.onMenuShareAppMessage({
+        title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!', // 分享标题
+        desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
+        link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
+        imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
+        success: function () {
+            transparency.hide();
+        },
+        cancel: function () {
+            transparency.hide();
+        }
+    });
+    //配置朋友圈分享
+    wx.onMenuShareTimeline({
+        title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!',
+        link: 'http://huodong.naildaka.com/nishidaka/index.html',
+        imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
+        success: function () {
+            transparency.hide();
+        },
+        cancel: function () {
+            transparency.hide();
+        }
     });
 }

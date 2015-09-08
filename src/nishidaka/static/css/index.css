@@ -19,15 +19,6 @@ html, body {
     height: 100%;
 }
 
-.img-div{
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
-    height: 50%;
-    background: url("../images/bottom.png") no-repeat;
-    background-size: 124%;
-}
-
 h2{
     color: #ffffff;
     position: absolute;
@@ -122,8 +113,8 @@ h2{
     width: 100%;
     height: 100%;
     overflow: hidden;
-    transition: all 700ms cubic-bezier(0.550, 0.085, 0.000, 0.990);
-    -webkit-transition: all 700ms cubic-bezier(0.550, 0.085, 0.000, 0.990);
+    transition: all 700ms;
+    -webkit-transition: all 700ms;
     background-position: center;
 }
 
@@ -132,29 +123,15 @@ h2{
     transform: translate3d(0,100%,0);
 }
 
-.hide{
-    -webkit-transform: translate3d(0,100%,0);
-    -webkit-animation: hide 0.5s ease-in;
-    transform: translate3d(0,100%,0);
-    animation: hide 0.5s ease-in;
-}
 .show{
     -webkit-transform: translate3d(0,0,0);
     -webkit-animation: show 0.5s ease-in;
     transform: translate3d(0,0,0);
     animation: show 0.5s ease-in;
 }
-.show_big{
-    -webkit-transform: scale(1);
-    -webkit-animation: show_big 0.5s ease-in;
-    transform: scale(1);
-    animation: show_big 0.5s ease-in;
-}
 .hide_small{
     -webkit-transform: scale(0.8);
-    -webkit-animation: hide_small 0.5s ease-in;
     transform: scale(0.8);
-    animation: hide_small 0.5s ease-in;
 }
 
 .slideDown {

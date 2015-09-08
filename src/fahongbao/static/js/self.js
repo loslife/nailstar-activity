@@ -52,7 +52,7 @@ Zepto(function($){
             //配置好友分享
             wx.onMenuShareAppMessage({
                 title: data.result.nickname + '发给你一个红包', // 分享标题
-                desc: '赶快点击领取吧,100%现金', // 分享描述
+                desc: '来美甲大咖，点击领取吧！100%现金哦', // 分享描述
                 link: shareUrl, // 分享链接
                 imgUrl: 'http://huodong.naildaka.com/fahongbao/images/logo.png', // 分享图标
                 success: function () {

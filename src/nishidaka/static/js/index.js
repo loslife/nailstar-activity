@@ -1,41 +1,24 @@
 Zepto(function($){
 
-    function count (useragent) {
+    (function count() {
+
+        var useragent = 2;
+
         var ua = window.navigator.userAgent.toLowerCase();
         if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-            var useragent = 1;
-            var url = 'http://huodong.naildaka.com/svc/7xi/count?useragent=1';
+            useragent = 1;
         }else{
-            var useragent = 2;
-            var url = 'http://huodong.naildaka.com/svc/7xi/count?useragent=2';
+            useragent = 2;
         }
-        postRequest(url,useragent,function (error,data) {
-            if (data.code !=0) {
-                callback(null,data);
-                return;
-            }
-            callback(null,data);
-        })
-    }
-    count();
-    //封装post请求
-    function postRequest (url ,data,callback) {
+
+        var url = 'http://huodong.naildaka.com/svc/stat/count?activity=nishidaka&useragent=' + useragent;
+
         $.ajax({
             type: 'GET',
-            url: url,
-            data: data[0],
-            beforeSend: function(request) {
-                request.setRequestHeader("xhr", "true");
-            },
-            success:function(data){
-                callback(null,data);
-            },
-            error: function(error){
-                console.log(error);
-            },
-            dataType:"json"
+            url: url
         });
-    }
+
+    })();
 
     $('body').on('touch', function(ev){
         ev.preventDefault();

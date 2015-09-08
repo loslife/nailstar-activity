@@ -1,0 +1,35 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services": [
+        {
+            "name": "common_count",
+            "path": "/stat/count",
+            "method": "get",
+            "auth": false,
+            "impl": "stat.count",
+            "comment": "统计页面访问次数"
+        }
+    ],
+    "statics": [
+
+    ],
+    "dataModelSchema": [
+    ],
+    "configuration": {
+
+    },
+    "errorHandler": []
+}

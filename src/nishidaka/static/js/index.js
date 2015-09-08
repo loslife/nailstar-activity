@@ -149,12 +149,16 @@ Zepto(function($){
 
     //分享时显示的遮罩层
     var share = $('#share');
+    var again = $('#again');
     var transparency = $('#transparency');
-    share.click(function(){
+    share.tap(function(){
         transparency.show();
     });
+    again.tap(function(){
+        window.location.href = "./index.html";
+    });
 
-    transparency.click(function(){
+    transparency.tap(function(){
         transparency.hide();
     });
 

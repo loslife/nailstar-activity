@@ -174,8 +174,8 @@ Zepto(function($){
     });
 
     initWx();
-
 });
+
 
 //处理微信接口
 function initWx() {
@@ -212,7 +212,7 @@ function initWx() {
             wx.ready(function(){
                 //配置好友分享
                 wx.onMenuShareAppMessage({
-                    title:'我居然是骨灰级美甲咖,超过全国' + score + '美甲师,不服来测!', // 分享标题
+                    title:'我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!', // 分享标题
                     desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
                     link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
                     imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
@@ -225,7 +225,7 @@ function initWx() {
                 });
                 //配置朋友圈分享
                 wx.onMenuShareTimeline({
-                    title:'我居然是骨灰级美甲咖,超过全国'+score+'美甲师,不服来测!',
+                    title:'我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!',
                     link: 'http://huodong.naildaka.com/nishidaka/index.html',
                     imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
                     success: function () {

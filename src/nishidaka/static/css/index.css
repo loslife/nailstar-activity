@@ -44,33 +44,23 @@ h2{
     width: 90%;
 }
 
-.option-A{
+.option{
     margin-bottom: 2%;
     font-size: 19px;
-    height: 37px;
     color: #ffffff;
-    background: url("../images/A.png") no-repeat;
+    background: url("../images/frame.png") no-repeat;
     background-size: 100%;
-    padding-left: 10%;
 }
 
-.option-B{
-    margin-bottom: 2%;
-    font-size: 19px;
-    height: 37px;
-    color: #ffffff;
-    background: url("../images/B.png") no-repeat;
-    background-size: 100%;
-    padding-left: 10%;
+.letter{
+    font-size: 31px;
+    font-weight: 100;
+    color: #00d4cc;
+    padding-left: 4px;
+    padding-right: 5px;
 }
-
-.option-C{
-    font-size: 19px;
-    height: 37px;
-    color: #ffffff;
-    background: url("../images/C.png") no-repeat;
-    background-size: 100%;
-    padding-left: 10%;
+.letter-text{
+    display: table;
 }
 
 .origin_div{

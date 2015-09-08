@@ -115,9 +115,7 @@ h2{
 
 .show{
     -webkit-transform: translate3d(0,0,0);
-    -webkit-animation: show 0.5s ease-in;
     transform: translate3d(0,0,0);
-    animation: show 0.5s ease-in;
 }
 .hide_small{
     -webkit-transform: scale(0.8);

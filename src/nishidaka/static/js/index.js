@@ -144,88 +144,95 @@ Zepto(function($){
 
         score = percent.text();
         //配置好友分享
-        share(score);
+        shareWX(score)();
     });
 
     //分享时显示的遮罩层
     var share = $('#share');
+    var again = $('#again');
     var transparency = $('#transparency');
-    share.click(function(){
+    share.tap(function(){
         transparency.show();
     });
+    again.tap(function(){
+        window.location.href = "./index.html";
+    });
 
-    transparency.click(function(){
+    transparency.tap(function(){
         transparency.hide();
     });
 
     initWx();
+
+
+    //处理微信接口
+    function initWx() {
+        var app_id = "wxa84c9db4a6fcc7d8";
+        var nowUrl = window.location.href;
+        var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
+        $.ajax({
+            type: 'POST',
+            url: signUrl,
+            data: {
+                url: nowUrl,
+                appId: app_id
+            },
+            beforeSend: function(request) {
+            },
+            xhrFields:{
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function(data){
+                var signature = data.result.sign;
+                wx.config({
+                    debug: false,
+                    appId: app_id,
+                    timestamp: 1421670369,
+                    nonceStr: 'q2XFkAiqofKmi1Y2',
+                    signature: signature,
+                    jsApiList: [
+                        "onMenuShareTimeline",
+                        "onMenuShareAppMessage"
+                    ]
+                });
+                //微信分享
+                wx.ready(shareWX(0));
+            },
+            error: function(err){
+                console.log(err);
+            },
+            dataType:"json"
+        });
+    }
+
+    function shareWX(score){
+        return function(){
+            wx.onMenuShareAppMessage({
+                title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!', // 分享标题
+                desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
+                link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
+                imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
+                success: function () {
+                    transparency.hide();
+                },
+                cancel: function () {
+                    transparency.hide();
+                }
+            });
+            //配置朋友圈分享
+            wx.onMenuShareTimeline({
+                title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!',
+                link: 'http://huodong.naildaka.com/nishidaka/index.html',
+                imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
+                success: function () {
+                    transparency.hide();
+                },
+                cancel: function () {
+                    transparency.hide();
+                }
+            });
+        };
+    }
 });
 
-
-//处理微信接口
-function initWx() {
-    var app_id = "wxa84c9db4a6fcc7d8";
-    var nowUrl = window.location.href;
-    var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
-    $.ajax({
-        type: 'POST',
-        url: signUrl,
-        data: {
-            url: nowUrl,
-            appId: app_id
-        },
-        beforeSend: function(request) {
-        },
-        xhrFields:{
-            withCredentials: true
-        },
-        crossDomain: true,
-        success: function(data){
-            var signature = data.result.sign;
-            wx.config({
-                debug: false,
-                appId: app_id,
-                timestamp: 1421670369,
-                nonceStr: 'q2XFkAiqofKmi1Y2',
-                signature: signature,
-                jsApiList: [
-                    "onMenuShareTimeline",
-                    "onMenuShareAppMessage"
-                ],
-            });
-            //微信分享
-           wx.ready(share(0));
-        },
-        error: function(err){
-            console.log(err);
-        },
-        dataType:"json"
-    });
-}
-
-function share(score){
-    wx.onMenuShareAppMessage({
-        title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!', // 分享标题
-        desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
-        link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
-        imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
-        success: function () {
-            transparency.hide();
-        },
-        cancel: function () {
-            transparency.hide();
-        }
-    });
-    //配置朋友圈分享
-    wx.onMenuShareTimeline({
-        title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!',
-        link: 'http://huodong.naildaka.com/nishidaka/index.html',
-        imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
-        success: function () {
-            transparency.hide();
-        },
-        cancel: function () {
-            transparency.hide();
-        }
-    });
-}

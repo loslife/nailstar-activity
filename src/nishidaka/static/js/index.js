@@ -212,7 +212,7 @@ Zepto(function($){
                 title: '最新的美甲产品和款式,你认识吗?', // 分享标题
                 desc: '我认出了' + score + '个,不服来战。', // 分享描述
                 link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
-                imgUrl: 'http://huodong.naildaka.com/nishidaka/images/share_icon.png', // 分享图标
+                imgUrl: 'http://huodong.naildaka.com/nishidaka/images/index/share_icon.png', // 分享图标
                 success: function () {
                     transparency.hide();
                 },
@@ -224,7 +224,7 @@ Zepto(function($){
             wx.onMenuShareTimeline({
                 title: '最新的美甲产品于款式你了解多少?',
                 link: 'http://huodong.naildaka.com/nishidaka/index.html',
-                imgUrl: 'hhttp://huodong.naildaka.com/nishidaka/images/share_icon.png',
+                imgUrl: 'hhttp://huodong.naildaka.com/nishidaka/images/index/share_icon.png',
                 success: function () {
                     transparency.hide();
                 },

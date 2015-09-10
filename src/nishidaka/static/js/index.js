@@ -230,7 +230,7 @@ Zepto(function($){
             });
             //配置朋友圈分享
             wx.onMenuShareTimeline({
-                title: str,
+                title: '最新的美甲产品和款式,你认识吗?' + str,
                 link: 'http://huodong.naildaka.com/nishidaka/index.html',
                 imgUrl: 'http://huodong.naildaka.com/nishidaka/images/index/share_icon.png',
                 success: function () {

@@ -231,6 +231,7 @@ Zepto(function($){
             //配置朋友圈分享
             wx.onMenuShareTimeline({
                 title: '最新的美甲产品于款式你了解多少?',
+                desc: str, // 分享描述
                 link: 'http://huodong.naildaka.com/nishidaka/index.html',
                 imgUrl: 'http://huodong.naildaka.com/nishidaka/images/index/share_icon.png',
                 success: function () {

@@ -143,7 +143,7 @@ Zepto(function($){
     });
     //看其他大咖
     $("#index").click(function(){
-        window.location.href = "./index.html";
+        window.location.href = "./index2.html";
     });
     //分享按钮
     $(".share").click(function(){
@@ -189,7 +189,7 @@ Zepto(function($){
                     // 创建分享
                     wx.onMenuShareTimeline({
                         title: "幕后的美甲大咖们，你都认识吗？",
-                        link: "http://huodong.naildaka.com/interview/index.html",
+                        link: "http://huodong.naildaka.com/interview/index2.html",
                         imgUrl: "http://huodong.naildaka.com/interview/images/share.jpg",
                         success: function () {
                             $(".maskShare").hide();
@@ -201,7 +201,7 @@ Zepto(function($){
                     wx.onMenuShareAppMessage({
                         title: "幕后的美甲大咖们，你都认识吗？",
                         desc: "我的经历也许是很多人的经历！",
-                        link: "http://huodong.naildaka.com/interview/index.html",
+                        link: "http://huodong.naildaka.com/interview/index2.html",
                         imgUrl: "http://huodong.naildaka.com/interview/images/share.jpg",
                         success: function () {
                             $(".maskShare").hide();

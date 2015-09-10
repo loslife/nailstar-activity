@@ -48,7 +48,7 @@ h2{
     margin-bottom: 2%;
     font-size: 19px;
     color: #ffffff;
-    background: url("../images/index/frame.png") no-repeat;
+    background: url("../images/index2/frame.png") no-repeat;
     background-size: 100%;
 }
 
@@ -161,15 +161,8 @@ h2{
     }
 }
 
-.index-background{
-    background: url("../images/index/index.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 110%;
-}
-
 .background{
-    background: url("../images/index/background.jpg");
+    background: url("../images/index2/background.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 110%;
@@ -185,16 +178,14 @@ h2{
 }
 
 .main{
-    margin: 0 auto;
-    margin-top: 68%;
-    width: 95%;
+    margin-top: 8%;
     text-align: center;
-    background-color: rgba(178,35,49,0.3);
 }
 
 .main-text{
-    color: #ffffff;
-    font-size: 40px;
+    color: #000000;
+    opacity: 0.5;
+    font-size: 14px;
     margin-bottom: 3%;
 }
 
@@ -208,7 +199,7 @@ h2{
 }
 
 .test-contain{
-    background-color: rgba(178,35,49,0.75);
+    background-color: rgba(0,0,0,0.5);
     width: 46%;
     padding: 2% 0;
     margin: 0 auto;
@@ -234,7 +225,7 @@ h2{
 }
 
 .top-count{
-    background: url("../images/button.png") no-repeat center;
+    background: url("../images/index2/button.png") no-repeat center;
     background-size: 46%;
     font-size: 16px;
     color: #ffffff;
@@ -296,50 +287,4 @@ h2{
     margin-right: 30px;
     width: 50%;
     float: right;
-}
-
-/*页面跳转动画*/
-.loadercontent{
-    width: 100%;
-    height: 100%;
-    background-color: rgb(255,255,255);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    /*display: none;*/
-}
-.wrap{
-    width: 42px;
-    height: 42px;
-    position: relative;
-    margin-top: 50%;
-    margin-left: 50%;
-    left: -21px;
-}
-.outer{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    animation: spin 800ms infinite linear;
-    -webkit-animation: spin 800ms infinite linear;
-}
-.inner{
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    top: 3px;
-    left: 3px;
-}
-.inner img{
-    width: 100%;
-}
-@keyframes spin {
-    0%   { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
-}
-@-webkit-keyframes spin {
-    0%   { -webkit-transform: rotate(360deg); }
-    100% { -webkit-transform: rotate(0deg); }
 }

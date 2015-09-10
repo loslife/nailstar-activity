@@ -12,6 +12,12 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
+gulp.task('js_daka2', function () {
+    return gulp.src('./src/nishidaka/static/js/index2.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
+});
+
 gulp.task('js_daka', function () {
     return gulp.src('./src/nishidaka/static/js/index.js')
         .pipe(jshint())
@@ -49,6 +55,21 @@ gulp.task('js_index', function () {
         .pipe(gulp.dest('./src/interview/static/js'))
 });
 
+gulp.task('js_nishidaka2', function () {
+    return gulp.src('./src/nishidaka/static/js/index2.js')
+        .pipe(uglify())
+        .pipe(rename('index2.min.js'))
+        .pipe(gulp.dest('./src/nishidaka/static/js'))
+});
+
+gulp.task('css_nishidaka2', function () {
+    return gulp.src(['./src/nishidaka/static/css/base.css', './src/nishidaka/static/css/index2.css'])
+        .pipe(concat('all.css'))
+        .pipe(minifyCss())
+        .pipe(rename('index2.min.css'))
+        .pipe(gulp.dest('./src/nishidaka/static/css'))
+});
+
 gulp.task('js_nishidaka', function () {
     return gulp.src('./src/nishidaka/static/js/index.js')
         .pipe(uglify())
@@ -66,4 +87,5 @@ gulp.task('css_nishidaka', function () {
 
 gulp.task('default', ['jshint', 'js_minify', 'css_minify']);
 gulp.task('index', ['jshint', 'css_index', 'js_index']);
+gulp.task('nishidaka_index2', ['js_daka2', 'css_nishidaka2', 'js_nishidaka2']);
 gulp.task('nishidaka_index', ['js_daka', 'css_nishidaka', 'js_nishidaka']);

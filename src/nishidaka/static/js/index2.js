@@ -1,9 +1,5 @@
 Zepto(function($){
 
-    imagesLoaded('.item',function(){
-        $('.loadercontent').hide();
-    });
-
     (function count() {
 
         var useragent = 2;
@@ -28,7 +24,7 @@ Zepto(function($){
         ev.preventDefault();
     });
 
-    var result = [1, 0, 2, 1, 0, 2];
+    var result = [0, 0, 0, 0, 2, 2];
     var boxs = $('.comment .item');
     var swich = 0;
     var sub = 0;
@@ -47,74 +43,60 @@ Zepto(function($){
         $(this).addClass('collected');
         var val = $(this).attr("val");
         var itemIndex = $(this).parent('div').parent().parent().attr('index');
-        var percent = $('.top-percent');
-
 
         //统计每道题选择之后的分数
         var num;
         if(itemIndex == 1){
-            num = parseInt(15*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[0]){
-                sub += 15;
-                score += 1;
+                sub += 10;
             }else{
                 sub += num;
-                score += 0;
             }
         }
 
         if(itemIndex == 2){
-            num = parseInt(15*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[1]){
-                sub += 15;
-                score += 1;
+                sub += 10;
             }else{
                 sub += num;
-                score += 0;
             }
         }
 
         if(itemIndex == 3){
-            num = parseInt(15*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[2]){
-                sub += 20;
-                score += 1;
+                sub += 10;
             }else{
                 sub += num;
-                score += 0;
             }
         }
 
         if(itemIndex == 4){
-            num = parseInt(15*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[3]){
-                sub += 15;
-                score += 1;
+                sub += 10;
             }else{
                 sub += num;
-                score += 0;
             }
         }
 
         if(itemIndex == 5){
-            num = parseInt(15*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[4]){
-                sub += 15;
-                score += 1;
+                sub += 10;
             }else{
                 sub += num;
-                score += 0;
             }
         }
 
         if(itemIndex == 6){
-            num = parseInt(15*Math.random());
+            num = parseInt(10*Math.random());
             if($(this).attr('val')== result[5]){
-                sub += 20;
-                score += 1;
+                sub += 10;
             }else{
                 sub += num;
-                score += 0;
             }
         }
 
@@ -134,16 +116,33 @@ Zepto(function($){
 
         //显示统计的分数
         var mark = $('.top-mark');
+        var percent = $('.top-percent');
+        mark.text(sub+40);
 
-        if(score === 0){
-            mark.text(0);
-        }else{
-            mark.text(sub);
+        //显示超过人数的百分比
+        if(mark.text()==100){
+            percent.text(99);
+        }else if(mark.text()>=90){
+            num = parseInt(10*Math.random());
+            percent.text(90+num);
+        }else if(mark.text()>=80){
+            num = parseInt(10*Math.random());
+            percent.text(80+num);
+        }else if(mark.text()>=70){
+            num = parseInt(10*Math.random());
+            percent.text(70+num);
+        }else if(mark.text()>=60){
+            num = parseInt(10*Math.random());
+            percent.text(60+num);
+        }else if(mark.text()>=50){
+            num = parseInt(10*Math.random());
+            percent.text(50+num);
+        }else if(mark.text()>=40){
+            num = parseInt(10*Math.random());
+            percent.text(40+num);
         }
 
-        //显示答对的个数
-        percent.text(score);
-
+        score = percent.text();
         //配置好友分享
         shareWX(score)();
     });
@@ -156,7 +155,7 @@ Zepto(function($){
         transparency.show();
     });
     again.tap(function(){
-        window.location.href = "./index.html";
+        window.location.href = "./index2.html";
     });
 
     transparency.tap(function(){
@@ -164,6 +163,7 @@ Zepto(function($){
     });
 
     initWx();
+
 
     //处理微信接口
     function initWx() {
@@ -209,9 +209,9 @@ Zepto(function($){
     function shareWX(score){
         return function(){
             wx.onMenuShareAppMessage({
-                title: '最新的美甲产品和款式,你认识吗?', // 分享标题
-                desc: '我认出了' + score + '个,不服来战。', // 分享描述
-                link: 'http://huodong.naildaka.com/nishidaka/index.html', // 分享链接
+                title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!', // 分享标题
+                desc: '你也来,找出最合适的一款美甲吧!', // 分享描述
+                link: 'http://huodong.naildaka.com/nishidaka/index2.html', // 分享链接
                 imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608', // 分享图标
                 success: function () {
                     transparency.hide();
@@ -222,8 +222,8 @@ Zepto(function($){
             });
             //配置朋友圈分享
             wx.onMenuShareTimeline({
-                title: '最新的美甲产品于款式你了解多少?',
-                link: 'http://huodong.naildaka.com/nishidaka/index.html',
+                title: '我居然是骨灰级美甲咖,超过全国' + score + '%美甲师,不服来测!',
+                link: 'http://huodong.naildaka.com/nishidaka/index2.html',
                 imgUrl: 'http://pic.yilos.com/f8d1a51faa6bcdbe182a42826a3dc608',
                 success: function () {
                     transparency.hide();

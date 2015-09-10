@@ -145,7 +145,7 @@ Zepto(function($){
         var str;
         if(score === 6){
             $('.top-count').text('哇晒！美甲大咖原来是你!');
-            str = "";
+            str = "全对!我是美甲大咖,不服来战!";
         }else{
             percent.text(score);
             str = "我认出了" + score + "个,不服来战。";

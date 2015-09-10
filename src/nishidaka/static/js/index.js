@@ -204,7 +204,7 @@ Zepto(function($){
                     ]
                 });
                 //微信分享
-                var str = "'我认出了0个,不服来战。'";
+                var str = "我认出了0个,不服来战。";
                 wx.ready(shareWX(str));
             },
             error: function(err){

@@ -1,7 +1,12 @@
 .fullPage{
-    background: url("../images/background.png");
+    background: url("../images/background.png") no-repeat;
+    background-size: 100%;
 }
 
 .join{
     background: url("../images/button.png");
+}
+
+.title-img{
+
 }

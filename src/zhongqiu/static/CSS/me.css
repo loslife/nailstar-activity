@@ -48,11 +48,23 @@ html, body {
     text-align: center;
     position: relative;
     width: 60%;
-    margin: 0 auto;
-    margin-top: 8%;
+    margin: 6% auto 0;
     border: 5px solid #ffffff;
 }
 
+#tip{
+    width: 80%;
+    text-align: center;
+    font-size: 1.4em;
+    margin: 0 auto;
+    margin-top: 6%;
+}
+#tip > .font-white{
+    color: #ffffff;
+}
+#tip > .font-yellow{
+    color: #fff100;
+}
 .deco-img2{
     position: absolute;
     top: -8%;
@@ -78,7 +90,7 @@ html, body {
     background-size: 35%;
     height: 45px;
     margin: 0 auto;
-    margin-top: 6%;
+    margin-top: 4%;
 }
 
 .join-text{

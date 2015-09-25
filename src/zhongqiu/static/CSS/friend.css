@@ -108,7 +108,7 @@ html, body {
     font-size: 16px;
     line-height: 32px;
     width: 106px;
-    background: url("../images/button.png") no-repeat;
+    background: url("../images/yellowbutton.png") no-repeat;
     background-size: 100%;
 }
 
@@ -118,7 +118,7 @@ html, body {
     font-size: 16px;
     line-height: 32px;
     width: 106px;
-    background: url("../images/yellowbutton.png") no-repeat;
+    background: url("../images/button.png") no-repeat;
     background-size: 100%;
 }
 

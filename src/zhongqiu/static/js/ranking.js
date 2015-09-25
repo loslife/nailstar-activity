@@ -52,11 +52,6 @@ jQuery(function($){
 		$('.renqi').hide();
 		$('.mx').show();
 		$('html,body').scrollTop(0);
-		$('#waterfall li').wookmark({
-			autoResize: true, // 当浏览器大小改变时是否自动调整
-			container: $('#mxlist'),
-			offset: 6
-		});
 	});
 
 	// 分享提示
@@ -152,13 +147,13 @@ jQuery(function($){
 			var rank = i+1;
 			if(i == 0){
 				s = things.a;
-				console.log(s);
+
 			}else if(i>0&&i<3){
 				s = things.b;
-				console.log(s);
+
 			}else if(i>2&&i<15){
 				s = things.c;
-				console.log(s);
+
 			}
 
 			var classa;
@@ -177,6 +172,9 @@ jQuery(function($){
 							'<div class="rankpiao">'+datas[i].vote+'</div>'+
 							'<div class="rankaward"><img src="'+s+'" alt=""></div>'+
 						'</li>';
+			if(i>15){
+				return;
+			}
 			$('.ranklist').append(html);
 		}
 	}
@@ -184,7 +182,7 @@ jQuery(function($){
 	//生成更多
 	function creatmxlist (datas) {
 		for (var i = 0; i < datas.length; i++) {
-			console.log('2'+datas[i]);
+
 			var html = '<li>'+
 							'<div class="top">'+
 								'<img src="'+datas[i].url+'" alt="">'+

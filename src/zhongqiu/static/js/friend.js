@@ -1,32 +1,49 @@
-Zepto(function($){
+Zepto(function ($) {
     var union_id = getQueryString("union_id");
-    var userinfo = "http://huodong.naildaka.com/svc/zhongqiu/info/" + union_id;
+    var canvote = getQueryString("can_vote");
+
+    getInfo(union_id, function(err, data){
+        if(err || !data || !data.result){
+            return console.log(err);
+        }
+        $('.main-vote-number').text(data.result.vote);
+        $('.main-img').attr('src',data.result.url);
+    });
+
+    if (canvote === 1 || canvote === "1") {
+        $('#vote').removeClass("has-voted").addClass("vote");
+        $('#vote').text("投一票");
+
+        $("#vote").on('click', function () {
+
+            var myunion_id = getQueryString("myunion_id");
+            var postData = {
+                friend_union_id: union_id,
+                my_union_id: myunion_id
+            };
+            postVote(postData, function(err, data){
+            });
+            var vote = parseInt($('.main-vote-number').text());
+            $('.main-vote-number').text(vote + 1);
+            $('#vote').removeClass("vote").addClass("has-voted");
+            $('#vote').text("已投票");
+            $("#vote").unbind('click');
+        })
+    }
 
 
     var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
         "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
-    getRequest(userinfo,function(err,data){
-        if(err){
-            console.log(err);
-            return;
-        }
-        if(data && data.result && data.result.vote !== null){
-            $('.main-vote-number').text(data.result.vote);
-        }
-        if(data && data.result && data.result.url){
-            $('.main-img').attr('src',data.result.url);
-        }
-    });
 
-    $('body').on('touchmove ', function(ev){
+    $('body').on('touchmove ', function (ev) {
         ev.preventDefault();
     });
 
     initWx();
 
-    wx.ready(function(){
+    wx.ready(function () {
         //配置好友分享
         wx.onMenuShareAppMessage({
             title: '你负责貌美如花，大咖负责把iPhone6s送进家！', // 分享标题
@@ -34,10 +51,10 @@ Zepto(function($){
             link: shareUrl, // 分享链接
             imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
-                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu',function (error,date) {
-                    if(data.code != 0){
+                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
+                    if (data.code != 0) {
                         console.log('err');
-                    }else{
+                    } else {
                         console.log('ok');
                     }
                 })
@@ -51,10 +68,10 @@ Zepto(function($){
             link: shareUrl,
             imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg',
             success: function () {
-                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu',function (error,date) {
-                    if(data.code != 0){
+                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
+                    if (data.code != 0) {
                         console.log('err');
-                    }else{
+                    } else {
                         console.log('ok');
                     }
                 })
@@ -75,7 +92,21 @@ function getQueryString(name) {
     return null;
 }
 
-//Ajax请求
+var port = "http://huodong.naildaka.com/svc/zhongqiu";
+
+//封装getInfo
+function getInfo(union_id, callback){
+    var url = port + "/info/" + union_id;
+    getRequest(url, callback);
+}
+
+//封装vote
+function postVote(postData, callback){
+    var url = port + "/vote";
+    postRequest(url, postData, callback);
+}
+
+//封装get请求
 function getRequest(url,callback){
     $.ajax({
         type: 'GET',
@@ -89,7 +120,28 @@ function getRequest(url,callback){
             callback(null,data);
         },
         error: function(error){
-            callback(error);
+            console.log(error);
+        },
+        dataType: "json"
+    });
+}
+
+//封装post请求
+function postRequest(url, data, callback) {
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: data,
+        beforeSend: function (request) {
+            request.setRequestHeader("xhr", "true");
+        },
+        xhrFields: {withCredentials: true},
+        crossDomain: true,
+        success: function (data) {
+            callback(null, data);
+        },
+        error: function (error) {
+            console.log(error);
         },
         dataType: "json"
     });
@@ -107,13 +159,13 @@ function initWx() {
             url: nowUrl,
             appId: app_id
         },
-        beforeSend: function(request) {
+        beforeSend: function (request) {
         },
-        xhrFields:{
+        xhrFields: {
             withCredentials: true
         },
         crossDomain: true,
-        success: function(data){
+        success: function (data) {
             var signature = data.result.sign;
             wx.config({
                 debug: false,
@@ -127,9 +179,9 @@ function initWx() {
                 ]
             });
         },
-        error: function(err){
+        error: function (err) {
             console.log(err);
         },
-        dataType:"json"
+        dataType: "json"
     });
 }

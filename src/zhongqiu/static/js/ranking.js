@@ -33,6 +33,7 @@ jQuery(function($){
 		}
 
 		rankData.view.tab = true;
+		$('.timetips').show();
 		$('.tab-left img').attr('src', './images/rank-left-btn1.png');
 		$('.tab-right img').attr('src', './images/rank-right-btn2.png');
 		$('.renqi').show();
@@ -47,6 +48,7 @@ jQuery(function($){
 		}
 
 		rankData.view.tab = false;
+		$('.timetips').hide();
 		$('.tab-left img').attr('src', './images/rank-left-btn2.png');
 		$('.tab-right img').attr('src', './images/rank-right-btn1.png');
 		$('.renqi').hide();

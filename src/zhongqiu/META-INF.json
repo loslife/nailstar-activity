@@ -14,13 +14,52 @@
         }
     },
     "services": [
-
+        {
+            "name": "zhongqiu_route",
+            "path": "/zhongqiu/route/:unionId",
+            "method": "get",
+            "auth": false,
+            "impl": "zhongqiu.route",
+            "comment": "页面路由"
+        },
+        {
+            "name": "zhongqiu_getinfo",
+            "path": "/zhongqiu/info/:unionId",
+            "method": "get",
+            "auth": false,
+            "impl": "zhongqiu.info",
+            "comment": "查询个人信息"
+        },
+        {
+            "name": "zhongqiu_infos",
+            "path": "/zhongqiu/infos",
+            "method": "get",
+            "auth": false,
+            "impl": "zhongqiu.infos",
+            "comment": "查询排行榜"
+        },
+        {
+            "name": "zhongqiu_uploadimage",
+            "path": "/zhongqiu/uploadImage",
+            "method": "post",
+            "auth": false,
+            "impl": "zhongqiu.uploadImage",
+            "comment": "上传图片"
+        },
+        {
+            "name": "zhongqiu_addRecord",
+            "path": "/zhongqiu/addRecord",
+            "method": "post",
+            "auth": false,
+            "impl": "zhongqiu.addRecord",
+            "comment": "新增记录"
+        }
     ],
     "statics": [
         {
             "name": "zhongqiu",
             "path": "/zhongqiu",
-            "comment": "zhongqiu"
+            "comment": "中秋活动"
         }
     ],
     "dataModelSchema": [

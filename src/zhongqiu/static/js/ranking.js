@@ -172,6 +172,9 @@ jQuery(function($){
 							'<div class="rankpiao">'+datas[i].vote+'</div>'+
 							'<div class="rankaward"><img src="'+s+'" alt=""></div>'+
 						'</li>';
+			if(i>15){
+				return;
+			}
 			$('.ranklist').append(html);
 		}
 	}

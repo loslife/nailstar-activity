@@ -1,0 +1,217 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: arial;
+    text-align: center;
+}
+
+/* 介绍背景 */
+.fullPage{
+    background: url("../images/background.png") no-repeat;
+    background-size: 100%;
+}
+
+.title{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.title-img{
+    width: 85%;
+}
+
+.doc{
+    text-align: center;
+}
+
+.doc-img{
+    width: 90%;
+}
+
+.main{
+    text-align: center;
+    position: relative;
+}
+
+.main-cotent{
+    width: 28%;
+    position: absolute;
+    left: 11%;
+    top: 21%;
+}
+
+.main-img{
+    width: 100%;
+}
+
+.join{
+    text-align: center;
+    background: url("../images/button.png") no-repeat center;
+    background-size: 35%;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.join-text{
+    color: #fff;
+    height: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    width: 106px;
+}
+.introduce{
+    display: block;
+}
+
+/* 上传后拉票*/
+#share{
+    display: none;
+}
+
+/* cover */
+#cover{
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+#require{
+    width: 76%;
+    height: 20%;
+    margin: 0 auto;
+    margin-top: 11%;
+}
+#require > img{
+    width: 100%;
+    height: 100%;
+}
+#sample{
+    width: 63%;
+    height: 47%;
+    margin: 0 auto;
+    margin-top: 11%;
+}
+#sample > img{
+    width: 100%;
+    height: 100%;
+}
+#upload{
+    width: 36%;
+    height: 6%;
+    margin: 0 auto;
+    margin-top: 15%;
+    position: relative;
+    background-color: #fff100;
+    border-radius: 20px;
+}
+#upload > img{
+    width: 100%;
+    height: 100%;
+}
+#upload > span{
+    font-size: 1.4em;
+    display: inline-block;
+    position: absolute;
+    top: 18%;
+    left: 26%;
+}
+
+#uploadFile{
+    display: none;
+}
+
+/* 截图框 */
+#preview-wrapper{
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,1);
+    top: 0;
+    z-index: 2000;
+}
+.img-container{
+    width: 100%;
+    height: 100%;
+}
+.img-container > img{
+    width: 100%;
+    height: 100%;
+}
+.img-btn{
+    position: absolute;
+    height: 15%;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+}
+.img-btn div{
+    font-size: 16px;
+    color: #ffffff;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+/*页面跳转动画*/
+.loadercontent{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255,255,255);
+    position: fixed;
+    top: 0;
+    z-index: 3000;
+    /*display: none;*/
+}
+.wrap{
+    width: 42px;
+    height: 42px;
+    position: relative;
+    margin-top: 50%;
+    margin-left: 50%;
+    left: -21px;
+}
+.outer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: spin 800ms infinite linear;
+    -webkit-animation: spin 800ms infinite linear;
+}
+.inner{
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+.inner img{
+    width: 100%;
+}
+@keyframes spin {
+    0%   { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+@-webkit-keyframes spin {
+    0%   { -webkit-transform: rotate(360deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+
+/* 分享蒙层 */
+.transparency{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.transparency-img{
+    margin-right: 30px;
+    width: 50%;
+    float: right;
+}

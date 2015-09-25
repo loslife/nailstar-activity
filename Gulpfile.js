@@ -94,13 +94,14 @@ gulp.task('nishidaka_index', ['js_daka', 'css_nishidaka', 'js_nishidaka']);
 
 require("./src/zhongqiu/gulp_zhongqiu.js");
 
-gulp.task('zhongqiu', ['me_js', 'me_css']);
+gulp.task('zhongqiu_base',['base_css']);
+gulp.task('zhongqiu_me', ['me_js', 'me_css']);
+gulp.task('zhongqiu_rank',['rank_css','rank_js']);
+gulp.task('zhongqiu_introduce', ['introduce_js', 'introduce_css']);
+gulp.task('zhongqiu_friend', ['friend_js', 'friend_css']);
 
-gulp.task('rank',['rank_css','rank_js']);
 
-gulp.task('base',['base_css']);
+gulp.task('zhongqiu', ['zhongqiu_base', 'zhongqiu_me', 'zhongqiu_rank', 'zhongqiu_introduce', 'zhongqiu_friend']);
 
-gulp.task('me_zhongqiu', ['me_js', 'me_css']);
-gulp.task('introduce_zhongqiu', ['introduce_js', 'introduce_css']);
-gulp.task('friend_zhongqiu', ['friend_js', 'friend_css']);
+
 

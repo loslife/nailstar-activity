@@ -1,15 +1,26 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: arial;
+    text-align: center;
+}
+
 .fullPage{
     background: url("../images/background.png") no-repeat;
     background-size: 100%;
+    overflow: hidden;
 }
 
 .title{
     text-align: center;
-    margin-top: 5%;
+    margin: 0 auto;
+    width: 83%;
+    padding-top: 5%;
+    height: 22%;
 }
 
 .title-img{
-    width: 85%;
+    width: 100%;
 }
 
 .doc{
@@ -57,55 +68,66 @@
 }
 
 .code{
-    display: none;
+    height: 77%;
+    overflow: hidden;
+    margin-top: 5px;
 }
 
 .code-img-div{
     text-align: center;
-    margin-top: 20%;
+    height: 29%;
+    width: 32%;
+    margin: 0 auto;
 }
 
 .code-img{
-    width: 49%;
+    width: 100%;
 }
 
 .iphone6S{
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+}
+
+.daka{
+    font-size: 22px;
     font-weight: bold;
     color: red;
 }
 
 .code-text{
     text-align: center;
-    margin-top: 7%;
-    margin-bottom: 7%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+    height: 9%;
 }
 
-.code-text p{
+.code-text-p{
     font-size: 16px;
-}
-
-.code-text span{
-    font-size: 18px;
 }
 
 .code-main{
     position: relative;
+    height: 60%;
 }
 
-.code-main-cotent{
+.code-main-one{
     width: 30%;
     position: absolute;
-    left: 5%;
-    top: 15%;
+    left: 9%;
+    top: 17%;
+}
+
+.code-main-two{
+    width: 100%;
+    padding-top: 6%;
+}
+
+.code-main-content{
+    width: 100%;
 }
 
 .code-main-img{
     width: 100%;
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: arial;
-    text-align: center;
 }

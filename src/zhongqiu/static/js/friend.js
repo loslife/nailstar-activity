@@ -1,0 +1,135 @@
+Zepto(function($){
+    var union_id = getQueryString("union_id");
+    var userinfo = "http://huodong.naildaka.com/svc/zhongqiu/info/" + union_id;
+
+
+    var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
+        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
+        + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+
+    getRequest(userinfo,function(err,data){
+        if(err){
+            console.log(err);
+            return;
+        }
+        if(data && data.result && data.result.vote !== null){
+            $('.main-vote-number').text(data.result.vote);
+        }
+        if(data && data.result && data.result.url){
+            $('.main-img').attr('src',data.result.url);
+        }
+    });
+
+    $('body').on('touchmove ', function(ev){
+        ev.preventDefault();
+    });
+
+    initWx();
+
+    wx.ready(function(){
+        //配置好友分享
+        wx.onMenuShareAppMessage({
+            title: '你负责貌美如花，大咖负责把iPhone6s送进家！', // 分享标题
+            desc: '我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！', // 分享描述
+            link: shareUrl, // 分享链接
+            imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
+            success: function () {
+                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu',function (error,date) {
+                    if(data.code != 0){
+                        console.log('err');
+                    }else{
+                        console.log('ok');
+                    }
+                })
+            },
+            cancel: function () {
+            }
+        });
+        //配置朋友圈分享
+        wx.onMenuShareTimeline({
+            title: '我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！',
+            link: shareUrl,
+            imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg',
+            success: function () {
+                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu',function (error,date) {
+                    if(data.code != 0){
+                        console.log('err');
+                    }else{
+                        console.log('ok');
+                    }
+                })
+            },
+            cancel: function () {
+            }
+        });
+    });
+});
+
+//匹配URL里的值
+function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
+
+//Ajax请求
+function getRequest(url,callback){
+    $.ajax({
+        type: 'GET',
+        url: url,
+        beforeSend: function(request) {
+            request.setRequestHeader("xhr", "true");
+        },
+        xhrFields:{withCredentials:true},
+        crossDomain:true,
+        success:function(data){
+            callback(null,data);
+        },
+        error: function(error){
+            callback(error);
+        },
+        dataType: "json"
+    });
+}
+
+//处理微信接口
+function initWx() {
+    var app_id = "wxa84c9db4a6fcc7d8";
+    var nowUrl = window.location.href;
+    var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
+    $.ajax({
+        type: 'POST',
+        url: signUrl,
+        data: {
+            url: nowUrl,
+            appId: app_id
+        },
+        beforeSend: function(request) {
+        },
+        xhrFields:{
+            withCredentials: true
+        },
+        crossDomain: true,
+        success: function(data){
+            var signature = data.result.sign;
+            wx.config({
+                debug: false,
+                appId: app_id,
+                timestamp: 1421670369,
+                nonceStr: 'q2XFkAiqofKmi1Y2',
+                signature: signature,
+                jsApiList: [
+                    "onMenuShareTimeline",
+                    "onMenuShareAppMessage"
+                ]
+            });
+        },
+        error: function(err){
+            console.log(err);
+        },
+        dataType:"json"
+    });
+}

@@ -112,6 +112,16 @@ html, body {
     background-size: 100%;
 }
 
+.has-voted{
+    color: black;
+    height: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    width: 106px;
+    background: url("../images/yellowbutton.png") no-repeat;
+    background-size: 100%;
+}
+
 .metoo{
     text-decoration: none;
     color: black;

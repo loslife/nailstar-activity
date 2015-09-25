@@ -44,12 +44,41 @@ html, body {
     width: 100%;
 }
 
+.main2{
+    text-align: center;
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 8%;
+    border: 5px solid #ffffff;
+}
+
+.deco-img2{
+    position: absolute;
+    top: -8%;
+    left: 44%;
+    width: 12%;
+}
+
+.main-img2{
+    width: 100%;
+    display: block;
+}
 .join{
     text-align: center;
     background: url("../images/button.png") no-repeat center;
     background-size: 35%;
     height: 45px;
     margin: 0 auto;
+}
+
+.join2{
+    text-align: center;
+    background: url("../images/button.png") no-repeat center;
+    background-size: 35%;
+    height: 45px;
+    margin: 0 auto;
+    margin-top: 6%;
 }
 
 .join-text{

@@ -2,7 +2,10 @@ $(function(){
 
     var union_id = getQueryString("union_id");
     $(".loadercontent").hide();
-    initCropprt()
+    $('body').on('touchmove', function(ev){
+        ev.preventDefault();
+    });
+    initCropprt();
     initWx();
 
     $("#upload").on("click", function(){
@@ -144,9 +147,11 @@ $(function(){
                         imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
                         success: function () {
                             transparency.hide();
+                            shareRecord();
                         },
                         cancel: function () {
                             transparency.hide();
+                            shareRecord();
                         }
                     });
                     //配置朋友圈分享
@@ -156,9 +161,11 @@ $(function(){
                         imgUrl: 'http://huodong.naildaka.com/nishidaka/zhongqiu/images/share.jpg',
                         success: function () {
                             transparency.hide();
+                            shareRecord();
                         },
                         cancel: function () {
                             transparency.hide();
+                            shareRecord();
                         }
                     });
                 });
@@ -171,7 +178,9 @@ $(function(){
     }
 
     function showShare(picUrl){
-        $("#share.main-img").attr("src", picUrl);
+        $("#share .main-img2").attr("src", picUrl);
+        $("#introduce").hide();
+        $("#cover").hide();
         $("#share").show();
         var desc = "你负责貌美如花，大咖负责把iPhone6s送进家！";
         var title = "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！";
@@ -186,21 +195,25 @@ $(function(){
             imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
                 transparency.hide();
+                shareRecord();
             },
             cancel: function () {
                 transparency.hide();
+                shareRecord();
             }
         });
         //配置朋友圈分享
         wx.onMenuShareTimeline({
             title: title,
             link: shareUrl,
-            imgUrl: 'http://huodong.naildaka.com/nishidaka/zhongqiu/images/share.jpg',
+            imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg',
             success: function () {
                 transparency.hide();
+                shareRecord();
             },
             cancel: function () {
                 transparency.hide();
+                shareRecord();
             }
         });
     }

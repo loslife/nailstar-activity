@@ -13,9 +13,10 @@ html, body {
 
 .title{
     text-align: center;
-    height: 23%;
-    width: 80%;
     margin: 0 auto;
+    width: 83%;
+    padding-top: 5%;
+    height: 22%;
 }
 
 .title-img{
@@ -64,7 +65,7 @@ html, body {
 }
 
 .main-user{
-    border: 3px solid #fff;
+    border: 5px solid #fff;
     width: 51%;
     margin: 0 auto;
     position: relative;
@@ -73,6 +74,7 @@ html, body {
 .time{
     color: #fff;
     height: 10%;
+    font-size: 18px;
 }
 
 .main-img{

@@ -1,6 +1,6 @@
 Zepto(function($){
     var union_id = getQueryString("union_id");
-    var userinfo = "http://huodong.naildaka.com/svc/zhongqiu/info/:"+union_id;
+    var userinfo = "http://huodong.naildaka.com/svc/zhongqiu/info/" + union_id;
 
 
     var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
@@ -12,12 +12,16 @@ Zepto(function($){
             console.log(err);
             return;
         }
-        if(data && data.result && data.result.vote){
+        if(data && data.result && data.result.vote !== null){
             $('.main-vote-number').text(data.result.vote);
         }
         if(data && data.result && data.result.url){
             $('.main-img').attr('src',data.result.url);
         }
+    });
+
+    $('body').on('touchmove ', function(ev){
+        ev.preventDefault();
     });
 
     initWx();

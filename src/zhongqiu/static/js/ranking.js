@@ -348,6 +348,10 @@ Date.prototype.lastTime = function(){
     var time = this.getTime();
     var hours = Math.floor(time / (1000 * 60 * 60));
     var minutes = Math.floor(time / (1000 * 60) - (60 * hours));
+    if(hours>23){
+    	var day = hours%24;
+    	return day+'天';
+    }
     if(minutes < 10){
         minutes = "0" + minutes;
     }

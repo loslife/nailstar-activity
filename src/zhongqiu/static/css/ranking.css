@@ -192,6 +192,7 @@ html,body{
 }
 .ranklist{
 	margin-top: 5px;
+	padding-bottom: 10px;
 }
 .item{
 	width: 94%;
@@ -255,12 +256,13 @@ html,body{
 }
 #mxlist{
 	position:relative;
+	padding-bottom: 10px;
 }
 #mxlist li{
 	width: 44%;
 	background-color: #fff;
 	padding: 2% 2% 2% 2%;
-	float: left;
+	display: inline-block;
 	margin-left: 1%;
 	margin-right: 1%;
 	margin-top: 2%;

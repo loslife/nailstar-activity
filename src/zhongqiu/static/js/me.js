@@ -133,11 +133,14 @@ $(function(){
                 wx.ready(function(){
                     var desc = "你负责貌美如花，大咖负责把iPhone6s送进家！";
                     var title = "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！";
+                    var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
+                        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
+                        + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
                     var transparency = $(".transparency");
                     wx.onMenuShareAppMessage({
                         title: title, // 分享标题
                         desc: desc, // 分享描述
-                        link: 'http://huodong.naildaka.com/zhongqiu/introduce.html', // 分享链接
+                        link: shareUrl,
                         imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
                         success: function () {
                             transparency.hide();
@@ -149,7 +152,7 @@ $(function(){
                     //配置朋友圈分享
                     wx.onMenuShareTimeline({
                         title: title,
-                        link: 'http://huodong.naildaka.com/zhongqiu/introduce.html',
+                        link: shareUrl,
                         imgUrl: 'http://huodong.naildaka.com/nishidaka/zhongqiu/images/share.jpg',
                         success: function () {
                             transparency.hide();
@@ -172,11 +175,14 @@ $(function(){
         $("#share").show();
         var desc = "你负责貌美如花，大咖负责把iPhone6s送进家！";
         var title = "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！";
+        var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
+            "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
+            + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         var transparency = $(".transparency");
         wx.onMenuShareAppMessage({
             title: title, // 分享标题
             desc: desc, // 分享描述
-            link: 'http://huodong.naildaka.com/zhongqiu/friend.html?union_id=' + union_id, // 分享链接
+            link: shareUrl,
             imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
                 transparency.hide();
@@ -188,7 +194,7 @@ $(function(){
         //配置朋友圈分享
         wx.onMenuShareTimeline({
             title: title,
-            link: 'http://huodong.naildaka.com/zhongqiu/friend.html?union_id=' + union_id,
+            link: shareUrl,
             imgUrl: 'http://huodong.naildaka.com/nishidaka/zhongqiu/images/share.jpg',
             success: function () {
                 transparency.hide();

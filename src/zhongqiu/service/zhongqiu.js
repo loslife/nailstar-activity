@@ -15,6 +15,7 @@ exports.info = info;
 exports.infos = infos;
 exports.uploadImage = uploadImage;
 exports.addRecord = addRecord;
+exports.vote = vote;
 
 function route(req, res, next){
 
@@ -48,7 +49,7 @@ function route(req, res, next){
         // 访问别人页面
         if(source_union_id !== union_id){
 
-            _doVote(function(err){
+            _checkVote(function(err, canVote){
 
                 if(err){
                     console.log(err);
@@ -56,7 +57,7 @@ function route(req, res, next){
                     return;
                 }
 
-                redirectUrl = "http://huodong.naildaka.com/zhongqiu/friend.html?union_id=" + source_union_id;
+                redirectUrl = "http://huodong.naildaka.com/zhongqiu/friend.html?union_id=" + source_union_id + "&can_vote=" + canVote + "&my_union_id=" + union_id;
                 res.redirect(redirectUrl);
             });
 
@@ -81,13 +82,11 @@ function route(req, res, next){
             res.redirect(redirectUrl);
         });
 
-        function _doVote(callback){
+        function _checkVote(callback){
 
-            var sql1 = "select count(1) 'count' from zhongqiu_vote_history where voting_union_id = :voting_id and voted_union_id = :voted_id";
-            var sql2 = "insert into zhongqiu_vote_history (id, voting_union_id, voted_union_id, create_date) values(:id, :voting_id, :voted_id, :create_date)";
-            var sql3 = "update zhongqiu_records set vote_count = vote_count + 1 where union_id = :union_id";
+            var sql = "select count(1) 'count' from zhongqiu_vote_history where voting_union_id = :voting_id and voted_union_id = :voted_id";
 
-            dbHelper.execSql(sql1, {voting_id: union_id, voted_id: source_union_id}, function(err, result) {
+            dbHelper.execSql(sql, {voting_id: union_id, voted_id: source_union_id}, function(err, result) {
 
                 if (err) {
                     callback(err);
@@ -97,25 +96,10 @@ function route(req, res, next){
                 var hasVote = result[0].count > 0;
 
                 if(hasVote){
-                    callback(null);
-                    return;
+                    callback(null, 0);
+                }else{
+                    callback(null, 1);
                 }
-
-                var id = uuid.v1();
-                var now = new Date().getTime();
-                var params = {id: id, voting_id: union_id, voted_id: source_union_id, create_date: now};
-
-                dbHelper.execSql(sql2, params, function(err){
-
-                    if(err){
-                        callback(err);
-                        return;
-                    }
-
-                    dbHelper.execSql(sql3, {union_id: source_union_id}, function(err){
-                        callback(err);
-                    });
-                });
             });
         }
 
@@ -337,5 +321,56 @@ function addRecord(req, res, next){
         }
 
         doResponse(req, res, {message: "ok"});
+    });
+}
+
+function vote(req, res, next){
+
+    var friend_union_id = req.body.friend_union_id;
+    var my_union_id = req.body.my_union_id;
+
+    var sql1 = "select count(1) 'count' from zhongqiu_vote_history where voting_union_id = :voting_id and voted_union_id = :voted_id";
+    var sql2 = "insert into zhongqiu_vote_history (id, voting_union_id, voted_union_id, create_date) values(:id, :voting_id, :voted_id, :create_date)";
+    var sql3 = "update zhongqiu_records set vote_count = vote_count + 1 where union_id = :union_id";
+
+    dbHelper.execSql(sql1, {voting_id: my_union_id, voted_id: friend_union_id}, function(err, result) {
+
+        if (err) {
+            console.log(err);
+            next(err);
+            return;
+        }
+
+        var hasVote = result[0].count > 0;
+
+        if(hasVote){
+            console.log("has voted");
+            next({message: "duplicated vote request"});
+            return;
+        }
+
+        var id = uuid.v1();
+        var now = new Date().getTime();
+        var params = {id: id, voting_id: my_union_id, voted_id: friend_union_id, create_date: now};
+
+        dbHelper.execSql(sql2, params, function(err){
+
+            if(err){
+                console.log(err);
+                next(err);
+                return;
+            }
+
+            dbHelper.execSql(sql3, {union_id: friend_union_id}, function(err){
+
+                if(err){
+                    console.log(err);
+                    next(err);
+                    return;
+                }
+
+                doResponse(req, res, {message: "ok"});
+            });
+        });
     });
 }

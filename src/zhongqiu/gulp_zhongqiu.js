@@ -27,7 +27,7 @@ gulp.task('rank_js', function () {
 });
 
 gulp.task('rank_css', function () {
-    return gulp.src('./src/zhongqiu/static/css/rank.css')
+    return gulp.src('./src/zhongqiu/static/css/ranking.css')
         .pipe(minifyCss())
         .pipe(rename('rank.min.css'))
         .pipe(gulp.dest('./src/zhongqiu/static/css'));

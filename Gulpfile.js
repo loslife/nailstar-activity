@@ -93,6 +93,14 @@ gulp.task('nishidaka_index', ['js_daka', 'css_nishidaka', 'js_nishidaka']);
 
 
 require("./src/zhongqiu/gulp_zhongqiu.js");
+
+gulp.task('zhongqiu', ['me_js', 'me_css']);
+
+gulp.task('rank',['rank_css','rank_js']);
+
+gulp.task('base',['base_css']);
+
 gulp.task('me_zhongqiu', ['me_js', 'me_css']);
 gulp.task('introduce_zhongqiu', ['introduce_js', 'introduce_css']);
 gulp.task('friend_zhongqiu', ['friend_js', 'friend_css']);
+

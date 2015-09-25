@@ -209,6 +209,7 @@ html,body{
 .ranknumber{
 	font-size: 18px;
 	margin-left: 12px;
+	width: 20px;
 }
 .rankimg{
 	width: 36px;

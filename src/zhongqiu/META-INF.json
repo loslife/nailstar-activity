@@ -1,0 +1,32 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services": [
+      
+    ],
+    "statics": [
+        {
+            "name": "zhongqiu",
+            "path": "/zhongqiu",
+            "comment": "中秋活动"
+        }
+    ],
+    "dataModelSchema": [
+    ],
+    "configuration": {
+
+    },
+    "errorHandler": []
+}

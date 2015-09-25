@@ -230,8 +230,8 @@ function info(req, res, next){
             return;
         }
 
-        if(results.count == 0){
-            doReponse(req, res, {vote: 0, url: "", nickname: "", avatar: "", ranking: 0});
+        if(results.length === 0){
+            doResponse(req, res, {vote: 0, url: "", nickname: "", avatar: "", ranking: 0});
             return;
         }
 

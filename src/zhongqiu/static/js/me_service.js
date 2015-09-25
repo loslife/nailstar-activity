@@ -1,14 +1,15 @@
-var host = "http://192.168.1.115:5013/vapi2";
+var host = "http://huodong.naildaka.com/svc/zhongqiu";
 
 //上传图片接口
 function uploadImage(data, callback){
-    var url = host + "/nailstar/uploadImageWeixin";
+    var url = host + "/uploadImage";
     postRequest(url, data, callback);
 }
 
 //上传图片信息接口
-function uploadImageInfo(data, callback){
-
+function addRecord(data, callback){
+    var url = host + "/addRecord";
+    postRequest(url, data, callback);
 }
 
 //封装post请求

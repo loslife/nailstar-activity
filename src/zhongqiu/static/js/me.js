@@ -78,7 +78,7 @@ $(function(){
                     return alert("上传失败，请重试");
                 }
                 var picUrl = data.result.picUrl;
-                uploadImageInfo({picUrl: picUrl,union_id: union_id}, function(err, data){
+                addRecord({picurl: picUrl,unionid: union_id}, function(err, data){
                     if(err || data.code != 0){
                         return alert("上传失败，请重试");
                     }

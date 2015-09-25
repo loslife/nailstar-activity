@@ -1,4 +1,11 @@
 jQuery(function($){
+	var time = Date.parse("Oct 4, 2015");
+
+	setInterval(function () {
+		var now = new Date().getTime();
+		var lastTime = new Date(time - now).lastTime();
+		$("#h").text(lastTime);
+	},1000);
 	var rankData={
 		view:{
 			loadpage:true,		//页面载入动画
@@ -85,6 +92,9 @@ jQuery(function($){
             		rankData.view.scroll = false;
             	}
                 page ++;
+                setTimeout(function (argument) {
+                	$('.loadercontent').hide();
+                },500);
             }
         })
 	}
@@ -112,6 +122,10 @@ jQuery(function($){
 			b:'./images/ranking-2.png',
 			c:'./images/ranking-4.png'
 		};
+		var classname = {
+			a:'color1',
+			b:'color2'
+		}
 		var s;
 		for (var i = 0; i < datas.length; i++) {
 			var rank = i+1;
@@ -125,7 +139,12 @@ jQuery(function($){
 				s = things.c;
 				console.log(s);
 			}
-			var html = '<li class="color1 item db ba-c bo-h">'+
+			if(i%2 == 0){
+				var classa = classname.a;
+			}else{
+				var classa = classname.b;
+			}
+			var html = '<li class="'+classa+' item db ba-c bo-h">'+
 							'<div class="ranknumber">'+rank+'</div>'+
 							'<div class="rankimg"><img src="'+datas[i].avatar+'" alt=""></div>'+
 							'<div class="rankname">'+datas[i].nickname+'</div>'+
@@ -302,3 +321,16 @@ jQuery(function($){
     	}
 	}
 });
+Date.prototype.lastTime = function(){
+    var time = this.getTime();
+    var hours = Math.floor(time / (1000 * 60 * 60));
+    var minutes = Math.floor(time / (1000 * 60) - (60 * hours));
+    if(minutes < 10){
+        minutes = "0" + minutes;
+    }
+    var seconds = Math.floor(time / 1000 - (60 * minutes) - (60 * 60 * hours));
+    if(seconds < 10){
+        seconds = "0" + seconds;
+    }
+    return hours + " : " + minutes + " : " + seconds;
+};

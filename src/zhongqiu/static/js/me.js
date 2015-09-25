@@ -75,10 +75,15 @@ $(function(){
             $("#preview-wrapper").hide();
         });
 
+        var hasClick = false;
         $("#upload-image").click(function () {
+            if(hasClick){
+                return;
+            }
             $(".loadercontent").show();
             var data = $image.cropper('getCroppedCanvas').toDataURL();
             uploadImage({image: data}, function (err, data) {
+                hasClick = true;
                 $("#preview-wrapper").hide();
                 if (err || !data || data.code != 0) {
                     return alert("上传失败，请重试");

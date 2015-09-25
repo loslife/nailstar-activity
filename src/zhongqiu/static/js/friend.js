@@ -23,7 +23,8 @@ Zepto(function ($) {
 
             var postData = {
                 friend_union_id: union_id,
-                my_union_id: my_union_id
+                my_union_id: my_union_id,
+                source: 0
             };
 
             postVote(postData, function(err, data){});

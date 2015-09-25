@@ -113,7 +113,7 @@ jQuery(function($){
 			}
 			setTimeout(function () {
 				rankData.view.scroll = true;
-			},500)
+			},500);
 			rankData.view.page ++;
         });
 	}
@@ -202,33 +202,36 @@ jQuery(function($){
 							'<div class="mx-btn" unionid-data="'+datas[i].unionid+'">给Ta投票</div>'+
 						'</li>';
 			$('#mxlist').append(html);
-		};
+		}
 	}
 
-	//大家梦想页面投票
-	function mxbtn () {
+	// 大家梦想页面投票
+	function mxbtn() {
+
 		$('.mx-btn').each(function() {
-			this.click(function() {
-				var btn = this;
+
+			$(this).unbind("click").click(function() {
+
+				var btn = $(this);
 				var data = {
 					friend_union_id: btn.attr('unionid-data'),
 					my_union_id: rankData.union_id,
 					source: 1
 				};
+
 				postRequest(host + 'vote', data,function (error,data) {
+
+					btn.css('background-color', '#b1b1b1');
+					btn.text('已投票');
+
 		            if(data.code != 0){
-		                alert.log('已经投过了！');
-		              	btn.css('background-color', '#b1b1b1');
-		              	btn.text('已投票');
+		                alert('请勿重复投票');
 						return;
 		            }
-		            alert("投票成功");
-		            btn.css('background-color', '#b1b1b1');
-		            btn.text('已投票');
+
 		            var num = parseInt(btn.prev().children("div.mx-number").text())+1;
 		            btn.prev().children("div.mx-number").text(num);
-				} )
-				console.log(unionid);
+				});
 			});
 		});
 	}

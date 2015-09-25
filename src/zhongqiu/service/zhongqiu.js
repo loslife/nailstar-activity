@@ -242,7 +242,7 @@ function infos(req, res, next){
     var perPage = 20;
     var startIndex = perPage * (page - 1);
 
-    var sql = "select a.vote_count as 'count', a.pic_url as 'url', b.nickname, b.headImg from zhongqiu_records a, weixin_users b where a.union_id = b.unionId order by count desc limit :start, :size";
+    var sql = "select a.vote_count as 'count', a.pic_url as 'url', a.union_id, b.nickname, b.headImg from zhongqiu_records a, weixin_users b where a.union_id = b.unionId order by count desc limit :start, :size";
 
     dbHelper.execSql(sql, {start: startIndex, size: perPage}, function(err, results) {
 
@@ -260,6 +260,7 @@ function infos(req, res, next){
             temp.url = item.url;
             temp.nickname = item.nickname;
             temp.avatar = item.headImg;
+            temp.unionid = item.union_id;
 
             objs.push(temp);
         });
@@ -345,7 +346,7 @@ function vote(req, res, next){
 
         if(hasVote){
             console.log("has voted");
-            next({message: "duplicated vote request"});
+            doResponse(req, res, {code: 1, message: "duplicated vote"});
             return;
         }
 

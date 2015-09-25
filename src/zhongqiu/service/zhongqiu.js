@@ -49,7 +49,7 @@ function route(req, res, next){
         // 访问别人页面
         if(source_union_id !== union_id){
 
-            _checkVote(function(err, hasVote){
+            _checkVote(function(err, canVote){
 
                 if(err){
                     console.log(err);
@@ -57,7 +57,7 @@ function route(req, res, next){
                     return;
                 }
 
-                redirectUrl = "http://huodong.naildaka.com/zhongqiu/friend.html?union_id=" + source_union_id + "&can_vote=" + !hasVote + "&my_union_id=" + union_id;
+                redirectUrl = "http://huodong.naildaka.com/zhongqiu/friend.html?union_id=" + source_union_id + "&can_vote=" + canVote + "&my_union_id=" + union_id;
                 res.redirect(redirectUrl);
             });
 
@@ -94,7 +94,12 @@ function route(req, res, next){
                 }
 
                 var hasVote = result[0].count > 0;
-                callback(null, hasVote);
+
+                if(hasVote){
+                    callback(null, 0);
+                }else{
+                    callback(null, 1);
+                }
             });
         }
 

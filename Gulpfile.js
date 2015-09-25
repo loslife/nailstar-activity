@@ -6,6 +6,7 @@ var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var minifyCss = require('gulp-minify-css');
 
+
 gulp.task('jshint', function () {
     return gulp.src('./src/interview/static/js/*.js')
         .pipe(jshint())
@@ -89,3 +90,9 @@ gulp.task('default', ['jshint', 'js_minify', 'css_minify']);
 gulp.task('index', ['jshint', 'css_index', 'js_index']);
 gulp.task('nishidaka_index2', ['js_daka2', 'css_nishidaka2', 'js_nishidaka2']);
 gulp.task('nishidaka_index', ['js_daka', 'css_nishidaka', 'js_nishidaka']);
+
+
+require("./src/zhongqiu/gulp_zhongqiu.js");
+gulp.task('me_zhongqiu', ['me_js', 'me_css']);
+gulp.task('introduce_zhongqiu', ['introduce_js', 'introduce_css']);
+gulp.task('friend_zhongqiu', ['friend_js', 'friend_css']);

@@ -41,7 +41,6 @@ Zepto(function($){
     });
 
 
-
     var randomArray = [];
     createRandom(randomArray);
 

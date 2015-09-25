@@ -1,0 +1,133 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: arial;
+    text-align: center;
+}
+
+.fullPage{
+    background: url("../images/background.png") no-repeat;
+    background-size: 100%;
+    overflow: hidden;
+}
+
+.title{
+    text-align: center;
+    margin: 0 auto;
+    width: 83%;
+    padding-top: 5%;
+    height: 22%;
+}
+
+.title-img{
+    width: 100%;
+}
+
+.doc{
+    text-align: center;
+}
+
+.doc-img{
+    width: 90%;
+}
+
+.main{
+    text-align: center;
+    position: relative;
+}
+
+.main-cotent{
+    width: 28%;
+    position: absolute;
+    left: 11%;
+    top: 21%;
+}
+
+.main-img{
+    width: 100%;
+}
+
+.join{
+    text-align: center;
+    background: url("../images/button.png") no-repeat center;
+    background-size: 35%;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.join-text{
+    color: #fff;
+    height: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    width: 106px;
+}
+
+.introduce{
+    display: block;
+}
+
+.code{
+    height: 77%;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.code-img-div{
+    text-align: center;
+    height: 29%;
+    width: 32%;
+    margin: 0 auto;
+}
+
+.code-img{
+    width: 100%;
+}
+
+.iphone6S{
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+}
+
+.daka{
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+}
+
+.code-text{
+    text-align: center;
+    margin-top: 0%;
+    margin-bottom: 4%;
+    height: 9%;
+}
+
+.code-text-p{
+    font-size: 16px;
+}
+
+.code-main{
+    position: relative;
+    height: 60%;
+}
+
+.code-main-one{
+    width: 30%;
+    position: absolute;
+    left: 9%;
+    top: 17%;
+}
+
+.code-main-two{
+    width: 100%;
+    padding-top: 6%;
+}
+
+.code-main-content{
+    width: 100%;
+}
+
+.code-main-img{
+    width: 100%;
+}

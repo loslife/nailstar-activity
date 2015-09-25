@@ -48,16 +48,16 @@ html, body {
     text-align: center;
     position: relative;
     width: 60%;
-    margin: 6% auto 0;
+    margin: 5% auto 0;
     border: 5px solid #ffffff;
 }
 
 #tip{
     width: 80%;
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.2em;
     margin: 0 auto;
-    margin-top: 6%;
+    margin-top: 5%;
 }
 #tip > .font-white{
     color: #ffffff;
@@ -90,7 +90,7 @@ html, body {
     background-size: 35%;
     height: 45px;
     margin: 0 auto;
-    margin-top: 4%;
+    margin-top: 3%;
 }
 
 .join-text{

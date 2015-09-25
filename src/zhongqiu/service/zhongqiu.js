@@ -87,7 +87,7 @@ function route(req, res, next){
             var sql2 = "insert into zhongqiu_vote_history (id, voting_union_id, voted_union_id, create_date) values(:id, :voting_id, :voted_id, :create_date)";
             var sql3 = "update zhongqiu_records set vote_count = vote_count + 1 where union_id = :union_id";
 
-            dbHelper.execSql(sql1, {voting_id: source_union_id, voted_id: union_id}, function(err, result) {
+            dbHelper.execSql(sql1, {voting_id: union_id, voted_id: source_union_id}, function(err, result) {
 
                 if (err) {
                     callback(err);

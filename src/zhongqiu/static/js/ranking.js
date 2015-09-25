@@ -1,4 +1,8 @@
 jQuery(function($){
+
+	// 服务接口
+	var host = 'http://huodong.naildaka.com/svc/zhongqiu/';
+
 	var time = Date.parse("Oct 4, 2015");
 
 	setInterval(function () {
@@ -6,44 +10,53 @@ jQuery(function($){
 		var lastTime = new Date(time - now).lastTime();
 		$("#h").text(lastTime);
 	},1000);
-	var rankData={
-		view:{
-			loadpage:true,		//页面载入动画
-			sharetips:false,	//分享提示
-			tab:true,			//true人气榜，false为梦想榜
-			page:1,
-			scroll:true
+
+	var rankData = {
+
+		view: {
+			loadpage: true,		//页面载入动画
+			sharetips: false,	//分享提示
+			tab: true,			//true人气榜，false为梦想榜
+			page: 1,
+			scroll: true
 		},
-		union_id:'',
-	}
+		union_id: ''
+	};
 
 	rankData.union_id = getQueryString('union_id');
 
-	//tab页切换
+	// tab页切换
 	$('.tab-left').click(function() {
-		if(!rankData.view.tab){
-			rankData.view.tab = true;
-			$('.tab-left img').attr('src', './images/rank-left-btn1.png');
-			$('.tab-right img').attr('src', './images/rank-right-btn2.png');
-			$('.renqi').show();
-			$('.mx').hide();
-			$('html,body').scrollTop(0);
-		}
-	});
-	$('.tab-right').click(function() {
+
 		if(rankData.view.tab){
-			rankData.view.tab = false;
-			$('.tab-left img').attr('src', './images/rank-left-btn2.png');
-			$('.tab-right img').attr('src', './images/rank-right-btn1.png');
-			$('.renqi').hide();
-			$('.mx').show();
-			$('html,body').scrollTop(0);
-			$('#waterfall li').wookmark({
-				autoResize: true, // 当浏览器大小改变时是否自动调整
-				container: $('#mxlist'),
-				offset: 6
-			});
+			return;
 		}
+
+		rankData.view.tab = true;
+		$('.tab-left img').attr('src', './images/rank-left-btn1.png');
+		$('.tab-right img').attr('src', './images/rank-right-btn2.png');
+		$('.renqi').show();
+		$('.mx').hide();
+		$('html,body').scrollTop(0);
+	});
+
+	$('.tab-right').click(function() {
+
+		if(!rankData.view.tab){
+			return;
+		}
+
+		rankData.view.tab = false;
+		$('.tab-left img').attr('src', './images/rank-left-btn2.png');
+		$('.tab-right img').attr('src', './images/rank-right-btn1.png');
+		$('.renqi').hide();
+		$('.mx').show();
+		$('html,body').scrollTop(0);
+		$('#waterfall li').wookmark({
+			autoResize: true, // 当浏览器大小改变时是否自动调整
+			container: $('#mxlist'),
+			offset: 6
+		});
 	});
 
 	// 分享提示
@@ -51,64 +64,68 @@ jQuery(function($){
 		$('.maskShare').show();
 	});
 	
-	//取消提示
+	// 取消提示
 	$('.maskShare').click(function() {
 		$('.maskShare').hide();
-	})
+	});
 
-	//服务接口
-	var host = 'http://huodong.naildaka.com/svc/zhongqiu/';
+	// 获取个人信息
+	function getuserinfor(union_id) {
 
-	//获取个人信息
-	function getuserinfor (union_id) {
-		getRequest(host+'info/'+union_id,function (error,data) {
+		getRequest(host + 'info/' + union_id, function(error,data) {
+
             if(data.code != 0){
                 console.log('err');
-            }else{
-                $('.me-left img').attr('src', data.result.url);//设置上传图片
-                $('.userimg img').attr('src', data.result.avatar);//设置头像
-                $('.username').text(data.result.nickname);//设置用户昵称
-                $('#num').text(data.result.vote);//设置的票数
-                $('#ranknum').text(data.result.ranking);//设置用户排名
-                getthing (data.result.ranking);//设置是否显示奖品
+				return;
             }
-        })
+
+			$('.me-left img').attr('src', data.result.url);//设置上传图片
+			$('.userimg img').attr('src', data.result.avatar);//设置头像
+			$('.username').text(data.result.nickname);//设置用户昵称
+			$('#num').text(data.result.vote);//设置的票数
+			$('#ranknum').text(data.result.ranking);//设置用户排名
+			getthing (data.result.ranking);//设置是否显示奖品
+        });
 	}
+
 	getuserinfor(rankData.union_id);
 
-	//获取列表
-	function getlist (page) {
-		getRequest(host+'infos/?page='+page,function (error,data) {
+	// 获取列表
+	function getlist(page) {
+
+		getRequest(host + 'infos/?page=' + page, function(error,data) {
+
             if(data.code != 0){
                 console.log('err');
-            }else{
-            	if(page == 1){
-            		creatranklist (data.result.datas);
-            		creatmxlist (data.result.datas);
-            		setTimeout(function (argument) {
-	                	$('.loadercontent').hide();
-	                },500);
-            	}else{
-            		creatmxlist (data.result.datas);
-            	}
-            	if(data.result.datas.length == 0){
-            		rankData.view.scroll = false;
-            	}
-                page ++;
+				return;
             }
-        })
+
+			if(page == 1){
+				creatranklist (data.result.datas);
+				creatmxlist (data.result.datas);
+				setTimeout(function (argument) {
+					$('.loadercontent').hide();
+				},500);
+			}else{
+				creatmxlist (data.result.datas);
+			}
+
+			if(data.result.datas.length == 0){
+				rankData.view.scroll = false;
+			}
+			rankData.view.page ++;
+        });
 	}
 	getlist (rankData.view.page);
 
 	//显示可获的奖品
 	function getthing (ranking) {
+
 		if(ranking == 1){
 			$('.awardthings img').attr('src', './images/ranking-1.png');
-		}
-		if(ranking>1&&ranking<4){
+		}else if(ranking > 1 && ranking < 4){
 			$('.awardthings img').attr('src', './images/ranking-2.png');
-		}
-		if(ranking>3&&ranking<16){
+		}else if(ranking > 3 && ranking < 16){
 			$('.awardthings img').attr('src', './images/ranking-4.png');
 		}else{
 			$('.awardthings img').hide();
@@ -117,16 +134,20 @@ jQuery(function($){
 
 	//生成排行榜
 	function creatranklist (datas) {
+
 		var things = {
 			a:'./images/ranking-1.png',
 			b:'./images/ranking-2.png',
-			c:'./images/ranking-4.png'
+			c:'./images/ranking-3.png'
 		};
+
 		var classname = {
 			a:'color1',
 			b:'color2'
-		}
+		};
+
 		var s;
+
 		for (var i = 0; i < datas.length; i++) {
 			var rank = i+1;
 			if(i == 0){
@@ -139,11 +160,15 @@ jQuery(function($){
 				s = things.c;
 				console.log(s);
 			}
+
+			var classa;
+
 			if(i%2 == 0){
-				var classa = classname.a;
+				classa = classname.a;
 			}else{
-				var classa = classname.b;
+				classa = classname.b;
 			}
+
 			var html = '<li class="'+classa+' item db ba-c bo-h">'+
 							'<div class="ranknumber">'+rank+'</div>'+
 							'<div class="rankimg"><img src="'+datas[i].avatar+'" alt=""></div>'+
@@ -153,7 +178,7 @@ jQuery(function($){
 							'<div class="rankaward"><img src="'+s+'" alt=""></div>'+
 						'</li>';
 			$('.ranklist').append(html);
-		};
+		}
 	}
 
 	//生成更多

@@ -31,6 +31,11 @@ html,body{
   	animation: spin 800ms infinite linear;
 	-webkit-animation: spin 800ms infinite linear; 
 }
+#ranknum, #num{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
 .inner{
 	width: 36px;
 	height: 36px;

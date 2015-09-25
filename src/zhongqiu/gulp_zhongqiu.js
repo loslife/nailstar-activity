@@ -27,15 +27,16 @@ gulp.task('rank_js', function () {
 });
 
 gulp.task('rank_css', function () {
-    return gulp.src('./src/zhongqiu/static/css/rank.css')
+    return gulp.src('./src/zhongqiu/static/css/ranking.css')
         .pipe(minifyCss())
-        .pipe(rename('rank.min.css'))
+        .pipe(rename('ranking.min.css'))
         .pipe(gulp.dest('./src/zhongqiu/static/css'));
 });
 gulp.task('base_css', function () {
     return gulp.src('./src/zhongqiu/static/css/base.css')
         .pipe(minifyCss())
         .pipe(rename('base.min.css'))
+});
 
 gulp.task('introduce_js', function () {
     return gulp.src('./src/zhongqiu/static/js/introduce.js')
@@ -43,6 +44,7 @@ gulp.task('introduce_js', function () {
         .pipe(rename('introduce.min.js'))
         .pipe(gulp.dest('./src/zhongqiu/static/js'));
 });
+
 gulp.task('introduce_css', function () {
     return gulp.src(['./src/zhongqiu/static/css/introduce.css'])
         .pipe(minifyCss())

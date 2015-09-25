@@ -85,6 +85,9 @@ jQuery(function($){
             	if(page == 1){
             		creatranklist (data.result.datas);
             		creatmxlist (data.result.datas);
+            		setTimeout(function (argument) {
+	                	$('.loadercontent').hide();
+	                },500);
             	}else{
             		creatmxlist (data.result.datas);
             	}
@@ -92,9 +95,6 @@ jQuery(function($){
             		rankData.view.scroll = false;
             	}
                 page ++;
-                setTimeout(function (argument) {
-                	$('.loadercontent').hide();
-                },500);
             }
         })
 	}

@@ -53,6 +53,14 @@
             "auth": false,
             "impl": "zhongqiu.addRecord",
             "comment": "新增记录"
+        },
+        {
+            "name": "zhongqiu_vote",
+            "path": "/zhongqiu/vote",
+            "method": "post",
+            "auth": false,
+            "impl": "zhongqiu.vote",
+            "comment": "投票"
         }
     ],
     "statics": [

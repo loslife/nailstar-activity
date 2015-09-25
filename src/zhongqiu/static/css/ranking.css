@@ -12,6 +12,7 @@ html,body{
 	position: fixed;
 	top: 0;
 	z-index: 1000;
+	display: none;
 }
 .wrap{
 	width: 42px;
@@ -119,7 +120,7 @@ html,body{
 	margin: 0 auto;
 	height: 147px;
 	background-color: #fff;
-	margin-top: 20px;
+	margin-top: 15px;
 }
 .me-left{
 	height: 139px;
@@ -156,7 +157,10 @@ html,body{
 	margin-left: 12px;
 }
 .timetips{
-	margin-top: 3px;
+	margin-top: 15px;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
 }
 .ranktips{
 	margin-top: 3px;
@@ -294,6 +298,17 @@ html,body{
 }
 .mx-number{
 	margin-left: 5px;
+}
+.mx-btn{
+	width: 80px;
+  	height: 24px;
+  	font-size: 12px;
+  	color: #393939;
+  	background-color: #fff200;
+  	line-height: 24px;
+  	text-align: center;
+  	border-radius: 12px;
+  	margin: 5px auto;
 }
 @media (max-width: 370px) {
   	html,body{

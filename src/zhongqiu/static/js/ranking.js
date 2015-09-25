@@ -104,10 +104,14 @@ jQuery(function($){
 			}else{
 				creatmxlist (data.result.datas);
 			}
-
+			mxbtn();//注册投票事件
 			if(data.result.datas.length == 0){
 				rankData.view.scroll = false;
+				return;
 			}
+			setTimeout(function () {
+				rankData.view.scroll = true;
+			},500)
 			rankData.view.page ++;
         });
 	}
@@ -192,10 +196,39 @@ jQuery(function($){
 								'<div class="mx-name">'+datas[i].nickname+'</div>'+
 								'<div>票数</div>'+
 								'<div class="mx-number">'+datas[i].vote+'</div>'+
-							'</div>'+	
+							'</div>'+
+							'<div class="mx-btn" unionid-data="'+datas[i].unionid+'">给Ta投票</div>'+
 						'</li>';
 			$('#mxlist').append(html);
 		};
+	}
+
+	//大家梦想页面投票
+	function mxbtn () {
+		$('.mx-btn').each(function() {
+			this.click(function() {
+				var btn = this;
+				var data = {
+					friend_union_id: btn.attr('unionid-data'),
+					my_union_id: rankData.union_id,
+					source: 1
+				};
+				postRequest(host + 'vote', data,function (error,data) {
+		            if(data.code != 0){
+		                alert.log('已经投过了！');
+		              	btn.css('background-color', '#b1b1b1');
+		              	btn.text('已投票');
+						return;
+		            }
+		            alert("投票成功");
+		            btn.css('background-color', '#b1b1b1');
+		            btn.text('已投票');
+		            var num = parseInt(btn.prev().children("div.mx-number").text())+1;
+		            btn.prev().children("div.mx-number").text(num);
+				} )
+				console.log(unionid);
+			});
+		});
 	}
 
 	//封装get请求
@@ -217,6 +250,27 @@ jQuery(function($){
 			},
 			dataType: "json"
 		});
+	}
+
+	//封装post请求
+	function postRequest(url, data, callback) {
+	    $.ajax({
+	        type: 'POST',
+	        url: url,
+	        data: data,
+	        beforeSend: function (request) {
+	            request.setRequestHeader("xhr", "true");
+	        },
+	        xhrFields: {withCredentials: true},
+	        crossDomain: true,
+	        success: function (data) {
+	            callback(null, data);
+	        },
+	        error: function (error) {
+	            console.log(error);
+	        },
+	        dataType: "json"
+	    });
 	}
 
 	//处理微信接口
@@ -337,6 +391,7 @@ jQuery(function($){
     	if(rankData.view.scroll){
     		var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
 			if(closeToBottom){
+				rankData.view.scroll = false;
 				getlist (rankData.view.page);
 			}
     	}else{
@@ -349,7 +404,7 @@ Date.prototype.lastTime = function(){
     var hours = Math.floor(time / (1000 * 60 * 60));
     var minutes = Math.floor(time / (1000 * 60) - (60 * hours));
     if(hours>23){
-    	var day = hours%24;
+    	var day =	Math.ceil(hours/24);
     	return day+'天';
     }
     if(minutes < 10){

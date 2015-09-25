@@ -14,14 +14,17 @@
         }
     },
     "services": [
-
+        {
+            "name": "common_count",
+            "path": "/stat/count",
+            "method": "get",
+            "auth": false,
+            "impl": "stat.count",
+            "comment": "统计页面访问次数"
+        }
     ],
     "statics": [
-        {
-            "name": "zhongqiu",
-            "path": "/zhongqiu",
-            "comment": "zhongqiu"
-        }
+
     ],
     "dataModelSchema": [
     ],

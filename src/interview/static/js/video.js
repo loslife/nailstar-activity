@@ -4,67 +4,67 @@ Zepto(function($){
             name: '胡波',
             img: './images/t00.png',
             title: ['2010台湾美甲封面大赛  一等奖', '芷妍美甲高级培训讲师', '2013年美甲大赛评委'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '董亚坡',
             img: './images/t01.png',
             title: ['2011年获得法式水晶甲（国际组）  亚军', '获得第5届国际美甲艺术邀请赛  优秀奖', '第七届国际美甲邀请赛  季军'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '王红',
             img: './images/t02.png',
             title: ['EZFLOW高级讲师', '2013年美甲大赛评委', '芷妍美甲高级培训师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '郭东',
             img: './images/t03.png',
             title: ['日本PARA培训技术证书', '韩国INS KOREA指定中国区域', '美甲培训师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '胡小',
             img: './images/t04.png',
             title: ['芷妍美甲技术学院高级培训技师', '韩国INS KOREA中国区域', '指定美甲培训技师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '杨帆',
             img: './images/t05.png',
             title: ['芷妍美甲技术学院高级培训技师', '韩国INS KOREA中国区域', '指定美甲培训技师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '李智',
             img: './images/t06.png',
             title: ['芷妍美甲技术学院高级培训技师', '韩国INS KOREA中国区域', '指定美甲培训技师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '薛兴亚',
             img: './images/t07.png',
             title: ['芷妍美甲技术学院高级培训技师', '韩国INS KOREA中国区域', '指定美甲培训技师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '汤志平',
             img: './images/t08.png',
             title: ['芷妍美甲技术学院高级培训技师', '韩国INS KOREA中国区域', '指定美甲培训技师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '肖莎',
             img: './images/t09.png',
             title: ['芷妍美甲技术学院高级培训技师', '韩国INS KOREA中国区域', '指定美甲培训技师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         },
         {
             name: '媛媛',
             img: './images/t10.png',
             title: ['芷妍美甲技术学院高级培训技师', '韩国INS KOREA中国区域', '指定美甲培训技师'],
-            video: ''
+            video: 'http://v.yilos.com/72cab374f17d65717a2fc0e8119acb39.mp4'
         }
     ];
 
@@ -129,7 +129,11 @@ Zepto(function($){
         //本地处理
         window.localStorage.setItem("like_" + t, 1);
         $("#likeFlag").attr("src", "./images/like.png");
-        var count = parseInt($("#count").text());
+        var count = $("#count").text();
+        if(!count){
+            return;
+        }
+        count = parseInt(count);
         $("#count").text(++count);
         flag = true;
     });
@@ -139,7 +143,7 @@ Zepto(function($){
     });
     //看其他大咖
     $("#index").click(function(){
-        window.location.href = "./index.html";
+        window.location.href = "./index2.html";
     });
     //分享按钮
     $(".share").click(function(){
@@ -185,7 +189,7 @@ Zepto(function($){
                     // 创建分享
                     wx.onMenuShareTimeline({
                         title: "幕后的美甲大咖们，你都认识吗？",
-                        link: "http://huodong.naildaka.com/interview/index.html",
+                        link: "http://huodong.naildaka.com/interview/index2.html",
                         imgUrl: "http://huodong.naildaka.com/interview/images/share.jpg",
                         success: function () {
                             $(".maskShare").hide();
@@ -197,7 +201,7 @@ Zepto(function($){
                     wx.onMenuShareAppMessage({
                         title: "幕后的美甲大咖们，你都认识吗？",
                         desc: "我的经历也许是很多人的经历！",
-                        link: "http://huodong.naildaka.com/interview/index.html",
+                        link: "http://huodong.naildaka.com/interview/index2.html",
                         imgUrl: "http://huodong.naildaka.com/interview/images/share.jpg",
                         success: function () {
                             $(".maskShare").hide();

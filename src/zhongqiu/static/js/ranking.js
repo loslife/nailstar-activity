@@ -113,7 +113,7 @@ jQuery(function($){
 			}
 			setTimeout(function () {
 				rankData.view.scroll = true;
-			},500)
+			},500);
 			rankData.view.page ++;
         });
 	}
@@ -202,15 +202,15 @@ jQuery(function($){
 							'<div class="mx-btn" unionid-data="'+datas[i].unionid+'">给Ta投票</div>'+
 						'</li>';
 			$('#mxlist').append(html);
-		};
+		}
 	}
 
-	//大家梦想页面投票
-	function mxbtn () {
+	// 大家梦想页面投票
+	function mxbtn() {
 
 		$('.mx-btn').each(function() {
 
-			$(this).click(function() {
+			$(this).unbind("click").click(function() {
 
 				var btn = $(this);
 				var data = {

@@ -5,6 +5,9 @@ $(function(){
     $('body').on('touchmove', function(ev){
         ev.preventDefault();
     });
+    $(".transparency").on('click', function(){
+        $(this).hide();
+    });
     initCropprt();
     initWx();
 

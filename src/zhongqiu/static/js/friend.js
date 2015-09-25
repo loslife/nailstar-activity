@@ -1,6 +1,8 @@
 Zepto(function ($) {
+
     var union_id = getQueryString("union_id");
-    var canvote = getQueryString("can_vote");
+    var can_vote = getQueryString("can_vote");
+    var my_union_id = getQueryString("my_union_id");
 
     getInfo(union_id, function(err, data){
         if(err || !data || !data.result){
@@ -10,27 +12,29 @@ Zepto(function ($) {
         $('.main-img').attr('src',data.result.url);
     });
 
-    if (canvote === 1 || canvote === "1") {
-        $('#vote').removeClass("has-voted").addClass("vote");
-        $('#vote').text("投一票");
+    if (can_vote === 1 || can_vote === "1") {
 
-        $("#vote").on('click', function () {
+        var $vote = $('#vote');
 
-            var myunion_id = getQueryString("myunion_id");
+        $vote.removeClass("has-voted").addClass("vote");
+        $vote.text("投一票");
+
+        $vote.on('click', function () {
+
             var postData = {
                 friend_union_id: union_id,
-                my_union_id: myunion_id
+                my_union_id: my_union_id
             };
-            postVote(postData, function(err, data){
-            });
+
+            postVote(postData, function(err, data){});
+
             var vote = parseInt($('.main-vote-number').text());
             $('.main-vote-number').text(vote + 1);
-            $('#vote').removeClass("vote").addClass("has-voted");
-            $('#vote').text("已投票");
-            $("#vote").unbind('click');
+            $vote.removeClass("vote").addClass("has-voted");
+            $vote.text("已投票");
+            $vote.unbind('click');
         })
     }
-
 
     var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
         "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id

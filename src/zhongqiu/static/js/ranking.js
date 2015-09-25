@@ -172,7 +172,7 @@ jQuery(function($){
 							'<div class="rankpiao">'+datas[i].vote+'</div>'+
 							'<div class="rankaward"><img src="'+s+'" alt=""></div>'+
 						'</li>';
-			if(i>15){
+			if(i>14){
 				return;
 			}
 			$('.ranklist').append(html);

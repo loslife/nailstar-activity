@@ -329,9 +329,10 @@ function vote(req, res, next){
 
     var friend_union_id = req.body.friend_union_id;
     var my_union_id = req.body.my_union_id;
+    var source = req.body.source || 2;// 0表示在投票页面投的，1表示在梦想墙投的，2表示未知
 
     var sql1 = "select count(1) 'count' from zhongqiu_vote_history where voting_union_id = :voting_id and voted_union_id = :voted_id";
-    var sql2 = "insert into zhongqiu_vote_history (id, voting_union_id, voted_union_id, create_date) values(:id, :voting_id, :voted_id, :create_date)";
+    var sql2 = "insert into zhongqiu_vote_history (id, voting_union_id, voted_union_id, create_date, source) values(:id, :voting_id, :voted_id, :create_date, :source)";
     var sql3 = "update zhongqiu_records set vote_count = vote_count + 1 where union_id = :union_id";
 
     dbHelper.execSql(sql1, {voting_id: my_union_id, voted_id: friend_union_id}, function(err, result) {
@@ -352,7 +353,7 @@ function vote(req, res, next){
 
         var id = uuid.v1();
         var now = new Date().getTime();
-        var params = {id: id, voting_id: my_union_id, voted_id: friend_union_id, create_date: now};
+        var params = {id: id, voting_id: my_union_id, voted_id: friend_union_id, create_date: now, source: source};
 
         dbHelper.execSql(sql2, params, function(err){
 

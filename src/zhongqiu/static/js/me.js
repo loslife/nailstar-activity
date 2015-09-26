@@ -2,11 +2,7 @@ $(function(){
 
     var union_id = getQueryString("union_id");
     $(".loadercontent").hide();
-    $('#introduce').on('touchmove', function(ev){
-        ev.preventDefault();
-    });$('#loadercontent').on('touchmove', function(ev){
-        ev.preventDefault();
-    });
+
     $(".transparency").on('click', function(){
         $(this).hide();
     });

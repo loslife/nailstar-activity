@@ -1,5 +1,11 @@
 var host = "http://huodong.naildaka.com/svc/zhongqiu";
 
+// 拉取人数接口
+function getPersonCount(callback){
+    var url = host + "/totalCount";
+    getRequest(url, callback);
+}
+
 //上传图片接口
 function uploadImage(data, callback){
     var url = host + "/uploadImage";

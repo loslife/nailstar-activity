@@ -10,6 +10,18 @@ $(function(){
     $(".transparency").on('click', function(){
         $(this).hide();
     });
+
+    getPersonCount(function(err, data){
+
+        if(data.code != 0){
+            return;
+        }
+
+        var count = data.result.count;
+
+        $("#person_count").text(count)
+    });
+
     initCropprt();
     initWx();
 

@@ -1,6 +1,4 @@
 html, body {
-    width: 100%;
-    height: 100%;
     font-family: arial;
     text-align: center;
 }
@@ -122,7 +120,7 @@ html, body {
     width: 76%;
     height: 20%;
     margin: 0 auto;
-    margin-top: 11%;
+    margin-top: 5%;
 }
 #require > img{
     width: 100%;
@@ -142,7 +140,7 @@ html, body {
     width: 36%;
     height: 6%;
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 10%;
     position: relative;
     background-color: #fff100;
     border-radius: 20px;

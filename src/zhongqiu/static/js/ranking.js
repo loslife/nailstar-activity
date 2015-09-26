@@ -213,16 +213,17 @@ jQuery(function($){
 			$(this).unbind("click").click(function() {
 
 				var btn = $(this);
+
+				btn.css('background-color', '#b1b1b1');
+				btn.text('已投票');
+
 				var data = {
 					friend_union_id: btn.attr('unionid-data'),
 					my_union_id: rankData.union_id,
 					source: 1
 				};
 
-				postRequest(host + 'vote', data,function (error,data) {
-
-					btn.css('background-color', '#b1b1b1');
-					btn.text('已投票');
+				postRequest(host + 'vote', data, function(error,data) {
 
 		            if(data.code != 0){
 		                alert('请勿重复投票');

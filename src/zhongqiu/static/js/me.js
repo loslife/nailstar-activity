@@ -152,7 +152,7 @@ $(function(){
                         title: title, // 分享标题
                         desc: desc, // 分享描述
                         link: shareUrl,
-                        imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
+                        imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
                         success: function () {
                             transparency.hide();
                             shareRecord();
@@ -166,7 +166,7 @@ $(function(){
                     wx.onMenuShareTimeline({
                         title: title,
                         link: shareUrl,
-                        imgUrl: 'http://huodong.naildaka.com/nishidaka/zhongqiu/images/share.jpg',
+                        imgUrl: 'http://s.naildaka.com/nishidaka/zhongqiu/images/share.jpg',
                         success: function () {
                             transparency.hide();
                             shareRecord();
@@ -200,7 +200,7 @@ $(function(){
             title: title, // 分享标题
             desc: desc, // 分享描述
             link: shareUrl,
-            imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
+            imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
                 transparency.hide();
                 shareRecord();
@@ -214,7 +214,7 @@ $(function(){
         wx.onMenuShareTimeline({
             title: title,
             link: shareUrl,
-            imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg',
+            imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg',
             success: function () {
                 transparency.hide();
                 shareRecord();

@@ -54,7 +54,7 @@ Zepto(function ($) {
             title: '你负责貌美如花，大咖负责把iPhone6s送进家！', // 分享标题
             desc: '我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！', // 分享描述
             link: shareUrl, // 分享链接
-            imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
+            imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
                 getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
                     if (data.code != 0) {
@@ -71,7 +71,7 @@ Zepto(function ($) {
         wx.onMenuShareTimeline({
             title: '我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！',
             link: shareUrl,
-            imgUrl: 'http://huodong.naildaka.com/zhongqiu/images/share.jpg',
+            imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg',
             success: function () {
                 getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
                     if (data.code != 0) {

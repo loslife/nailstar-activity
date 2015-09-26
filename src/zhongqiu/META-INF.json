@@ -61,6 +61,14 @@
             "auth": false,
             "impl": "zhongqiu.vote",
             "comment": "投票"
+        },
+        {
+            "name": "zhongqiu_total_count",
+            "path": "/zhongqiu/totalCount",
+            "method": "get",
+            "auth": false,
+            "impl": "zhongqiu.totalCount",
+            "comment": "参加活动总人数"
         }
     ],
     "statics": [

@@ -202,9 +202,11 @@ jQuery(function($){
 	function creatmxlist (datas) {
 		for (var i = 0; i < datas.length; i++) {
 
+			var ahref = "http://huodong.naildaka.com/zhongqiu/friend.html?union_id=" + datas[i].unionid + "&can_vote=1&my_union_id=" + rankData.union_id;
+
 			var html = '<li>'+
-							'<div class="top">'+
-								'<img src="'+datas[i].url+'" alt="">'+
+							'<div class="top">'+ '<a href=\"' + ahref + '\">' +
+				'<img src="'+datas[i].url+'" alt="">'+ '</a>' +
 							'</div>'+
 							'<div class="bottom db bo-h ba-c">'+
 								'<div class="mx-userimg"><img src="'+datas[i].avatar+'" alt=""></div>'+
@@ -213,7 +215,7 @@ jQuery(function($){
 								'<div class="mx-number">'+datas[i].vote+'</div>'+
 							'</div>'+
 							'<div class="mx-btn" unionid-data="'+datas[i].unionid+'">给Ta投票</div>'+
-						'</li>';
+						'</li>' ;
 			$('#mxlist').append(html);
 		}
 	}

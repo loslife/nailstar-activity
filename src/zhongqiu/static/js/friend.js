@@ -21,19 +21,25 @@ Zepto(function ($) {
 
         $vote.on('click', function () {
 
+            $vote.removeClass("vote").addClass("has-voted");
+            $vote.text("已投票");
+            $vote.unbind('click');
+
             var postData = {
                 friend_union_id: union_id,
                 my_union_id: my_union_id,
                 source: 0
             };
 
-            postVote(postData, function(err, data){});
+            postVote(postData, function(err, data){
 
-            var vote = parseInt($('.main-vote-number').text());
-            $('.main-vote-number').text(vote + 1);
-            $vote.removeClass("vote").addClass("has-voted");
-            $vote.text("已投票");
-            $vote.unbind('click');
+                if(data.code != 0){
+                    return;
+                }
+
+                var vote = parseInt($('.main-vote-number').text());
+                $('.main-vote-number').text(vote + 1);
+            });
         })
     }
 

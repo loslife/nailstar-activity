@@ -90,7 +90,7 @@ html,body{
 .bg{
 	width: 100%;
 	height: 100%;
-	background-image: url('http://s.naildaka.com/zhongqiu/images/ranking-bg.png');
+	background-image: url('http://s.naildaka.com/zhongqiu/images/ranking-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: fixed;
@@ -138,11 +138,19 @@ html,body{
 	height: 100%;
 }
 .me-right{
+	position: relative;
 	padding-top: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
 	height: 147px;
 }
+
+.awardtips{
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+}
+
 .infor{
 	height: 36px;
 }
@@ -196,6 +204,8 @@ html,body{
 	border-radius: 12px;
 }
 .awardthings{
+	position: absolute;
+	right: 0;
 	height: 50px;
 }
 .awardthings img{

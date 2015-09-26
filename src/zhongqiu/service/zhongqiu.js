@@ -239,7 +239,7 @@ function info(req, res, next){
 function infos(req, res, next){
 
     var page = req.query["page"] || 1;
-    var perPage = 20;
+    var perPage = 50;
     var startIndex = perPage * (page - 1);
 
     var sql = "select a.vote_count as 'count', a.pic_url as 'url', a.union_id, b.nickname, b.headImg from zhongqiu_records a, weixin_users b where a.union_id = b.unionId order by count desc limit :start, :size";

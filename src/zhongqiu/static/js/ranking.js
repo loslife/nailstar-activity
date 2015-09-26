@@ -128,6 +128,8 @@ jQuery(function($){
 			$('.awardthings img').attr('src', 'http://s.naildaka.com/zhongqiu/images/ranking-2.png');
 		}else if(ranking > 3 && ranking < 16){
 			$('.awardthings img').attr('src', 'http://s.naildaka.com/zhongqiu/images/ranking-4.png');
+		}else if(ranking > 15 && ranking < 51){
+			$('.awardthings img').attr('src', 'http://s.naildaka.com/zhongqiu/images/ranking-chongdian.png');
 		}else{
 			$('.awardthings img').hide();
 		}
@@ -139,7 +141,8 @@ jQuery(function($){
 		var things = {
 			a:'http://s.naildaka.com/zhongqiu/images/ranking-1.png',
 			b:'http://s.naildaka.com/zhongqiu/images/ranking-2.png',
-			c:'http://s.naildaka.com/zhongqiu/images/ranking-3.png'
+			c:'http://s.naildaka.com/zhongqiu/images/ranking-3.png',
+			d:'http://s.naildaka.com/zhongqiu/images/ranking-chongdian.png'
 		};
 
 		var classname = {
@@ -150,16 +153,18 @@ jQuery(function($){
 		var s;
 
 		for (var i = 0; i < datas.length; i++) {
-			var rank = i+1;
+
+			var rank = i + 1;
+
 			if(i == 0){
 				s = things.a;
-
-			}else if(i>0&&i<3){
+			}else if(i > 0 && i < 3){
 				s = things.b;
 
-			}else if(i>2&&i<15){
+			}else if(i > 2 && i < 15){
 				s = things.c;
-
+			}else{
+				s = things.d;
 			}
 
 			var classa;
@@ -178,7 +183,7 @@ jQuery(function($){
 							'<div class="rankpiao">'+datas[i].vote+'</div>'+
 							'<div class="rankaward"><img src="'+s+'" alt=""></div>'+
 						'</li>';
-			if(i>14){
+			if(i>49){
 				return;
 			}
 			$('.ranklist').append(html);
@@ -405,13 +410,15 @@ jQuery(function($){
     	}
 	}
 });
+
 Date.prototype.lastTime = function(){
+
     var time = this.getTime();
     var hours = Math.floor(time / (1000 * 60 * 60));
     var minutes = Math.floor(time / (1000 * 60) - (60 * hours));
-    if(hours>23){
-    	var day =	Math.ceil(hours/24);
-    	return day+'天';
+    if(hours > 23){
+    	var day = Math.ceil(hours/24);
+    	return day + ' 天';
     }
     if(minutes < 10){
         minutes = "0" + minutes;

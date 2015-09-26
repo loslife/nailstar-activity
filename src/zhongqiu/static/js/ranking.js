@@ -37,8 +37,10 @@ jQuery(function($){
 		$('.renqi').show();
 		$('.mx').hide();
 		$('html,body').scrollTop(0);
-		$('.tab-left img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-left-btn1.png');
-		$('.tab-right img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-right-btn2.png');
+        $('.content .tab-left').hide();
+        $('.content .tab-right').hide();
+        $('.content .tab-left.on').show();
+        $('.content .tab-right.off').show();
 	});
 
 	$('.tab-right').click(function() {
@@ -52,8 +54,10 @@ jQuery(function($){
 		$('.renqi').hide();
 		$('.mx').show();
 		$('html,body').scrollTop(0);
-		$('.tab-left img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-left-btn2.png');
-		$('.tab-right img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-right-btn1.png');
+        $('.content .tab-left').hide();
+        $('.content .tab-right').hide();
+        $('.content .tab-right.on').show();
+        $('.content .tab-left.off').show();
 	});
 
 	// 分享提示

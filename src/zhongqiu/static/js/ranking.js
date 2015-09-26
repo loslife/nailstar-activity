@@ -202,9 +202,11 @@ jQuery(function($){
 	function creatmxlist (datas) {
 		for (var i = 0; i < datas.length; i++) {
 
+			var ahref = "http://huodong.naildaka.com/zhongqiu/friend.html?union_id=" + datas[i].unionid + "&can_vote=1&my_union_id=" + rankData.union_id;
+
 			var html = '<li>'+
-							'<div class="top">'+
-								'<img src="'+datas[i].url+'" alt="">'+
+							'<div class="top">'+ '<a href=\"' + ahref + '\">' +
+				'<img src="'+datas[i].url+'" alt="">'+ '</a>' +
 							'</div>'+
 							'<div class="bottom db bo-h ba-c">'+
 								'<div class="mx-userimg"><img src="'+datas[i].avatar+'" alt=""></div>'+
@@ -213,7 +215,7 @@ jQuery(function($){
 								'<div class="mx-number">'+datas[i].vote+'</div>'+
 							'</div>'+
 							'<div class="mx-btn" unionid-data="'+datas[i].unionid+'">给Ta投票</div>'+
-						'</li>';
+						'</li>' ;
 			$('#mxlist').append(html);
 		}
 	}
@@ -333,16 +335,19 @@ jQuery(function($){
                     ]
                 });
                 wx.ready(function() {
+
+					var picurl = $('.me-left img').attr('src');
+
                 	// 创建分享
                     var friendData = {
-                        "imgUrl": "http://s.naildaka.com/zhongqiu/images/share.jpg",
+                        "imgUrl": picurl,
                         "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
                         "desc": "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！",
                         "title": "你负责貌美如花，大咖负责把iPhone6s送进家！",
                         "appId": app_id
                     };
                     var timelineData = {
-                        "imgUrl": "http://s.naildaka.com/zhongqiu/images/share.jpg",
+                        "imgUrl": picurl,
                          "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
                         "desc": "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！",
                         "title": "你负责貌美如花，大咖负责把iPhone6s送进家！",

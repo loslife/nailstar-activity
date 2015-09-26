@@ -205,7 +205,7 @@ html,body{
 }
 .awardthings{
 	position: absolute;
-	right: 0;
+	right: -30px;
 	height: 50px;
 }
 .awardthings img{

@@ -16,6 +16,7 @@ exports.infos = infos;
 exports.uploadImage = uploadImage;
 exports.addRecord = addRecord;
 exports.vote = vote;
+exports.totalCount = totalCount;
 
 function route(req, res, next){
 
@@ -374,5 +375,23 @@ function vote(req, res, next){
                 doResponse(req, res, {message: "ok"});
             });
         });
+    });
+}
+
+function totalCount(req, res, next) {
+
+    var sql = "select count(1) as count from zhongqiu_records";
+
+    dbHelper.execSql(sql, {}, function (err, result) {
+
+        if (err) {
+            console.log(err);
+            next(err);
+            return;
+        }
+
+        var count = result[0].count;
+
+        doResponse(req, res, {count: count});
     });
 }

@@ -26,7 +26,7 @@ html,body{
 	position: absolute;
 	width: 100%; 
 	height: 100%;
-	background-image: url('../images/loadouter.png');
+	background-image: url('http://s.naildaka.com/zhongqiu/images/loadouter.png');
 	background-size: 100%;
 	background-repeat: no-repeat;
   	animation: spin 800ms infinite linear;
@@ -90,7 +90,7 @@ html,body{
 .bg{
 	width: 100%;
 	height: 100%;
-	background-image: url('../images/ranking-bg.png');
+	background-image: url('http://s.naildaka.com/zhongqiu/images/ranking-bg.png');
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: fixed;

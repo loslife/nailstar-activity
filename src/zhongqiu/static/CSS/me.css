@@ -7,7 +7,7 @@ html, body {
 
 /* 介绍背景 */
 .fullPage{
-    background: url("../images/background.png") no-repeat;
+    background: url("http://s.naildaka.com/zhongqiu/images/background.png") no-repeat;
     background-size: 100%;
 }
 
@@ -78,7 +78,7 @@ html, body {
 }
 .join{
     text-align: center;
-    background: url("../images/button.png") no-repeat center;
+    background: url("http://s.naildaka.com/zhongqiu/images/button.png") no-repeat center;
     background-size: 35%;
     height: 45px;
     margin: 0 auto;
@@ -86,7 +86,7 @@ html, body {
 
 .join2{
     text-align: center;
-    background: url("../images/button.png") no-repeat center;
+    background: url("http://s.naildaka.com/zhongqiu/images/button.png") no-repeat center;
     background-size: 35%;
     height: 45px;
     margin: 0 auto;

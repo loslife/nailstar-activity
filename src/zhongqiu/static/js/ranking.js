@@ -34,8 +34,8 @@ jQuery(function($){
 
 		rankData.view.tab = true;
 		$('.timetips').show();
-		$('.tab-left img').attr('src', './images/rank-left-btn1.png');
-		$('.tab-right img').attr('src', './images/rank-right-btn2.png');
+		$('.tab-left img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-left-btn1.png');
+		$('.tab-right img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-right-btn2.png');
 		$('.renqi').show();
 		$('.mx').hide();
 		$('html,body').scrollTop(0);
@@ -49,8 +49,8 @@ jQuery(function($){
 
 		rankData.view.tab = false;
 		$('.timetips').hide();
-		$('.tab-left img').attr('src', './images/rank-left-btn2.png');
-		$('.tab-right img').attr('src', './images/rank-right-btn1.png');
+		$('.tab-left img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-left-btn2.png');
+		$('.tab-right img').attr('src', 'http://s.naildaka.com/zhongqiu/images/rank-right-btn1.png');
 		$('.renqi').hide();
 		$('.mx').show();
 		$('html,body').scrollTop(0);
@@ -123,11 +123,11 @@ jQuery(function($){
 	function getthing (ranking) {
 
 		if(ranking == 1){
-			$('.awardthings img').attr('src', './images/ranking-1.png');
+			$('.awardthings img').attr('src', 'http://s.naildaka.com/zhongqiu/images/ranking-1.png');
 		}else if(ranking > 1 && ranking < 4){
-			$('.awardthings img').attr('src', './images/ranking-2.png');
+			$('.awardthings img').attr('src', 'http://s.naildaka.com/zhongqiu/images/ranking-2.png');
 		}else if(ranking > 3 && ranking < 16){
-			$('.awardthings img').attr('src', './images/ranking-4.png');
+			$('.awardthings img').attr('src', 'http://s.naildaka.com/zhongqiu/images/ranking-4.png');
 		}else{
 			$('.awardthings img').hide();
 		}
@@ -137,9 +137,9 @@ jQuery(function($){
 	function creatranklist (datas) {
 
 		var things = {
-			a:'./images/ranking-1.png',
-			b:'./images/ranking-2.png',
-			c:'./images/ranking-3.png'
+			a:'http://s.naildaka.com/zhongqiu/images/ranking-1.png',
+			b:'http://s.naildaka.com/zhongqiu/images/ranking-2.png',
+			c:'http://s.naildaka.com/zhongqiu/images/ranking-3.png'
 		};
 
 		var classname = {
@@ -321,14 +321,14 @@ jQuery(function($){
                 wx.ready(function() {
                 	// 创建分享
                     var friendData = {
-                        "imgUrl": "http://huodong.naildaka.com/zhongqiu/images/share.jpg",
+                        "imgUrl": "http://s.naildaka.com/zhongqiu/images/share.jpg",
                         "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
                         "desc": "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！",
                         "title": "你负责貌美如花，大咖负责把iPhone6s送进家！",
                         "appId": app_id
                     };
                     var timelineData = {
-                        "imgUrl": "http://huodong.naildaka.com/zhongqiu/images/share.jpg",
+                        "imgUrl": "http://s.naildaka.com/zhongqiu/images/share.jpg",
                          "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
                         "desc": "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！",
                         "title": "你负责貌美如花，大咖负责把iPhone6s送进家！",

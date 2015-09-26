@@ -6,7 +6,7 @@ html, body {
 }
 
 .fullPage{
-    background: url("../images/background.png") no-repeat;
+    background: url("http://s.naildaka.com/zhongqiu/images/background.png") no-repeat;
     background-size: 100%;
     overflow: hidden;
 }
@@ -51,7 +51,7 @@ html, body {
     position: absolute;
     left: 9%;
     top: -2%;
-    background: url("../images/dialogue.png") no-repeat;
+    background: url("http://s.naildaka.com/zhongqiu/images/dialogue.png") no-repeat;
     height: 83px;
     line-height: 83px;
     background-size: 100%;
@@ -108,7 +108,7 @@ html, body {
     font-size: 16px;
     line-height: 32px;
     width: 106px;
-    background: url("../images/yellowbutton.png") no-repeat;
+    background: url("http://s.naildaka.com/zhongqiu/images/yellowbutton.png") no-repeat;
     background-size: 100%;
 }
 
@@ -118,7 +118,7 @@ html, body {
     font-size: 16px;
     line-height: 32px;
     width: 106px;
-    background: url("../images/button.png") no-repeat;
+    background: url("http://s.naildaka.com/zhongqiu/images/button.png") no-repeat;
     background-size: 100%;
 }
 
@@ -130,6 +130,6 @@ html, body {
     font-size: 16px;
     line-height: 32px;
     width: 106px;
-    background: url("../images/yellowbutton.png") no-repeat;
+    background: url("http://s.naildaka.com/zhongqiu/images/yellowbutton.png") no-repeat;
     background-size: 100%;
 }

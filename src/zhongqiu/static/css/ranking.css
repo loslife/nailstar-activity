@@ -115,6 +115,14 @@ html,body{
 .tab-right{
 	width: 89px;
 }
+
+.tab-left.off{
+   display: none;
+}
+.tab-right.on{
+    display: none;
+}
+
 .me{
 	width: 94%;
 	margin: 0 auto;

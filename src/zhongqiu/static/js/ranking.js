@@ -33,15 +33,17 @@ jQuery(function($){
 		}
 
 		rankData.view.tab = true;
-		$('.timetips').show();
-		$('.renqi').show();
-		$('.mx').hide();
-		$('html,body').scrollTop(0);
         $('.content .tab-left').hide();
         $('.content .tab-right').hide();
         $('.content .tab-left.on').show();
         $('.content .tab-right.off').show();
-	});
+
+        $('.timetips').show();
+        $('.renqi').show();
+        $('.mx').hide();
+        $('html,body').scrollTop(0);
+
+    });
 
 	$('.tab-right').click(function() {
 
@@ -50,14 +52,16 @@ jQuery(function($){
 		}
 
 		rankData.view.tab = false;
-		$('.timetips').hide();
-		$('.renqi').hide();
-		$('.mx').show();
-		$('html,body').scrollTop(0);
         $('.content .tab-left').hide();
         $('.content .tab-right').hide();
         $('.content .tab-right.on').show();
         $('.content .tab-left.off').show();
+
+        $('.timetips').hide();
+        $('.renqi').hide();
+        $('.mx').show();
+
+        $('html,body').scrollTop(0);
 	});
 
 	// 分享提示

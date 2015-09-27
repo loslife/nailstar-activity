@@ -25,7 +25,7 @@
         {
             "name": "common_share",
             "path": "/stat/share",
-            "method": "post",
+            "method": "get",
             "auth": false,
             "impl": "stat.shareCount",
             "comment": "统计页面分享次数"

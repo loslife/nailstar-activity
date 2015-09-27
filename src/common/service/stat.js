@@ -23,8 +23,8 @@ function shareCount(req, res, next){
 
     res.send("ok");
 
-    var activity = req.body.activity || "unknown";
     var id = uuid.v1();
+    var activity = req.query["activity"] || "unknown";
     var now = new Date().getTime();
 
     var sql = "insert into page_share_history (id, activity, create_date) values (:id, :activity, :create_date)";

@@ -1,7 +1,7 @@
 jQuery(function($){
 
 	// 服务接口
-	var host = 'http://huodongcdn.naildaka.com/svc/zhongqiu/';
+	var host = 'http://huodong.naildaka.com/svc/zhongqiu/';
 
 	var time = Date.parse("Oct 4, 2015");
 
@@ -207,7 +207,7 @@ jQuery(function($){
 
         for (var i = 0; i < datas.length; i++) {
 
-			var ahref = "http://huodongcdn.naildaka.com/zhongqiu/friend.html?union_id=" + datas[i].unionid + "&can_vote=1&my_union_id=" + rankData.union_id;
+			var ahref = "http://huodong.naildaka.com/zhongqiu/friend.html?union_id=" + datas[i].unionid + "&can_vote=1&my_union_id=" + rankData.union_id;
 
 			var html = '<li>'+
 							'<div class="top">'+ '<a href=\"' + ahref + '\">' +
@@ -308,7 +308,7 @@ jQuery(function($){
 	function initWx () {
     	var app_id = "wxa84c9db4a6fcc7d8";
     	var nowUrl = window.location.href;
-        var signUrl = "http://huodongcdn.naildaka.com/wx/getSignature";
+        var signUrl = "http://huodong.naildaka.com/wx/getSignature";
         $.ajax({
             type: 'POST',
             url: signUrl,
@@ -347,14 +347,14 @@ jQuery(function($){
                 	// 创建分享
                     var friendData = {
                         "imgUrl": picurl,
-                        "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodongcdn.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
+                        "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
                         "desc": "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！",
                         "title": "你负责貌美如花，大咖负责把iPhone6s送进家！",
                         "appId": app_id
                     };
                     var timelineData = {
                         "imgUrl": picurl,
-                         "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodongcdn.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
+                         "link": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +"redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + rankData.union_id+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
                         "desc": "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！",
                         "title": "你负责貌美如花，大咖负责把iPhone6s送进家！",
                         "appId": app_id
@@ -364,7 +364,7 @@ jQuery(function($){
                         link: timelineData.link,
                         imgUrl: timelineData.imgUrl,
                         success: function (res) {
-							postRequest('http://huodongcdn.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
+							postRequest('http://huodong.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
                         },
                         cancel: function () {
 
@@ -378,7 +378,7 @@ jQuery(function($){
                         type: '',
                         dataUrl: '',
                         success: function () {
-							postRequest('http://huodongcdn.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
+							postRequest('http://huodong.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
                         },
                         cancel: function () {
                         	

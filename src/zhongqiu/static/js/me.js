@@ -123,7 +123,7 @@ $(function(){
     function initWx() {
         var app_id = "wxa84c9db4a6fcc7d8";
         var nowUrl = window.location.href;
-        var signUrl = "http://huodongcdn.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
+        var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
         $.ajax({
             type: 'POST',
             url: signUrl,
@@ -155,7 +155,7 @@ $(function(){
                     var title = "你负责貌美如花，大咖负责把iPhone6s送进家！";
                     var desc = "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！";
                     var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
-                        "redirect_uri=http%3a%2f%2fhuodongcdn.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
+                        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
                         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
                     var transparency = $(".transparency");
                     wx.onMenuShareAppMessage({
@@ -203,7 +203,7 @@ $(function(){
         var title = "你负责貌美如花，大咖负责把iPhone6s送进家！";
         var desc = "我离玫瑰金只有一步之差，你还在等啥？ 晒自拍，多重豪礼等你拿！";
         var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
-            "redirect_uri=http%3a%2f%2fhuodongcdn.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
+            "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
             + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         var transparency = $(".transparency");
         wx.onMenuShareAppMessage({

@@ -5,7 +5,7 @@ Zepto(function($){
 
     initWx();
 
-    var shareUrl = "http://huodong.naildaka.com/zhongqiu/introduce.html";
+    var shareUrl = "http://huodongcdn.naildaka.com/zhongqiu/introduce.html";
 
     wx.ready(function () {
         //配置好友分享
@@ -15,7 +15,7 @@ Zepto(function($){
             link: shareUrl, // 分享链接
             imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
-                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
+                getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
                     if (data.code != 0) {
                         console.log('err');
                     } else {
@@ -32,7 +32,7 @@ Zepto(function($){
             link: shareUrl,
             imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg',
             success: function () {
-                getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
+                getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
                     if (data.code != 0) {
                         console.log('err');
                     } else {
@@ -50,7 +50,7 @@ Zepto(function($){
 function initWx() {
     var app_id = "wxa84c9db4a6fcc7d8";
     var nowUrl = window.location.href;
-    var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
+    var signUrl = "http://huodongcdn.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
     $.ajax({
         type: 'POST',
         url: signUrl,

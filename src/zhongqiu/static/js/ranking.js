@@ -9,11 +9,11 @@ jQuery(function($){
     var lastTime = new Date(time - now).lastTime();
     $("#h").text(lastTime);
 
-	setInterval(function () {
-		var now = new Date().getTime();
-		var lastTime = new Date(time - now).lastTime();
-		$("#h").text(lastTime);
-	},10000);
+	//setInterval(function () {
+	//	var now = new Date().getTime();
+	//	var lastTime = new Date(time - now).lastTime();
+	//	$("#h").text(lastTime);
+	//},10000);
 
 	var rankData = {
 
@@ -364,13 +364,7 @@ jQuery(function($){
                         link: timelineData.link,
                         imgUrl: timelineData.imgUrl,
                         success: function (res) {
-                        	getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu',function (error,data) {
-                        		if(data.code != 0){
-                        			console.log('err');
-                        		}else{
-                        			console.log('ok');
-                        		}
-                        	})
+							postRequest('http://huodongcdn.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
                         },
                         cancel: function () {
 
@@ -384,13 +378,7 @@ jQuery(function($){
                         type: '',
                         dataUrl: '',
                         success: function () {
-                        	getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu',function (error,data) {
-                        		if(data.code != 0){
-                        			console.log('err');
-                        		}else{
-                        			console.log('ok');
-                        		}
-                        	})
+							postRequest('http://huodongcdn.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
                         },
                         cancel: function () {
                         	

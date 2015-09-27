@@ -47,7 +47,6 @@ Zepto(function ($) {
         "redirect_uri=http%3a%2f%2fhuodongcdn.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
-
     $('body').on('touchmove ', function (ev) {
         ev.preventDefault();
     });
@@ -62,13 +61,7 @@ Zepto(function ($) {
             link: shareUrl, // 分享链接
             imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
-                getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
-                    if (data.code != 0) {
-                        console.log('err');
-                    } else {
-                        console.log('ok');
-                    }
-                })
+                postRequest('http://huodongcdn.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
             },
             cancel: function () {
             }
@@ -79,13 +72,7 @@ Zepto(function ($) {
             link: shareUrl,
             imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg',
             success: function () {
-                getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
-                    if (data.code != 0) {
-                        console.log('err');
-                    } else {
-                        console.log('ok');
-                    }
-                })
+                postRequest('http://huodongcdn.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
             },
             cancel: function () {
             }

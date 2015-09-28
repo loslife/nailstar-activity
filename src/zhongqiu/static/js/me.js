@@ -98,8 +98,11 @@ $(function(){
                 if (err || !data || data.code != 0) {
                     return alert("上传失败，请重试");
                 }
-                var picUrl = data.result.picUrl;
-                addRecord({picurl: picUrl,unionid: union_id}, function(err, data){
+
+                var picUrl = data.result.picUrl;// 压缩后的小图
+                var picUrl2 = data.result.picUrl2;// 原图
+
+                addRecord({picurl: picUrl, unionid: union_id, origin_picurl: picUrl2}, function(err, data){
                     if(err || data.code != 0){
                         return alert("上传失败，请重试");
                     }

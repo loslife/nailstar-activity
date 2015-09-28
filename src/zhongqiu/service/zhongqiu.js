@@ -286,10 +286,17 @@ function uploadImage(req, res, next){
             return;
         }
 
-        //图片压缩操作
-        sharp(path1)
-            .resize(320, 320)
-            .toFile(path2, function(err) {
+        // 压缩图片
+        sharp(path1).resize(320, 320).toFile(path2, function(err) {
+
+            if(err){
+                console.log(err);
+                next(err);
+                return;
+            }
+
+            // 上传压缩后的图
+            oss.putPictureObjectToOss(path2, function(err, result){
 
                 if(err){
                     console.log(err);
@@ -297,21 +304,8 @@ function uploadImage(req, res, next){
                     return;
                 }
 
-                //上传压缩后的图
-                oss.putPictureObjectToOss(path2, function(err, result){
+                var small_pic_url = result["oss_url"];
 
-                    if(err){
-                        console.log(err);
-                        next(err);
-                        return;
-                    }
-                    doResponse(req, res, {picUrl: result["oss_url"]});
-
-                    fs.unlink(path2, function(err){});
-
-                });
-
-                //上传原图
                 oss.putPictureObjectToOss(path1, function(err, result){
 
                     if(err){
@@ -320,23 +314,29 @@ function uploadImage(req, res, next){
                         return;
                     }
 
-                    fs.unlink(path1, function(err){});
+                    var origin_pic_url = result["oss_url"];
 
+                    doResponse(req, res, {picUrl: small_pic_url, picUrl2: origin_pic_url});
+
+                    fs.unlink(path1, function(err){});
+                    fs.unlink(path2, function(err){});
                 });
             });
+        });
     });
 }
 
 function addRecord(req, res, next){
 
     var pic_url = req.body.picurl;
+    var origin_pic_url = req.body.origin_picurl;
     var union_id = req.body.unionid;
     var id = uuid.v1();
     var now = new Date().getTime();
 
-    var sql = "insert into zhongqiu_records (id, union_id, pic_url, create_date) values (:id, :union_id, :pic_url, :create_date);";
+    var sql = "insert into zhongqiu_records (id, union_id, pic_url, origin_pic_url, create_date) values (:id, :union_id, :pic_url, :origin_pic_url, :create_date);";
 
-    dbHelper.execSql(sql, {id: id, union_id: union_id, pic_url: pic_url, create_date: now}, function(err) {
+    dbHelper.execSql(sql, {id: id, union_id: union_id, pic_url: pic_url, origin_pic_url: origin_pic_url, create_date: now}, function(err) {
 
         if(err) {
             next(err);
@@ -411,7 +411,7 @@ function totalCount(req, res, next) {
             return;
         }
 
-        var count = result[0].count;
+        var count = (result[0].count) * 2;// 按照实际数量的2倍显示
 
         doResponse(req, res, {count: count});
     });

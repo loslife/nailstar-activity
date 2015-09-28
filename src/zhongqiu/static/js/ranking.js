@@ -22,7 +22,7 @@ jQuery(function($){
 			sharetips: false,	//分享提示
 			tab: true,			//true人气榜，false为梦想榜
 			page: 1,
-			scroll: true
+			scroll: false
 		},
 		union_id: ''
 	};
@@ -35,7 +35,7 @@ jQuery(function($){
 		if(rankData.view.tab){
 			return;
 		}
-
+		rankData.view.scroll = false;
 		rankData.view.tab = true;
         $('.content .tab-left').hide();
         $('.content .tab-right').hide();
@@ -54,7 +54,7 @@ jQuery(function($){
 		if(!rankData.view.tab){
 			return;
 		}
-
+		rankData.view.scroll = true;
 		rankData.view.tab = false;
         $('.content .tab-left').hide();
         $('.content .tab-right').hide();
@@ -64,7 +64,6 @@ jQuery(function($){
         $('.timetips').hide();
         $('.renqi').hide();
         $('.mx').show();
-
         $('html,body').scrollTop(0);
 	});
 

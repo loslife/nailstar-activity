@@ -366,3 +366,33 @@ html,body{
 .loadEnd{
 	display: none;
 }
+.loadEnd div{
+	display: inline-block;
+}
+.spinner {
+	text-align: center;
+	line-height: 37px;
+}
+ 
+.spinner > div {
+	width: 7px;
+	height: 7px;
+	background-color: #fff;
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+	-webkit-animation-fill-mode: both;
+}
+ 
+.spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+}
+ 
+.spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+}
+ 
+@-webkit-keyframes bouncedelay {
+	0%, 80%, 100% { -webkit-transform: scale(0.0) }
+	40% { -webkit-transform: scale(1.0) }
+}

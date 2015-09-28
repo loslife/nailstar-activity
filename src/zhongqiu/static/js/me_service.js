@@ -20,13 +20,7 @@ function addRecord(data, callback){
 
 //分享回调
 function shareRecord() {
-    getRequest('http://huodong.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
-        if (data.code != 0) {
-            console.log('err');
-        } else {
-            console.log('ok');
-        }
-    });
+    postRequest('http://huodongcdn.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
 }
 
 //封装post请求

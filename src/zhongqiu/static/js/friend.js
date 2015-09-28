@@ -44,9 +44,8 @@ Zepto(function ($) {
     }
 
     var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb931d3d24994df52&" +
-        "redirect_uri=http%3a%2f%2fhuodongcdn.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
+        "redirect_uri=http%3a%2f%2fhuodong.naildaka.com%2fsvc%2fzhongqiu%2froute%2f" + union_id
         + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-
 
     $('body').on('touchmove ', function (ev) {
         ev.preventDefault();
@@ -62,13 +61,7 @@ Zepto(function ($) {
             link: shareUrl, // 分享链接
             imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg', // 分享图标
             success: function () {
-                getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
-                    if (data.code != 0) {
-                        console.log('err');
-                    } else {
-                        console.log('ok');
-                    }
-                })
+                postRequest('http://huodong.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
             },
             cancel: function () {
             }
@@ -79,13 +72,7 @@ Zepto(function ($) {
             link: shareUrl,
             imgUrl: 'http://s.naildaka.com/zhongqiu/images/share.jpg',
             success: function () {
-                getRequest('http://huodongcdn.naildaka.com/svc/stat/share?activity=zhongqiu', function (error, date) {
-                    if (data.code != 0) {
-                        console.log('err');
-                    } else {
-                        console.log('ok');
-                    }
-                })
+                postRequest('http://huodong.naildaka.com/svc/stat/share', {activity: "zhongqiu"}, function (error, date) {});
             },
             cancel: function () {
             }
@@ -103,7 +90,7 @@ function getQueryString(name) {
     return null;
 }
 
-var port = "http://huodongcdn.naildaka.com/svc/zhongqiu";
+var port = "http://huodong.naildaka.com/svc/zhongqiu";
 
 //封装getInfo
 function getInfo(union_id, callback){
@@ -162,7 +149,7 @@ function postRequest(url, data, callback) {
 function initWx() {
     var app_id = "wxa84c9db4a6fcc7d8";
     var nowUrl = window.location.href;
-    var signUrl = "http://huodongcdn.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
+    var signUrl = "http://huodong.naildaka.com/wx/getSignature";// only one 'Access-Control-Allow-Origin' is allowed
     $.ajax({
         type: 'POST',
         url: signUrl,

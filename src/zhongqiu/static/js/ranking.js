@@ -35,6 +35,7 @@ jQuery(function($){
 		if(rankData.view.tab){
 			return;
 		}
+		$('.firstLoad').hide();
 		rankData.view.scroll = false;
 		rankData.view.tab = true;
         $('.content .tab-left').hide();
@@ -54,6 +55,7 @@ jQuery(function($){
 		if(!rankData.view.tab){
 			return;
 		}
+		$('.firstLoad').show();
 		rankData.view.scroll = true;
 		rankData.view.tab = false;
         $('.content .tab-left').hide();
@@ -115,6 +117,8 @@ jQuery(function($){
 					$('.loadercontent').hide();
 				},500);
 			}else{
+				$('.loadStart').show();
+				$('.loadEnd').hide();
 				creatmxlist (data.result.datas);
 			}
 			mxbtn();//注册投票事件
@@ -406,9 +410,11 @@ jQuery(function($){
 	//滚动触发事件
     window.onscroll = function () {
     	if(rankData.view.scroll){
-    		var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+    		var closeToBottom = ($(window).scrollTop() + $(window).height() == $(document).height());
 			if(closeToBottom){
 				rankData.view.scroll = false;
+				$('.loadStart').hide();
+				$('.loadEnd').show();
 				getlist (rankData.view.page);
 			}
     	}else{

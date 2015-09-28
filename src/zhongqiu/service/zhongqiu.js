@@ -2,6 +2,7 @@ var api = require("wechat-toolkit");
 var async = require("async");
 var _ = require("underscore");
 var uuid = require('node-uuid');
+var sharp = require("sharp");
 var dbHelper = require(FRAMEWORKPATH + "/utils/dbHelper");
 var dataUrl = require('dataurl');
 var fs = require('fs');
@@ -273,10 +274,11 @@ function infos(req, res, next){
 
 function uploadImage(req, res, next){
 
-    var path = __dirname + "/" + uuid.v1() + ".jpg";
+    var path1 = __dirname + "/" + uuid.v1() + ".png";
+    var path2 = __dirname + "/" + uuid.v1() + ".png";
     var imageInfo = dataUrl.parse(req.body.image);
 
-    fs.writeFile(path, imageInfo.data, 'binary', function(err){
+    fs.writeFile(path1, imageInfo.data, 'binary', function(err){
 
         if(err){
             console.log(err);
@@ -284,15 +286,10 @@ function uploadImage(req, res, next){
             return;
         }
 
-        oss.putPictureObjectToOss(path, function(err, result){
-
-            if(err){
-                console.log(err);
-                next(err);
-                return;
-            }
-
-            fs.unlink(path, function(err){
+        //图片压缩操作
+        sharp(path1)
+            .resize(320, 320)
+            .toFile(path2, function(err) {
 
                 if(err){
                     console.log(err);
@@ -300,9 +297,33 @@ function uploadImage(req, res, next){
                     return;
                 }
 
-                doResponse(req, res, {picUrl: result["oss_url"]});
+                //上传压缩后的图
+                oss.putPictureObjectToOss(path2, function(err, result){
+
+                    if(err){
+                        console.log(err);
+                        next(err);
+                        return;
+                    }
+                    doResponse(req, res, {picUrl: result["oss_url"]});
+
+                    fs.unlink(path2, function(err){});
+
+                });
+
+                //上传原图
+                oss.putPictureObjectToOss(path1, function(err, result){
+
+                    if(err){
+                        console.log(err);
+                        next(err);
+                        return;
+                    }
+
+                    fs.unlink(path1, function(err){});
+
+                });
             });
-        });
     });
 }
 

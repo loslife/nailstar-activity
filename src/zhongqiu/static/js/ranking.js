@@ -121,7 +121,6 @@ jQuery(function($){
 				$('.loadEnd').hide();
 				creatmxlist (data.result.datas);
 			}
-			mxbtn();//注册投票事件
 			if(data.result.datas.length == 0){
 				rankData.view.scroll = false;
 				return;
@@ -232,35 +231,59 @@ jQuery(function($){
 	// 大家梦想页面投票
 	function mxbtn() {
 
-		 $('.mx-btn').each(function() {
+		// $('.mx-btn').each(function() {
 
-		 	$(this).unbind("click").click(function() {
+		//  	$(this).unbind("click").click(function() {
 
-		 		var btn = $(this);
+		//  		var btn = $(this);
 
-		 		btn.css('background-color', '#b1b1b1');
-		 		btn.text('已投票');
+		//  		btn.css('background-color', '#b1b1b1');
+		//  		btn.text('已投票');
 
-		 		var data = {
-		 			friend_union_id: btn.attr('unionid-data'),
-		 			my_union_id: rankData.union_id,
-		 			source: 1
-		 		};
+		//  		var data = {
+		//  			friend_union_id: btn.attr('unionid-data'),
+		//  			my_union_id: rankData.union_id,
+		//  			source: 1
+		//  		};
 
-		 		postRequest(host + 'vote', data, function(error,data) {
+		//  		postRequest(host + 'vote', data, function(error,data) {
 
-		             if(data.code != 0){
-		                 alert('请勿重复投票');
-		 				return;
-		             }
+		//              if(data.code != 0){
+		//                  alert('请勿重复投票');
+		//  				return;
+		//              }
 
-		             var num = parseInt(btn.prev().children("div.mx-number").text())+1;
-		             btn.prev().children("div.mx-number").text(num);
-		 		});
-		 	});
-		 });
+		//              var num = parseInt(btn.prev().children("div.mx-number").text())+1;
+		//              btn.prev().children("div.mx-number").text(num);
+		//  		});
+		//  	});
+		// });
+		$('#mxlist').delegate('.mx-btn',"click", function() {
+
+			var btn = $(this);
+
+			btn.css('background-color', '#b1b1b1');
+			btn.text('已投票');
+
+			var data = {
+				friend_union_id: btn.attr('unionid-data'),
+				my_union_id: rankData.union_id,
+				source: 1
+			};
+
+			postRequest(host + 'vote', data, function(error,data) {
+
+		        if(data.code != 0){
+		            alert('请勿重复投票');
+					return;
+		        }
+
+		        var num = parseInt(btn.prev().children("div.mx-number").text())+1;
+		        btn.prev().children("div .mx-number").text(num);
+			});
+		});
 	}
-
+	mxbtn();//注册投票事件
 	//封装get请求
 	function getRequest (url,callback) {
 		$.ajax({

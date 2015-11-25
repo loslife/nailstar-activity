@@ -1,0 +1,29 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "statics": [
+        {
+            "name": "update",
+            "path": "/update",
+            "comment": "提示更新"
+        }
+    ],
+    "dataModelSchema": [
+    ],
+    "configuration": {
+
+    },
+    "errorHandler": []
+}

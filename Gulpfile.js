@@ -90,9 +90,11 @@ gulp.task('default', ['jshint', 'js_minify', 'css_minify']);
 gulp.task('index', ['jshint', 'css_index', 'js_index']);
 gulp.task('nishidaka_index2', ['js_daka2', 'css_nishidaka2', 'js_nishidaka2']);
 gulp.task('nishidaka_index', ['js_daka', 'css_nishidaka', 'js_nishidaka']);
+gulp.task('nishidaka_index3', ['daka3_js', 'nishidaka3_css', 'nishidaka3_js']);
 
 
 require("./src/zhongqiu/gulp_zhongqiu.js");
+require("./src/nishidaka/gulp_nishidaka.js");
 
 gulp.task('zhongqiu_base',['base_css']);
 gulp.task('zhongqiu_me', ['me_js', 'me_css']);
